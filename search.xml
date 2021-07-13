@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hexo博客教程</title>
+    <url>/2021/07/10/hexo-tutorial/</url>
+    <content><![CDATA[<h1 id="hexo-next-为文章添加分类"><a href="#hexo-next-为文章添加分类" class="headerlink" title="hexo next 为文章添加分类"></a>hexo next 为文章添加分类</h1><h2 id="新建一个页面，命名为-categories-。命令如下："><a href="#新建一个页面，命名为-categories-。命令如下：" class="headerlink" title="新建一个页面，命名为 categories 。命令如下："></a>新建一个页面，命名为 categories 。命令如下：</h2><figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> categories</span><br></pre></td></tr></table></figure>
+
+<h2 id="编辑刚新建的页面，将页面的类型设置为-categories-，主题将自动为这个页面显示所有分类"><a href="#编辑刚新建的页面，将页面的类型设置为-categories-，主题将自动为这个页面显示所有分类" class="headerlink" title="编辑刚新建的页面，将页面的类型设置为 categories ，主题将自动为这个页面显示所有分类"></a>编辑刚新建的页面，将页面的类型设置为 categories ，主题将自动为这个页面显示所有分类</h2><p>可选是否关闭评论</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">title</span>: 分类</span><br><span class="line"><span class="attribute">date</span>: <span class="number">2014</span>-<span class="number">12</span>-<span class="number">22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></span><br><span class="line"><span class="attribute">type</span>: <span class="string">&quot;categories&quot;</span></span><br><span class="line"><span class="attribute">comments</span>: false</span><br></pre></td></tr></table></figure>
+<span id="more"></span> 
+
+
+<h2 id="在菜单中添加链接。编辑主题的-config-yml-，将-menu-中的-categories-categories-注释去掉，如下"><a href="#在菜单中添加链接。编辑主题的-config-yml-，将-menu-中的-categories-categories-注释去掉，如下" class="headerlink" title="在菜单中添加链接。编辑主题的 _config.yml ，将 menu 中的 categories: /categories 注释去掉，如下:"></a>在菜单中添加链接。编辑主题的 _config.yml ，将 menu 中的 categories: /categories 注释去掉，如下:</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br></pre></td></tr></table></figure>
+
+<h2 id="在其中添加categories属性，再部署之后就可以在分类页看到分类了"><a href="#在其中添加categories属性，再部署之后就可以在分类页看到分类了" class="headerlink" title="在其中添加categories属性，再部署之后就可以在分类页看到分类了"></a>在其中添加categories属性，再部署之后就可以在分类页看到分类了</h2><figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">title: hexo next 为文章添加分类</span><br><span class="line">date: 2016<span class="string">-03</span><span class="string">-16</span> 08:12:43</span><br><span class="line"><span class="keyword">tags:</span></span><br><span class="line">categories: tech</span><br></pre></td></tr></table></figure>
+
+<p>更多可以参考Hexo官方<a href="https://hexo.io/zh-cn/docs/front-matter.html#%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE">教程</a></p>
+<h1 id="hexo文章折叠"><a href="#hexo文章折叠" class="headerlink" title="hexo文章折叠"></a>hexo文章折叠</h1><p>使用以下标签，之后的文章都会被折叠</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--more--&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<h1 id="添加站点地图"><a href="#添加站点地图" class="headerlink" title="添加站点地图"></a>添加站点地图</h1><p>站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。</p>
+<p>在 Google 的 Search Console 的 抓取-&gt;站点地图 有为你的站点添加站点地图的选项。在此处添加了站点地图文件地址后，你的站点就能够充分地展示在 google 搜索引擎使用者的眼前。</p>
+<h2 id="在-Hexo-根目录下，执行如下命令以安装插件"><a href="#在-Hexo-根目录下，执行如下命令以安装插件" class="headerlink" title="在 Hexo 根目录下，执行如下命令以安装插件"></a>在 Hexo 根目录下，执行如下命令以安装插件</h2><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Google版本</span></span><br><span class="line">npm <span class="keyword">install </span>hexo-generator-sitemap --save</span><br><span class="line"></span><br><span class="line"><span class="comment"># Baidu 版本</span></span><br><span class="line">npm <span class="keyword">install </span>hexo-generator-<span class="keyword">baidu-sitemap </span>--save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="生成站点地图文件"><a href="#生成站点地图文件" class="headerlink" title="生成站点地图文件"></a>生成站点地图文件</h2><p>安装好插件后，插件会在每次 hexo g 命令将 markdown 文件转化为 html 文件时执行</p>
+<p>执行结果为，在存放 html 文件根目录下，即 blog/public 下生成一 ‘sitemap.xml’/‘baidusitemap.xml’</p>
+<h2 id="添加站点地图-url"><a href="#添加站点地图-url" class="headerlink" title="添加站点地图 url"></a>添加站点地图 url</h2><p>最后，你只需将该站点地图文件的 url 添加至搜索引擎的 search console</p>
+<h1 id="使用-LocalSearch-搜索功能"><a href="#使用-LocalSearch-搜索功能" class="headerlink" title="使用 LocalSearch 搜索功能"></a>使用 LocalSearch 搜索功能</h1><h2 id="安装搜索插件"><a href="#安装搜索插件" class="headerlink" title="安装搜索插件"></a>安装搜索插件</h2><p>博客根目录执行以下命令</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h1><p>安装完成，编辑博客配置文件：_config.yml</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">search:</span></span><br><span class="line"><span class="symbol">  path:</span> search.xml</span><br><span class="line"><span class="symbol">  field:</span> post</span><br><span class="line"><span class="symbol">  format:</span> html</span><br><span class="line"><span class="symbol">  limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<p>Next 主题自带搜索设置，编辑主题配置文件：_config.yml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Local search</span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="开启字数统计及阅读时长预估"><a href="#开启字数统计及阅读时长预估" class="headerlink" title="开启字数统计及阅读时长预估"></a>开启字数统计及阅读时长预估</h1><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>博客根目录执行以下命令</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-symbols-<span class="built_in">count</span>-<span class="built_in">time</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="配置博客-1"><a href="#配置博客-1" class="headerlink" title="配置博客"></a>配置博客</h1><p>安装完成，编辑博客配置文件：_config.yml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span> <span class="comment"># 文章字数</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span> <span class="comment"># 阅读时长</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">true</span> <span class="comment"># 所有文章总字数</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">true</span> <span class="comment"># 所有文章阅读中时长</span></span><br></pre></td></tr></table></figure>
+<p>编辑Next主题配置文件：_config.yml</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">separated_meta:</span> <span class="literal">true</span>  <span class="comment"># 是否换行显示 字数统计 及 阅读时长</span></span><br><span class="line">  <span class="attr">item_text_post:</span> <span class="literal">true</span>  <span class="comment"># 文章 字数统计 阅读时长 使用图标 还是 文本表示</span></span><br><span class="line">  <span class="attr">item_text_total:</span> <span class="literal">false</span> <span class="comment"># 博客底部统计 字数统计 阅读时长 使用图标 还是 文本表示</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>三维重建综述</title>
+    <url>/2016/07/12/overview-of-3D-reconstruction/</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+<li>对几何3D模型不断增长的需求：电影 游戏  虚拟环境等行业</li>
+<li>VR&amp;AR的火爆</li>
+<li>房地产 三维地图等领域的需求</li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
+<li>中国古代建筑三维数字化保护</li>
+<li>三维数字化城市</li>
+<li>三维地图</li>
+<li>VR&amp;&amp;AR游戏，电影等</li>
+<li>医疗行业：三维心脏</li>
+<li>教育行业等<span id="more"></span></li>
+</ul>
+<h2 id="方法介绍"><a href="#方法介绍" class="headerlink" title="方法介绍"></a>方法介绍</h2><p>传统的三维重建主要是依靠昂贵的三维扫描设备，并且需要被扫描的目标保持一段时间的稳定。近年来，由于计算机硬件大规模计算能力的发展，特别是GPU和分布式计算的发展，实时高效的解决方案成为了可能。目前主流的方法主要分为以下两类：</p>
+<ul>
+<li>基于深度相机的三维重建</li>
+<li>基于图像的三维重建</li>
+</ul>
+<h2 id="基于深度相机的三维重建"><a href="#基于深度相机的三维重建" class="headerlink" title="基于深度相机的三维重建"></a>基于深度相机的三维重建</h2><h3 id="深度相机"><a href="#深度相机" class="headerlink" title="深度相机"></a>深度相机</h3><p><strong>原理</strong> 主要有以下三种：</p>
+<ul>
+<li> 结构光，这个技术的代表产品是 Kinect 一代，它的传感器芯片用的是 PrimeSense 家的。PrimeSense 现在是苹果旗下的公司。</li>
+<li>TOF，time-of-flight，代表产品是 Kinect 二代，由于微软对于 One 这个单词的热爱，它的官方名字是 Kinect One。</li>
+<li>双目摄像头，代表产品是 Google Tango 以及 Leap Motion，前者配有四台摄像头，后者有两个</li>
+</ul>
+<p><strong>主要设备</strong>有Kinect, ASUS Xtion PRO等</p>
+<h4 id="Kinect-1代与kinect-2代比较"><a href="#Kinect-1代与kinect-2代比较" class="headerlink" title="Kinect 1代与kinect 2代比较"></a>Kinect 1代与kinect 2代比较</h4><ul>
+<li> Kinect v1对应Xbox 360, Kinect v2对应Xbox One</li>
+<li> Kinect v1，彩色摄像头为640<em>480，深度摄像头为320</em>240，只能识别两个人的骨骼数据。</li>
+<li> Kinect v2，彩色为1080P，深度摄像头为512*424，能识别六个人的骨骼，并且识别稳定精度高。有红外线感应,1代没有</li>
+<li>功能（2代）: 通过人体<strong>骨骼追踪</strong>识别与跟踪运动人群，手势识别，面部追踪，目标测距；语音识别，声源定位</li>
+</ul>
+<p>目前基于深度相机进行三维重建的工作有很多，最经典的应该属微软剑桥研究院的<a href="https://www.microsoft.com/en-us/research/project/kinectfusion-project-page/">Kinect Fusion, 2011</a>, 微软有自己的<a href="https://www.microsoft.com/en-us/download/details.aspx?id=44561">SDK</a>, 注意一代和二代的原理有很大的不同，分别下载对应的SDK，目前对Kinect 2代的支持还不是特别好，它对硬件也有一定的要求（特别是USB3.0接口）：<br><img data-src="http://upload-images.jianshu.io/upload_images/2336041-a2217b442cf62e23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Kinect SDK2.0 System Requirements.png"><br>当然，开源社区也有许多基于Kinect Fusion的开源实现，如由PCL团队开发的<a href="%5Bhttp://pointclouds.org/news/kinectfusion-open-source.html%5D(http://pointclouds.org/news/kinectfusion-open-source.html)">KinFu</a>,论文在<a href="https://homes.di.unimi.it/borghese/Teaching/IntelligentSystems/Documents/PirovanoMichele-VisualReconstructionReport.pdf">这里</a>。高通公司<a href="http://www.nullspace.at/">nullspace</a>的开源项目<a href="https://github.com/GerhardR/kfusion">kfusion</a>, 但是个人觉得目前效果最好的，应该要属<a href="https://github.com/mp3guy/Kintinuous">Kintinuous,Real-time large scale dense visual SLAM system</a>了。不过Kintinuous对kinect 2代的支持效果还不好，目前Kinect 1代和华硕的Xtion支持比较好（可能和他们都是PrimeSense的TOF原理有关吧）</p>
+<h2 id="基于图像的三维重建（3D-Reconstruction-from-multiple-Images）"><a href="#基于图像的三维重建（3D-Reconstruction-from-multiple-Images）" class="headerlink" title="基于图像的三维重建（3D Reconstruction from multiple Images）"></a>基于图像的三维重建（3D Reconstruction from multiple Images）</h2><p><strong>关键点</strong>  实时要求/室内场景/大范围场景/点云精确度要求<br>由于基于深度相机（RGB-D）会受到红外距离的限制，如kinect支持的距离为0.5-5m，而且容易产生空洞（holes），所以比较适合室内场景，目前应用最多的是机器人Visual SLAM方面。但是从三维重建的实际应用角度来看，不够方便（主要是Kinect需要使用外接电源，而且需要连接电脑），目前工业界用的最多的方法应该是基于图像的三维几何重建了，其主要步骤包括<strong>局部特征匹配</strong>，<strong>Structure-from-Motion</strong>, <strong>Multi-View Stereo</strong>， <strong>Surface Reconstruction</strong>，<strong>Surface Texturing</strong> 等。<br>这种方法主要需要解决的问题是判断相机的姿态（位置和方向），这点和Visual SLAM比较类似。<br><img data-src="http://upload-images.jianshu.io/upload_images/2336041-fd295f78ef103cd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="立体视觉的核心问题"><br>通过对照片特征的检测与匹配，得到相机的姿态，并计算出稀疏的场景三维点云。</p>
+<p>目前比较好的算法主要有：</p>
+<ul>
+<li><strong>[VisualSFM]</strong>(<a href="http://ccwu.me/vsfm/">http://ccwu.me/vsfm/</a>)</li>
+<li><a href="http://imagine.enpc.fr/~moulonp/openMVG/">OpenMVG</a></li>
+<li>经典的<a href="http://www.cs.cornell.edu/~snavely/bundler/">Bundler</a></li>
+<li><a href="http://www.gcc.tu-darmstadt.de/home/proj/mve/">MVE</a></li>
+</ul>
+<h1 id="目前已知的研究小组有："><a href="#目前已知的研究小组有：" class="headerlink" title="目前已知的研究小组有：#"></a>目前已知的研究小组有：#</h1><p><a href="http://idl.baidu.com/IDL-news-16.html">百度深度学习研究院</a><br><a href="http://vision.ia.ac.cn/zh/applications/index.html">中科院自动化所模式识别国重机器视觉课题组</a><br><a href="http://vision.middlebury.edu/mview/data/">美国明德学院（Middlebury college）</a><br><a href="http://www.cs.ust.hk/~quan/WebPami/pami.html">香港科技大学</a><br><a href="http://www.gcc.tu-darmstadt.de/home/proj/mve/">德国达姆施塔特工业大学MVE</a> <br><a href="%5Bhttps://github.com/openMVG/openMVG%5D(https://github.com/openMVG/openMVG)">OpenMVG</a></p>
+<p><strong>相关人物</strong><br><a href="http://vis.uky.edu/~wangl/">王亮</a><br><a href="http://www.cad.zju.edu.cn/home/gfzhang/">章国峰</a></p>
+<p>#参考文献#<br><a href="http://imagine.enpc.fr/demos/stereo/index.htm">3D Photography Gallery</a><br><a href="http://wedidstuff.heavyimage.com/index.php/2013/07/12/open-source-photogrammetry-workflow/">wedidstuff</a></p>
+<p>基于图像的三维重建是我的研究重点，接下来将会对具体的技术，如特征提取算法，稀疏重建，立体匹配与重建，表面重建等分别说明。</p>
+<p>如果上面有什么不对的地方，欢迎大家指教。</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>3d-reconstruction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用Hexo和Github搭建静态博客</title>
+    <url>/2016/06/25/how-to-build-a-blog-with-Hexo-and-Github/</url>
+    <content><![CDATA[<p>   最近两天加周三的一个晚上，参照网上的博客搭建了属于自己的<a href="www.ac4fun.com">博客</a>，其实之前也对比过Jekyll，Octopress，Python实现的<a href="https://github.com/evilbinary/myblog">myblog</a>, 以及第三方博客，如Blogger，cnblogs，csdn等等，只能说各有千秋吧，还是希望能够有一个属于自己的空间。为避免忘记，也为了表示对社区的感谢，现在对部署过程进行一下纪录。主要包括：</p>
+<ol>
+<li> 基本Hexo的搭建</li>
+<li> 主题的选择</li>
+<li> 扩展功能的介绍</li>
+</ol>
+<span id="more"></span> 
+
+<p>开始之前，先对系统环境进行一下说明，Hexo的部署需要Node.js的支持。我的网站部署在<a href="https://github.com/kingsleynuaa">Github</a>上，也有其他的开源空间（如Coding）可选，本文以Github为例，并假设你已经有了Github帐号。</p>
+<h5 id="系统环境："><a href="#系统环境：" class="headerlink" title="系统环境："></a>系统环境：</h5><ul>
+<li>OS X 10.11</li>
+<li>Xcode 7.2</li>
+<li><a href="https://nodejs.org/dist/v4.4.6/node-v4.4.6.pkg">Node.js v4.4.6 LTS</a> 直接官网下载，一路默认安装即可</li>
+<li>Git 2.6.2(Windows用户请下载客户端)</li>
+<li>SSH</li>
+</ul>
+<p>以上对于Mac用户来说，只需下载并安装Node.js即可。<br>在Terminal下进行测试：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+<p>显示版本号</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ 2.15.5</span><br></pre></td></tr></table></figure>
+
+<p>说明Node.js安装成功。</p>
+<h5 id="SSH连接Github（可选）"><a href="#SSH连接Github（可选）" class="headerlink" title="SSH连接Github（可选）"></a>SSH连接Github（可选）</h5><p>本步骤可选，但是为了避免每次访问Github都需要输入密码，可以选择配置SSH Key，直接上步骤：</p>
+<p>1.设置git参数：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">$ git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.name</span> <span class="string">&quot;Your Name&quot;</span></span><br><span class="line">$ git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.gmail</span> <span class="string">&quot;Your Email&quot;</span></span><br></pre></td></tr></table></figure>
+<p>这里的用户名和邮箱不一定是你的Github帐号的用户名和邮箱</p>
+<p>2.生成SSH密钥（此处省略备份已有密钥的步骤）</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh-keygen -t rsa -C <span class="string">&quot;kingsleynuaa@gmail.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>按三次回车即可，可以在~/.ssh目录下看到id_rsa（私钥，注意保密）和id_rsa.pub(公钥，可随意公开)两个文件</p>
+<p>3.添加私钥到SSH，添加公钥到Github页面</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">$ ssh-<span class="builtin-name">add</span> id_rsa</span><br></pre></td></tr></table></figure>
+<p>在<a href="https://github.com/settings/keys">Github－setting－key</a>页面添加公钥，即id_rsa.pub里面的内容（可用vim打开查看并复制）</p>
+<p>4.测试是否成功</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure>
+<p>出现类似提示表示成功</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">$ Hi kingsleynuaa! You&#x27;ve successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.</span><br><span class="line">Connection <span class="keyword">to</span> github.com closed.</span><br></pre></td></tr></table></figure>
+<p>此处推荐学习Git的好书<a href="http://git.oschina.net/progit/">Pro Git</a></p>
+<p>OK, 现在开始用Github正式搭建Hexo.</p>
+<h1 id="基本Hexo的搭建"><a href="#基本Hexo的搭建" class="headerlink" title="基本Hexo的搭建"></a>基本Hexo的搭建</h1><p>cd命令进入你要部署的文件目录，在Terminal下运行以下命令（去掉＃以后的说明文字）：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> ~/                    <span class="comment">#进入用户目录</span></span><br><span class="line"><span class="variable">$</span> mkdir AC4Fun             <span class="comment">#建立文件夹，你的网站将部署在这里，名称可自行修改</span></span><br><span class="line"><span class="variable">$</span> <span class="built_in">cd</span> AC4Fun					</span><br><span class="line"><span class="variable">$</span> npm install <span class="literal">-g</span> hexo      <span class="comment">#安装Hexo</span></span><br><span class="line"><span class="variable">$</span> hexo init</span><br><span class="line"><span class="variable">$</span> npm install</span><br></pre></td></tr></table></figure>
+
+<p>至此，Hexo已经在本地部署完成。来试试写一篇文章吧</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="string">&quot;文章名字&quot;</span></span><br></pre></td></tr></table></figure>
+<p>然后使用vi或者其他编辑器编辑文档并保存，生成网页文件，并开始服务器</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>此时，即可在本地浏览器中打开页面<a href="http://localhost:4000/">http://localhost:4000</a> 查看啦，😄，第一次看到自己的网站的时候是不是还有一些激动呢？</p>
+<p>OK，此时，网站文件仍然在本地，需要部署到Github才能被更多人看到呢</p>
+<h3 id="安装Git部署插件"><a href="#安装Git部署插件" class="headerlink" title="安装Git部署插件"></a>安装Git部署插件</h3><p>首先在你的Github中新建一个Repository：<strong>用户名.github.io</strong> (如kingsleynuaa.github.io)，接下来安装插件：</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-config-yml-文件"><a href="#配置-config-yml-文件" class="headerlink" title="配置 _config.yml 文件"></a>配置 _config.yml 文件</h3><p>在Hexo安装的目录，如 ~/AC4Fun/ 中找到 _config.yml 文件,打开并翻到最后，找到 deploy 字样，改成如下格式：</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">deploy:</span> </span><br><span class="line"><span class="symbol">  type:</span> git </span><br><span class="line"><span class="symbol">  repo:</span> https:<span class="comment">//github.com/用户名/用户名.github.io.git </span></span><br><span class="line"><span class="symbol">  branch:</span> master</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是：冒号后面有一个空格；使用github可以不用写branch那一行。接下来就可以将网站从本地部署到Github啦（你也可以选择修改以上标签部署到别的空间），输入命令:</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo deploy</span></span><br></pre></td></tr></table></figure>
+
+<p>至此，如果没问题的话，打开你的github同名网站就可以看到属于你自己的个人博客啦～<br>如我的博客：kingsleynuaa.github.io </p>
+<p>下面对上述经常需要使用的命令做一下简单总结：</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo clean    <span class="comment">#清楚public文件夹，重新部署之前的步骤</span></span><br><span class="line"><span class="variable">$ </span>hexo generate <span class="comment">#修改配置或者提交新文章后都需要重新部署，主要是生命public文件夹里面的内容</span></span><br><span class="line"><span class="variable">$ </span>hexo deploy   <span class="comment">#将更新后的的博客上传至你的github空间</span></span><br></pre></td></tr></table></figure>
+
+<p>现在你已经部署好了你的个人博客，并且学会了如何写一篇博客。</p>
+<p>不过，这个网站仍然有很多不足，比如，界面你就不太喜欢，怎么办呢？我们可以更换主题啊～</p>
+<h1 id="选择主题与优化"><a href="#选择主题与优化" class="headerlink" title="选择主题与优化"></a>选择主题与优化</h1><p>在开始选择合适的主题与优化之前我们先来了解一下Hexo博客的结构，并做一下简单的说明。<br>Hexo的结构如下：<br><img data-src="http://o9bsgo1ar.bkt.clouddn.com/tree_main.png" alt="treeMain"></p>
+<ul>
+<li>.deploy_git：执行hexo deploy命令部署到GitHub上的内容目录</li>
+<li>public：执行hexo generate命令，输出的静态网页内容目录</li>
+<li>scaffolds：layout模板文件目录，其中的md文件可以添加编辑</li>
+<li>scripts：扩展脚本目录，这里可以自定义一些javascript脚本</li>
+<li>node_modules安装的一些Hexo工具，每个都会在这里建立一个文件夹，并以Hexo－开头</li>
+<li>source：文章源码目录，该目录下的markdown和html文件均会被hexo处理。该页面对应repo的根目录，404文件、 favicon.ico文件，CNAME文件等都应该放这里，该目录下可新建页面目录。<ul>
+<li>_drafts：草稿文章</li>
+<li>_posts：发布文章</li>
+</ul>
+</li>
+<li>themes：主题文件目录</li>
+<li>_config.yml：全局配置文件，大多数的设置都在这里。详情可以查看源文件注释。</li>
+<li>package.json：应用程序数据，指明hexo的版本等信息，类似于一般软件中的关于按钮</li>
+</ul>
+<p>下面开始修改主题，一般都去<a href="https://github.com/hexojs/hexo/wiki/Themes">官网</a>选择自己喜欢的主题，clone到自己的theme文件夹下并修改全局配置文件下的theme标签，Hexo默认为landscape。每个主题的作者都会比较详细的介绍自己主题的配置说明。这里就不详述了。</p>
+<p>我选择的是<a href="http://gengbiao.me/">coney</a>,可以点击<a href="http://www.ac4fun.com/">AC4Fun</a>查看。一般觉得比较好的还有<a href="https://github.com/A-limon/pacman">Pacman</a>等等</p>
+<h2 id="自定义域名（可选）"><a href="#自定义域名（可选）" class="headerlink" title="自定义域名（可选）"></a>自定义域名（可选）</h2><p>首先需要购买域名，可选网站有GoDaddy（听说有优惠码，会便宜很多），我选择的是阿里云的服务，直接购买了三年的域名，对比价格发现相差不多。<br>你需要在source文件夹下新建一个文件名为CNAME，文件内容为你的自定义域名（如<a href="http://www.ac4fun.com）,然后在Aliyun后台添加域名解析到你的github地址即可。[参考](http://jingyan.baidu.com/article/3c343ff70fb6e60d3779632f.html)">www.ac4fun.com）,然后在Aliyun后台添加域名解析到你的github地址即可。[参考](http://jingyan.baidu.com/article/3c343ff70fb6e60d3779632f.html)</a></p>
+<h1 id="扩展功能的介绍"><a href="#扩展功能的介绍" class="headerlink" title="扩展功能的介绍"></a>扩展功能的介绍</h1><h3 id="评论框"><a href="#评论框" class="headerlink" title="评论框"></a>评论框</h3><p>Hexo默认采用的是Disqus，我觉得挺好的，直接在全局配置文件下修改disqus标签enable为true即可。<br>当然你可以可以配置<a href="http://duoshuo.com/">duoshuo</a>,需要注册多说的帐号，并修改<em>你的主题</em>下_config.yml中配置duoshuo_shortname为多说的基本设置-&gt;域名中的shortname，并修改你的主题下文件夹中的layout_partial\comment.ejs</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="section">&lt;% if (config.disqus_shortname &amp;&amp; page.comments)&#123; %&gt;</span></span><br><span class="line"><span class="section">&lt;section id=<span class="string">&quot;comment&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">#你的通用代码</span></span><br><span class="line"><span class="section">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通用代码见多说官网，注册登录后可以找到。</p>
+<h3 id="自定义页面"><a href="#自定义页面" class="headerlink" title="自定义页面"></a>自定义页面</h3><p>在hexo\source\下手工新建about和index.md，并在主题配置文件下修改memu下的标签。</p>
+<h3 id="页面统计"><a href="#页面统计" class="headerlink" title="页面统计"></a>页面统计</h3><ol>
+<li>注册并登录百度统计，获取你的统计代码。</li>
+<li>在主题配置文件下新建</li>
+</ol>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">baidu_tongji:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>在\layout_partial\目录下新建baidu_tongji.ejs并添加如下代码：</li>
+</ol>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="section">&lt;% if (theme.baidu_tongji)&#123; %&gt;</span></span><br><span class="line"><span class="section">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">#你的百度统计代码</span></span><br><span class="line"><span class="section">&lt;/script&gt;</span></span><br><span class="line"><span class="section">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>编辑文件layout_partial\head.ejs，在『/head』之前增加：</li>
+</ol>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">&lt;<span class="meta">%</span>- partial<span class="comment">(&#x27;baidu_tongji&#x27;)</span> <span class="meta">%</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h3><p>本部分来自教程［3］，当然使用Baidu站内搜索功能也可以的。</p>
+<p>主要步骤如下：</p>
+<ol>
+<li><a href="https://swiftype.com/">Swiftype官网</a>注册帐号，按照提示输入你的<a href="www.ac4fun.com">自定义域名</a>，起名字（最好和你的域名一致）</li>
+<li>安装。按照提示一步步往下即可，一路Next，注意“Results container”部分如果不喜欢弹出模式可以选择否，然后点击<strong>Active</strong>激活</li>
+<li>在主题配置文件_config_yml中添加标签：</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">swift_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后在Hexo主目录下新建search文件夹并新建index.md文件，在index.md写入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">layout: search</span><br><span class="line">title: search</span><br><span class="line">----</span><br></pre></td></tr></table></figure>
+<p>然后在主题目录下的layout_partial目录下，先打开header.ejs，<br>在</p>
+<p><img data-src="http://upload-images.jianshu.io/upload_images/2336041-b2669cff72e2b56d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="header.ejs 插入点之前"></p>
+<p>与</p>
+<p><img data-src="http://upload-images.jianshu.io/upload_images/2336041-4fb60070444cb2d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="header.ejs 插入点之后"></p>
+<p>之间添加</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">&lt;% &#125;<span class="keyword">else</span> <span class="keyword">if</span>	(theme.swift_search&amp;&amp;theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">						&lt;<span class="keyword">form</span> <span class="keyword">class</span>=<span class="string">&quot;search&quot;</span> action=<span class="string">&quot;&lt;%- config.root %&gt;search/index.html&quot;</span> method=<span class="string">&quot;get&quot;</span> accept-charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">						&lt;<span class="keyword">label</span>&gt;<span class="keyword">Search</span>&lt;/<span class="keyword">label</span>&gt;</span><br><span class="line">						&lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;search&quot;</span> </span><br><span class="line"><span class="keyword">class</span>=<span class="string">&quot;st-default-search-input&quot;</span> maxlength=<span class="string">&quot;20&quot;</span> placeholder=<span class="string">&quot;Search&quot;</span> /&gt;</span><br><span class="line">						&lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="http://upload-images.jianshu.io/upload_images/2336041-c0442a1b58c77e11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="待插入代码示例"></p>
+<p>有一定程序设计经验的人应该很容易看懂，就是在if－else中加入一种情况</p>
+<p>然后将search.js文件清空，并替换如下代码：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;% if(theme.swiftype_search.enable) &#123; %&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>  <span class="attr">id</span>=<span class="string">&quot;container&quot;</span> <span class="attr">class</span>=<span class="string">&quot;page&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;st-results-container&quot;</span> <span class="attr">class</span>=<span class="string">&quot;st-search-container&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">style</span>=<span class="string">&quot;width:80%&quot;</span>&gt;</span> Loading now...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-class">.st-result-text</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="attribute">background</span>: <span class="number">#fafafa</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">  <span class="attribute">border-left</span>: <span class="number">0.5em</span> solid <span class="number">#ccc</span>;</span></span><br><span class="line"><span class="css">  -webkit-<span class="attribute">transition</span>: border-left <span class="number">0.45s</span>;</span></span><br><span class="line"><span class="css">  -moz-<span class="attribute">transition</span>: border-left <span class="number">0.45s</span>;</span></span><br><span class="line"><span class="css">  -o-<span class="attribute">transition</span>: border-left <span class="number">0.45s</span>;</span></span><br><span class="line"><span class="css">  -ms-<span class="attribute">transition</span>: border-left <span class="number">0.45s</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">transition</span>: border-left <span class="number">0.45s</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">0.5em</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.st-result-text</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">padding</span>: <span class="number">1em</span>;</span></span><br><span class="line"><span class="css">  &#125;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.st-result-text</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="attribute">border-left</span>: <span class="number">0.5em</span> solid <span class="number">#ea6753</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.st-result-text</span> <span class="selector-tag">h3</span> <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="css">  <span class="attribute">color</span>: <span class="number">#2ca6cb</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">font-size</span>: <span class="number">22px</span>;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.st-snippet</span> <span class="selector-tag">em</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="attribute">font-weight</span>: bold;</span></span><br><span class="line"><span class="css">  <span class="attribute">color</span>: <span class="number">#ea6753</span>;</span></span><br><span class="line"><span class="css">&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--注意下面到&lt;/script&gt;结束的代码块要替换成自己上面保存的Install Code代码--!&gt;</span></span><br><span class="line"><span class="comment">&lt;script type=&quot;text/javascript&quot;&gt;</span></span><br><span class="line"><span class="comment">  (function(w,d,t,u,n,s,e)&#123;w[&#x27;SwiftypeObject&#x27;]=n;w[n]=w[n]||function()&#123;</span></span><br><span class="line"><span class="comment">  (w[n].q=w[n].q||[]).push(arguments);&#125;;s=d.createElement(t);</span></span><br><span class="line"><span class="comment">  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);</span></span><br><span class="line"><span class="comment">  &#125;)(window,document,&#x27;script&#x27;,&#x27;//s.swiftypecdn.com/install/v2/st.js&#x27;,&#x27;_st&#x27;);  </span></span><br><span class="line"><span class="comment">  _st(&#x27;install&#x27;,&#x27;zpDUHTyGUc4YVxxVWn9w&#x27;,&#x27;2.0.0&#x27;);</span></span><br><span class="line"><span class="comment">&lt;/script&gt;</span></span><br><span class="line"><span class="comment">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后打开footer.ejs（其实header也行，随便你），在最后一个标签之前添加一开始拷贝的那段js代码.</p>
+<p>然后重新部署即可。<a href="http://www.ac4fun.com/search/index.html#stq=&stp=1">效果</a></p>
+<p>扩展功能介绍就到这里，其他关于如何建立更漂亮的博客，分享，图床，微博秀等我觉得没什么必要或者暂时没有时间，就没有弄了，建议感兴趣的自行摸索，有问题欢迎沟通</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>   其实这是我第一次用markdown写这么长的文章，从下午到晚上九点，整整写了快6个小时。不得不说，自己知道了，然后总结出来，还是很耗费时间的，但是我相信这个是十分有意义的，而且也能够方便自己以后查阅。<br>   另外，以前总觉得前端的工作比较烦，但是现在感觉能做好做美观一个页面还是挺有意义，也挺不容易的。昨晚这个博客，希望以后能够好好写博客，做好自己的知识管理。定期和自己来一次约会。如果有人能够看到这里，我真是非常感动的呢～哈哈，也希望通过博客能够找到志同道合的人。如果博客中有什么问题，也希望大家能够告诉我，我会及时修正的。如果有什么可以改进的地方，只要能方便大家理解的，也希望大家能够及时提出来，谢谢啦～<br>   好吧，这是博客开通以来，第一篇博客，希望能够一直坚持下去，争取做到一周一篇。</p>
+<h5 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h5><ol>
+<li><a href="http://blog.csdn.net/xsckernel/article/details/8563993">git 使用（ssh key创建和github使用</a></li>
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/?utm_source=tuicool">Hexo你的博客</a></li>
+<li><a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html">利用swiftype为hexo添加站内搜索v2.0</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python2编码问题分析</title>
+    <url>/2017/11/24/python2-encode-and-decode-problem/</url>
+    <content><![CDATA[<p>Python2编码问题</p>
+<p>python2的字符串有两种：str和unicode</p>
+<span id="more"></span> 
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Python <span class="number">2.7</span><span class="number">.10</span> (default, Aug <span class="number">22</span> <span class="number">2015</span>, <span class="number">20</span>:<span class="number">33</span>:<span class="number">39</span>)</span><br><span class="line">[GCC <span class="number">4.2</span><span class="number">.1</span> Compatible Apple LLVM <span class="number">7.0</span><span class="number">.0</span> (clang-<span class="number">700.0</span><span class="number">.59</span><span class="number">.1</span>)] on darwin</span><br><span class="line"><span class="type">Type</span> <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> <span class="keyword">or</span> <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.getdefaultencoding()</span><br><span class="line"><span class="string">&#x27;ascii&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">u&#x27;百度&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> a.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;unicode&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> a</span><br><span class="line">百度</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="string">u&#x27;\u767e\u5ea6&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> <span class="string">u&#x27;\u767e\u5ea6&#x27;</span></span><br><span class="line">百度</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(a)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>aa = a.encode(<span class="string">&#x27;unicode_escape&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>aa</span><br><span class="line"><span class="string">&#x27;\\u767e\\u5ea6&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> aa</span><br><span class="line">\u767e\u5ea6</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> <span class="built_in">len</span>(aa)</span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a.encode(<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> b.__class__</span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">&#x27;str&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>unicode在python里以一种编码无关的方式存储，存储的是code point, 如中文**u’百度’<strong>的编码就是</strong>u’\u767e\u5ea6’**。</p>
+<p>如果字符串是str,代表一定采用了某种编码，如utf8，这个时候存储的是字节。当然，也可以使用<strong>unicode_escape</strong>对unicode进行编码，aa字符数为12个，此时aa可以写入文件。对于str类型的字符串  len求的的就是字节数。只是对utf16这种定长编码来说，每个字符占用2个字节，编码后unicode字符串变成str字符串，这时候会加一个大端小端标记（2字节），这是不可见字符。如’’\xff\xfe’’</p>
+<p>问题：对于unicode字符串，在内存里存储时，占用几个字节？</p>
+<p>Python 2 and Python 3.0-3.2 use either UCS2* or UCS4 for unicode characters, meaning it’ll either use 2 bytes or 4 bytes for <em>each character</em>. Which one is picked is a compile-time option.</p>
+<p><code>\u2049</code> is then represented as either <code>\x49\x20</code> or <code>\x20\x49</code> or <code>\x49\x20\x00\x00</code> or <code>\x00\x00\x20\x49</code> depending on the native byte order of your system and if UCS2 or UCS4 was picked. ASCII characters in a unicode string still use 2 or 4 bytes per character too.</p>
+<p>Python 3.3 switched to a new internal representation, using the most compact form needed to represent all characters in a string. Either 1 byte, 2 bytes or 4 bytes are picked. ASCII and Latin-1 text uses just 1 byte per character, the rest of the BMP characters require 2 bytes and after that 4 bytes is used.</p>
+<h1 id="json-dumps和json-loads"><a href="#json-dumps和json-loads" class="headerlink" title="json dumps和json loads"></a>json dumps和json loads</h1><p>json.dumps将python数据转换为json。loads相反。对应的还可以使用json.dump和load处理文件。</p>
+<p>json.dumps得到的json数据基本和python原始的数据一致，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> json</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>baidu = <span class="string">&#x27;百度&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>baidu</span><br><span class="line"><span class="string">&#x27;\xe7\x99\xbe\xe5\xba\xa6&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(baidu)</span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>baidu.decode(<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"><span class="string">u&#x27;\u767e\u5ea6&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(baidu.decode(<span class="string">&#x27;utf8&#x27;</span>))</span><br><span class="line"><span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = json.dumps(baidu)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line"><span class="string">&#x27;&quot;\\u767e\\u5ea6&quot;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> a</span><br><span class="line"><span class="string">&quot;\u767e\u5ea6&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(a)</span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[e <span class="keyword">for</span> e <span class="keyword">in</span> a]</span><br><span class="line">[<span class="string">&#x27;&quot;&#x27;</span>, <span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>at = json.dumps(baidu, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>at</span><br><span class="line"><span class="string">&#x27;&quot;\xe7\x99\xbe\xe5\xba\xa6&quot;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> at</span><br><span class="line"><span class="string">&quot;百度&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>at.decode(<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"><span class="string">u&#x27;&quot;\u767e\u5ea6&quot;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(at)</span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[e <span class="keyword">for</span> e <span class="keyword">in</span> at]</span><br><span class="line">[<span class="string">&#x27;&quot;&#x27;</span>, <span class="string">&#x27;\xe7&#x27;</span>, <span class="string">&#x27;\x99&#x27;</span>, <span class="string">&#x27;\xbe&#x27;</span>, <span class="string">&#x27;\xe5&#x27;</span>, <span class="string">&#x27;\xba&#x27;</span>, <span class="string">&#x27;\xa6&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>json.dumps 序列化python数据时对中文默认使用的ascii编码。此时，发现a占用14个字节，存储的是code point组成部份的单个字节。</p>
+<p>加<strong>ensure_ascii=False</strong>选项后，会选择默认的中文编码，我这里是utf8。</p>
+<h1 id="python3"><a href="#python3" class="headerlink" title="python3"></a>python3</h1><p>python2即将在2020年停止维护，但就目前的趋势看，谁说得定呢，不过python3确实有许多比较好的特性，值得花时间看看</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为什么要写博客</title>
+    <url>/2016/06/22/why-write-blog/</url>
+    <content><![CDATA[<p>这个问题我思考了很久，却仍然没有一个能够让自己很满意的答案。不得不承认，建立技术博客的初衷是因为找工作，哈哈，说起来还是有点功利的性质的。但是凡事总是一半一半吧，想了想，坚持写博客的好处可能会有下面几点吧。</p>
+<span id="more"></span> 
+
+<h1 id="锻炼表达能力"><a href="#锻炼表达能力" class="headerlink" title="锻炼表达能力"></a>锻炼表达能力</h1><p>做为一个程序员，或者说六年多的工科学习生涯，让自己的逻辑思维和理性思维得到了很大的锻炼，但是因为日常需要比较正式的口头表达的机会实在是少之又少，整天埋头做题，写代码，看论文，就算是交流，除了每周一次的组会，很少有那种需要正式完整表达的时候。发展到后面，会常常觉得自己的口语表达能力急剧下退。以前人们常说，能够很好的表达的人，一定是逻辑思维非常清楚的人，其实并不是。这句话的前提是建立在这个人能够有一个比较好的表达能力的基础之上的。<br>所有因为自己“思维发散”或“想法跳脱”而觉得无法被周围的人理解的人，其实都应该意识到，这是自己的语言表达能力出现了问题。</p>
+<p>表达的基本要求是口齿清晰，逻辑清楚，表达流畅。只有坚持练习表达，练习怎么样把你知道，把你懂的事情，把你的观点解释给别人听，才能把同理心植入对方心底。其实所谓无法用语言来形容的，你自己才有的“某种独特的感悟或心境”基本不存在，正如“太阳底下没有新鲜事”，你所遇到的，你所感悟的，在时空的长河里，基本上都有与你经历相似 感悟类同的人等着你。</p>
+<h1 id="纪录生活和技术成长"><a href="#纪录生活和技术成长" class="headerlink" title="纪录生活和技术成长"></a>纪录生活和技术成长</h1><h1 id="知识管理"><a href="#知识管理" class="headerlink" title="知识管理"></a>知识管理</h1><p>总结  升华 </p>
+<h1 id="寻找志同道合的人"><a href="#寻找志同道合的人" class="headerlink" title="寻找志同道合的人"></a>寻找志同道合的人</h1>]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++知识归纳整理（不断更新中）</title>
+    <url>/2016/07/30/CPP-knowledge/</url>
+    <content><![CDATA[<p>这篇文章写了好久，感觉还是没写完。接下来准备慢慢看书，实习，不断更新吧。</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong>分割线</strong></strong></strong></strong></strong></strong></strong></strong>********************</p>
+<p>按照侯捷先生在《Effective C++》的观点，以及自己的一些理解，可以将互联网技术岗位关于C＋＋的知识点归纳为以下五个部分：</p>
+<ul>
+<li>C＋＋基础知识</li>
+<li>面向过程的特性</li>
+<li>面向对象的特性</li>
+<li>泛型编程的特性</li>
+<li>标准模板库和算法</li>
+</ul>
+<span id="more"></span> 
+
+<p>这是我第一次在简书写文章，如果大家有什么意见的话，欢迎随时向我提出来。必须要说明的是，C＋＋知识繁杂磅礴，面试题中可被问到的很多，如果想要成功拿到心仪的offer，除了掌握C＋＋这个工具外，需要结合一些其它领域知识，如基础数据结构和基本的算法，网络编程，多线程编程，（Linux）Shell脚本（awk, sed），编译器使用（gcc/clang, makefile, automake/cmake等），数据库（SQL语言，数据库理论如存储引擎，索引实现，范式等）视频处理，设计模式，机器学习等知识，如果后续有时间，也会对相关知识进行一下归纳。<br>本文主要侧重于纪录分析C＋＋面试中的基础知识，主要包括：关键字使用，</p>
+<h1 id="1-关键字"><a href="#1-关键字" class="headerlink" title="1. 关键字"></a>1. 关键字</h1><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>static修饰的变量和函数存储在内存的静态文本区，与全局变量存储的位置一致。而静态文本区的字节默认都是0x00</p>
+<ul>
+<li>修饰局部变量<br>对局部变量添加static修饰符后，变量的存储区由栈改为静态文本区，它的生存周期得到了改变。</li>
+<li>修饰全局变量<br>对全局变量添加static，生存周期不会改变，但是会影响作用域。普通全局变量的作用域是整个源程序， 当一个源程序由多个源文件组成时，非静态的全局变量在各个源文件中都是有效的。 而静态全局变量则限制了其作用域， 即只在定义该变量的源文件内有效， 在同一源程序的其它源文件中不能使用它。由于静态全局变量的作用域局限于一个源文件内，只能为该源文件内的函数公用，因此可以避免在其它源文件中引起错误。这一点，有人称作“隐藏”</li>
+<li>修饰函数<br>static函数与普通函数作用域不同,仅在本文件。只在当前源文件中使用的函数应该说明为内部函数(static修饰的函数)，内部函数应该在当前源文件中说明和定义。对于可在当前源文件以外使用的函数，应该在一个头文件中说明，要使用这些函数的源文件要包含这个头文件.<br>static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝</li>
+</ul>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>const关键字可以修饰变量，引用，函数，对象等：</p>
+<p><strong>常变量</strong>：  const 类型说明符 变量名</p>
+<p><strong>常引用</strong>：  const 类型说明符 &amp;引用名</p>
+<p><strong>常对象</strong>：  类名 const 对象名</p>
+<p><strong>常成员函数</strong>：  类名::fun(形参) const</p>
+<p><strong>常数组</strong>：  类型说明符 const 数组名[大小]    </p>
+<p><strong>常指针</strong>：  const 类型说明符* 指针名 ，类型说明符* const 指针名</p>
+<p>在常变量（const 类型说明符 变量名）、常引用（const 类型说明符 &amp;引用名）、常对象（类名 const 对象名）、 常数组（类型说明符 const 数组名[大小]）， const” 与 “类型说明符”或“类名”（其实类名是一种自定义的类型说明符） 的位置可以互换。</p>
+<p>需要注意的概念其实是<strong>“常量指针”</strong>和<strong>“指针常量”</strong>，也就是const修饰一个指针变量的时候产生的两种差异。我们知道，一个指针变量，使用的时候需要考虑该指针本身和被它所指的对象，看如下例子：</p>
+<figure class="highlight nim"><table><tr><td class="code"><pre><span class="line"><span class="built_in">char</span> *<span class="keyword">const</span> pc; //到<span class="built_in">char</span>的<span class="keyword">const</span>指针</span><br><span class="line"><span class="built_in">char</span> <span class="keyword">const</span> *pc1; //到<span class="keyword">const</span> <span class="built_in">char</span>的指针</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">char</span> *pc2; //到<span class="keyword">const</span> <span class="built_in">char</span>的指针（后两个声明是等同的）</span><br></pre></td></tr></table></figure>
+
+<p>从右向左读的记忆方式：</p>
+<p>pc is a const pointer to char. 故pc不能指向别的字符串，但可以修改其指向的字符串的内容。pc是一个指向字符类型的常指针，pc的值不可变，但是pc值（也就是pc指向的地址）所代表的内存空间的内容是可以变的，所以pc是一个指针常量。<br>pc2 is a pointer to const char. 故<em>pc2的内容不可以改变，但pc2可以指向别的字符串。也就是说pc2是指向一个不可变内容空间（常量）的指针，也就是常量指针。pc2＋＋可行，但</em>pc2 = “hello world”不可行。当然，只是说不能通过pc2去修改那段内容，别的方式是可以的。</p>
+<p>其实，const只对它左边的东西起作用，唯一的例外就是const本身就是最左边的修饰符，那么它才会对右边的东西起作用。</p>
+<p><strong>常量函数</strong> 常量函数是C++对常量的一个扩展，它很好的确保了C++中类的封装性。在C++中，为了防止类的数据成员被非法访问，将类的成员函数分成了两类，一类是常量成员函数（也被称为观察着）；另一类是非常量成员函数（也被成为变异者）。在一个函数的签名后面加上关键字const后该函数就成了常量函数。对于常量函数，最关键的不同是编译器不允许其修改类的数据成员。<br>当然，我们可以绕过编译器的错误去修改类的数据成员。但是C++也允许我们在数据成员的定义前面加上mutable，以允许该成员可以在常量函数中被修改。当存在同名同参数和返回值的常量函数和非常量函数时，具体调用哪个函数是根据调用对象是常量对像还是非常量对象来决定的。常量对象调用常量成员；非常量对象调用非常量的成员。</p>
+<p>另外，需要注意C＋＋中用const定义了一个常量后，不会分配一个空间给它，而是将其写入符号表(symbol table),这使得它成为一个编译期间的常量，没有了存储与读内存的操作，使得它的效率也很高。只有当使用extern或者取地址操作的时候，才会分配空间，但是这不会影响到常量本身的值，因为用到a的时候，编译器根本不会去进行内存空间的读取。这就是c++的常量折叠（constant folding）,即将const常量放在符号表中，而并不给其分配内存。编译器直接进行替换优化。其值仍旧从符号表中读取，不管常量对应的存储空间中的值如何变化，都不会对其值产生影响。</p>
+<h3 id="宏定义与const"><a href="#宏定义与const" class="headerlink" title="宏定义与const"></a>宏定义与const</h3><p>C++中定义常量的时候不再采用define,因为define只做简单的宏替换，并不提供类型检查.</p>
+<h2 id="四种类型转换"><a href="#四种类型转换" class="headerlink" title="四种类型转换"></a>四种类型转换</h2><ul>
+<li><p><strong>static_cast</strong><br>static_cast 很像 C 语言中的旧式类型转换。它能进行基础类型之间的转换，也能将带有可被单参调用的构造函数或用户自定义类型转换操作符的类型转换，还能在存有继承关系的类之间进行转换（即可将基类转换为子类，也可将子类转换为基类），还能将 non-const对象转换为 const对象（注意：反之则不行，那是const_cast的职责。）。<br>注意：static_cast 转换时并不进行运行时安全检查，所以是非安全的，很容易出问题。因此 C++ 引入 dynamic_cast 来处理安全转型。</p>
+</li>
+<li><p><strong>dynamic_cast</strong><br>dynamic_cast 主要用来在继承体系中的安全向下转型。它能安全地将指向基类的指针转型为指向子类的指针或引用，并获知转型动作成功是否。如果转型失败会返回null（转型对象为指针时）或抛出异常（转型对象为引用时）。dynamic_cast 会动用运行时信息（RTTI）来进行类型安全检查，因此 dynamic_cast 存在一定的效率损失。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CBase</span> &#123;</span> &#125;;</span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">CDerived</span>:</span> <span class="keyword">public</span> CBase &#123; &#125;;</span><br><span class="line"> CBase b;</span><br><span class="line"> CBase* pb;</span><br><span class="line"> CDerived d;</span><br><span class="line"> CDerived* pd;</span><br><span class="line"> pb = <span class="keyword">dynamic_cast</span>&lt;CBase*&gt;(&amp;d);     <span class="comment">// ok: derived-to-base</span></span><br><span class="line"> pd = <span class="keyword">dynamic_cast</span>&lt;CDerived*&gt;(&amp;b);  <span class="comment">// error: base-to-derived</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码中最后一行 VS2010 会报如下错误：<br>error C2683: ‘dynamic_cast’ : ‘CBase’ is not a polymorphic typeIntelliSense: the operand of a runtime dynamic_cast must have a polymorphic class type<br>这是因为 dynamic_cast 只有在基类带有虚函数的情况下才允许将基类转换为子类。当然，允许转换也不代表可以转换成功。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CBase</span></span></span><br><span class="line"><span class="class"> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">dummy</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">CDerived</span>:</span> <span class="keyword">public</span> CBase</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">int</span> a;</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">    CBase * pba = <span class="keyword">new</span> CDerived;</span><br><span class="line">    CBase * pbb = <span class="keyword">new</span> CBase;</span><br><span class="line">    CDerived * pd1, * pd2;</span><br><span class="line">    pd1 = <span class="keyword">dynamic_cast</span>&lt;CDerived*&gt;(pba);</span><br><span class="line">    pd2 = <span class="keyword">dynamic_cast</span>&lt;CDerived*&gt;(pbb);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>结果是：上面代码中的 pd1 不为 null,而 pd2 为 null。<br>dynamic_cast 也可在 null 指针和指向其他类型的指针之间进行转换，也可以将指向类型的指针转换为 void 指针（基于此，我们可以获取一个对象的内存起始地址 *const void * rawAddress = dynamic_cast&lt;const void *&gt; (this);*）。</p>
+<ul>
+<li><strong>const_cast</strong><br>前面提到 const_cast 可去除对象的常量性（const），它还可以去除对象的易变性（volatile）。const_cast 的唯一职责就在于此，若将 const_cast 用于其他转型将会报错。</li>
+<li><strong>reinterpret_cast</strong><br>reinterpret_cast 用来执行低级转型，如将执行一个 int 的指针强转为 int。其转换结果与编译平台息息相关，不具有可移植性，因此在一般的代码中不常见到它。reinterpret_cast 常用的一个用途是转换函数指针类型，即可以将一种类型的函数指针转换为另一种类型的函数指针，但这种转换可能会导致不正确的结果。总之，reinterpret_cast 只用于底层代码，一般我们都用不到它，如果你的代码中使用到这种转型，务必明白自己在干什么。</li>
+</ul>
+<p>总结来看，需要类型转换的时候，优先使用C＋＋的这种风格进行类型转换，基础类型转换的时候，使用static_cast, 子类与父类之间进行转换的时候，尤其是基类向子类转换的时候，使用dynamic_cast。其它情况，如转换为void指针，使用dynamic_cast, int型指针到int，以及函数指针之间的转换使用reinterpret_cast, const_cast只用于去除对象的常量性（const）和易变性（volatile）<br>抛开C＋＋为了兼容C而允许隐式类型转换（隐蔽，不安全，易引起非预期的函数调用，对象切割等等），我倾向于认为C＋＋是一种强类型（倾向于不允许隐式类型转换），静态类型（编译前已经知道数据类型）的语言。</p>
+<h2 id="重载与重写"><a href="#重载与重写" class="headerlink" title="重载与重写"></a>重载与重写</h2><ul>
+<li><p>重载（Overload）<br>同一可访问区内被声明的几个具有不同参数列（参数的类型，个数，顺序不同）的同名函数，根据参数列表确定调用哪个函数，重载不关心函数返回类型。成员函数被重载的特征：<br>（1）相同的范围（在同一个类中）；<br>（2）函数名字相同；<br>（3）参数不同；<br>（4）virtual关键字可有可无。</p>
+</li>
+<li><p>重写（Override），也叫覆盖（Overwrite）<br>重写是指派生类函数重写基类函数，是C++的多态的表现，特征是：<br>（1）不同的范围（分别位于派生类与基类）；<br>（2）函数名字相同；<br>（3）参数相同；<br>（4）基类函数必须有virtual关键字。</p>
+</li>
+</ul>
+<p>说到底，这两个概念其实并没有太大的关联，重载是编译多态的一种实现，重写与需函数相关，用于实现动态绑定，属于编译时多态的实现。</p>
+<p><strong>重写与隐藏的关系</strong><br>“隐藏”是指派生类的函数屏蔽了与其同名的基类函数，规则如下：<br>（1）如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无virtual关键字，基类的函数将被隐藏。<br>（2）如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有virtual关键字。此时，基类的函数被隐藏。如果有virtual关键字，函数同名，参数相同，就是“重写”了</p>
+<h3 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h3><p>从概念上讲。指针从本质上讲就是存放变量地址的一个变量，在逻辑上是独立的，它可以被改变，包括其所指向的地址的改变和其指向的地址中所存放的数据的改变。<br>而引用是一个别名，它在逻辑上不是独立的，它的存在具有依附性，所以引用必须在一开始就被初始化，而且其引用的对象在其整个生命周期中是不能被改变的（自始至终只能依附于同一个变量）。</p>
+<p><strong>指针传递参数和引用传递参数的区别</strong><br>指针传递参数本质上是值传递的方式，它所传递的是一个地址值。值传递过程中，被调函数的形式参数作为被调函数的局部变量处理，即在栈中开辟了内存空间以存放由主调函数放进来的实参的值，从而成为了实参的一个副本。值传递的特点是被调函数对形式参数的任何操作都是作为局部变量进行，不会影响主调函数的实参变量的值。<br>而在引用传递过程中，被调函数的形式参数虽然也作为局部变量在栈中开辟了内存空间，但是这时存放的是由主调函数放进来的实参变量的地址。被调函数对形参的任何操作都被处理成间接寻址，即通过栈中存放的地址访问主调函数中的实参变量。正因为如此，被调函数对形参做的任何操作都影响了主调函数中的实参变量。<br>引用传递和指针传递是不同的，虽然它们都是在被调函数栈空间上的一个局部变量，但是任何对于引用参数的处理都会通过一个间接寻址的方式操作到主调函数中的相关变量。而对于指针传递的参数，如果改变被调函数中的指针地址，它将影响不到主调函数的相关变量。如果想通过指针参数传递来改变主调函数中的相关变量，那就得使用指向指针的指针，或者指针引用。</p>
+<p>其实上面这两段话，我并没有看出传指针和传引用两个的区别在哪里？<br>“在栈上分配的对象通常就不能传递指针，因为函数返回之后栈上的对象会被析构”<br>另外<a href="http://www.cnblogs.com/xiaoka/articles/2331456.html">C++中传值，传指针和传引用区别</a>提到，传值与传引用本质上没有区别。以上，留作一个疑问吧</p>
+<p>为了进一步加深大家对指针和引用的区别，下面我从编译的角度来阐述它们之间的区别：<br>程序在编译时分别将指针和引用添加到符号表上，符号表上记录的是变量名及变量所对应地址。指针变量在符号表上对应的地址值为指针变量的地址值，而引用在符号表上对应的地址值为引用对象的地址值。符号表生成后就不会再改，因此指针可以改变其指向的对象（指针变量中的值可以改），而引用对象则不能修改。<br>最后，总结一下指针和引用的相同点和不同点：<br>★相同点：<br>●都是地址的概念；<br>指针指向一块内存，它的内容是所指内存的地址；而引用则是某块内存的别名。<br>★不同点：<br>●指针是一个实体，而引用仅是个别名；<br>●引用只能在定义时被初始化一次，之后不可变；指针可变；引用“从一而终”，指针可以“见异思迁”；<br>●引用没有const<br>  指针有const<br>  const的指针不可变；<br>●引用不能为空，指针可以为空；<br>●sizeof “引用”得到的是所指向的变量(对象)的大小，而“sizeof 指针”得到的是指针本身的大小；<br>●指针和引用的自增(++)<br>运算意义不一样；<br>●引用是类型安全的，而指针不是 (<br>引用比指针多了类型检查</p>
+<h3 id="内存对齐"><a href="#内存对齐" class="headerlink" title="内存对齐"></a>内存对齐</h3><p>每个特定平台上的编译器都有自己的默认“对齐系数”(也叫对齐模数，32位gcc 4.7上默认为8，32位VS2010上默认为8)。程序员可以通过预编译命令#pragma pack(n)，n=1,2,4,8,16来改变这一系数，其中的n就是你要指定的“对齐系数”。<br>规则：</p>
+<p>1、数据成员对齐规则：结构(struct)(或联合(union))的数据成员，第一个数据成员放在offset为0的地方，以后每个数据成员的对齐按照#pragma pack指定的数值和这个数据成员自身长度中，比较小的那个进行。</p>
+<p>2、结构(或联合)的整体对齐规则：在数据成员完成各自对齐之后，结构(或联合)本身也要进行对齐，对齐将按照#pragma pack指定的数值和结构(或联合)最大数据成员长度中，比较小的那个进行。</p>
+<p>3、结合1、2可推断：当#pragma pack的n值等于或超过所有数据成员长度的时候，这个n值的大小将不产生任何效果。</p>
+<p>如果我们不想编译器自动为我们添加补齐位，可以将对齐系数设为1</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(push, 1)</span></span><br><span class="line"><span class="comment">// code...</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(pop)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四种智能指针"><a href="#四种智能指针" class="headerlink" title="四种智能指针"></a>四种智能指针</h2><ul>
+<li>auto_ptr</li>
+<li>unique_ptr</li>
+<li>shared_ptr</li>
+<li>weak_ptr(暂时不讨论，我也不知道为什么很多地方都不讨论，留一个疑问吧？)</li>
+</ul>
+<p>智能指针产生的原因在于解决常规指针可能产生的内存泄漏问题，<br><strong>将基本类型指针封装为类对象指针（这个类肯定是个模板，以适应不同基本类型的需求），并在析构函数里编写delete语句删除指针指向的内存空间</strong></p>
+<p>STL一共给我们提供了四种智能指针：auto_ptr、unique_ptr、shared_ptr和weak_ptr（本文章暂不讨论）。模板auto_ptr是C++98提供的解决方案，C+11已将将其摒弃，并提供了另外两种解决方案。然而，虽然auto_ptr被摒弃，但它已使用了好多年：同时，如果您的编译器不支持其他两种解决力案，auto_ptr将是唯一的选择。<br>使用auto_ptr仍然会存在，程序将试图删除同一个对象两次的问题。要避免这种问题，方法有多种：</p>
+<ul>
+<li>定义赋值运算符，使之执行深复制。这样两个指针将指向不同的对象，其中的一个对象是另一个对象的副本，缺点是浪费空间，所以智能指针都未采用此方案。</li>
+<li>建立所有权（ownership）概念。对于特定的对象，只能有一个智能指针可拥有，这样只有拥有对象的智能指针的构造函数会删除该对象。然后让赋值操作转让所有权。这就是用于auto_ptr和uniqiie_ptr 的策略，但unique_ptr的策略更严格。</li>
+<li>创建智能更高的指针，跟踪引用特定对象的智能指针数。这称为引用计数。例如，赋值时，计数将加1，而指针过期时，计数将减1,。当减为0时才调用delete。这是shared_ptr采用的策略。</li>
+<li><em>当程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做；如果源 unique_ptr 将存在一段时间，编译器将禁止这么做</em>* unique_ptr比auto_ptr优秀的地方。<br>如果你的编译器没有提供shared_ptr，可使用Boost库提供的shared_ptr。<br>如果你的编译器没有unique_ptr，可考虑使用Boost库提供的scoped_ptr，它与unique_ptr类似。</li>
+</ul>
+<h2 id="explicit"><a href="#explicit" class="headerlink" title="explicit"></a>explicit</h2><p>规避可被单参调用的构造函数引起的隐式类型转换<br>所有的智能指针类都有一个explicit构造函数，以指针作为参数.因此不能自动将指针转换为智能指针对象，必须显式调用</p>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><pre><code>* new和delete
+* malloc和free
+</code></pre>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="built_in">CMyString</span></span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	<span class="built_in">CMyString</span>(<span class="keyword">char</span>* pData = <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">CMyString</span>(<span class="keyword">const</span> <span class="built_in">CMyString</span> &amp;str);</span><br><span class="line">	~<span class="built_in">CMyString</span>(<span class="keyword">void</span>);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	<span class="keyword">char</span> * m_pData;</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象的大小"><a href="#对象的大小" class="headerlink" title="对象的大小"></a>对象的大小</h2><h2 id="继承（为什么要继承？单继承-多继承）"><a href="#继承（为什么要继承？单继承-多继承）" class="headerlink" title="继承（为什么要继承？单继承 多继承）"></a>继承（为什么要继承？单继承 多继承）</h2><h2 id="类成员变量初始化顺序"><a href="#类成员变量初始化顺序" class="headerlink" title="类成员变量初始化顺序"></a>类成员变量初始化顺序</h2><h2 id="析构函数与构造函数的执行顺序"><a href="#析构函数与构造函数的执行顺序" class="headerlink" title="析构函数与构造函数的执行顺序"></a>析构函数与构造函数的执行顺序</h2><p>常见对象－&gt;构造函数（缺省构造函数，有参构造函数，复制构造函数）<br>销毁对象－&gt;析构函数</p>
+<h2 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h2><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">CMyString::<span class="built_in">CMyString</span>(<span class="keyword">const</span> CMyString &amp;str)</span><br><span class="line">&#123;</span><br><span class="line">	m_pData = <span class="keyword">new</span> <span class="keyword">char</span>[ <span class="built_in">strlen</span>(str.m_pData) + <span class="number">1</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(m_pData, str.m_pData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么拷贝构造函数的参数一定是引用？避免拷贝构造函数不限制的递归复制下去。</p>
+<h2 id="赋值构造函数"><a href="#赋值构造函数" class="headerlink" title="赋值构造函数"></a>赋值构造函数</h2><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="built_in">CMyString</span>&amp; <span class="built_in">CMyString</span>::operator = (<span class="keyword">const</span> <span class="built_in">CMyString</span> &amp;str)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">this</span> != &amp;str)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">CMyString</span> strTemp(str);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span> * pTemp = strTemp.m_pData;</span><br><span class="line">		strTemp.m_pData = m_pData;</span><br><span class="line">		m_pData = pTemp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实我在想，这里的指针pTemp使用会不会有问题呢？</p>
+<h2 id="虚函数与运行时多态"><a href="#虚函数与运行时多态" class="headerlink" title="虚函数与运行时多态"></a>虚函数与运行时多态</h2><ul>
+<li>纯虚函数</li>
+<li>虚函数列表</li>
+</ul>
+<h2 id="函数重载与编译时多态"><a href="#函数重载与编译时多态" class="headerlink" title="函数重载与编译时多态"></a>函数重载与编译时多态</h2><h2 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h2><p>归纳面向对象三大特征：封装 继承 多态</p>
+<h2 id="面向对象设计之SOLID五大原则？"><a href="#面向对象设计之SOLID五大原则？" class="headerlink" title="面向对象设计之SOLID五大原则？"></a>面向对象设计之SOLID五大原则？</h2><h1 id="泛型编程"><a href="#泛型编程" class="headerlink" title="泛型编程"></a>泛型编程</h1><p>编写能够正确处理各种不同数据类型参数的代码，只要参数的数据类型满足特定的语法和语义需求。对于C＋＋而言，实现泛型编程的方式就是使用模板。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">template&lt;<span class="keyword">class</span> <span class="symbol">T</span>&gt;</span><br><span class="line"><span class="symbol">class</span> <span class="symbol">vector</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="标准模板库（Standard-Template-Library）"><a href="#标准模板库（Standard-Template-Library）" class="headerlink" title="标准模板库（Standard Template Library）"></a>标准模板库（Standard Template Library）</h1><p>一群优秀的人写的一个优秀的函数库<br>##六大组件</p>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><h3 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h3><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><h3 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a>函数对象</h3><h3 id="空间适配器"><a href="#空间适配器" class="headerlink" title="空间适配器"></a>空间适配器</h3><h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://www.cnblogs.com/dc10101/archive/2007/08/22/865556.html">static的作用</a><br><a href="http://www.cnblogs.com/kingln/articles/1129114.html">C++中指针和引用的区别</a><br><a href="http://www.cnblogs.com/luxiaoxun/archive/2012/08/09/2630751.html">C++的重载（overload）与重写（override）</a><br><a href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/14/1777416.html">C/C++中const关键字详解</a><br><a href="http://www.cnblogs.com/lanxuezaipiao/p/4132096.html">C++智能指针简单剖析</a><br><a href="http://blog.csdn.net/tunsanty/article/details/4264738">拷贝构造函数的参数为什么必须使用引用类型</a></p>
+]]></content>
+      <categories>
+        <category>job</category>
+      </categories>
+      <tags>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cracking-the-Coding-Interview</title>
+    <url>/2016/08/24/Cracking-the-coding-interview/</url>
+    <content><![CDATA[<h1 id="Cracking-The-Coding-Interview"><a href="#Cracking-The-Coding-Interview" class="headerlink" title="Cracking The Coding Interview"></a>Cracking The Coding Interview</h1><h2 id="1-Foreword"><a href="#1-Foreword" class="headerlink" title="1.Foreword"></a>1.Foreword</h2><p>As you get ready for your interviews, consider these suggestions:</p>
+<ul>
+<li>  Write Code on Paper</li>
+<li>  Know Your Resume</li>
+<li>  Don’t Memorize Solutions</li>
+<li>  Talk Out Loud</li>
+</ul>
+<p>Receiving an offer is not about solving questions flawlessly (very few candidates do!), but rather, <strong>it is about answering questions better than other candidates.</strong> So don’t stress out when you get a tricky question - everyone else probably thought it was hard too!</p>
+<h2 id="2-Introduction"><a href="#2-Introduction" class="headerlink" title="2.Introduction"></a>2.Introduction</h2><h2 id="3-Behind-the-Scenes"><a href="#3-Behind-the-Scenes" class="headerlink" title="3.Behind the Scenes"></a>3.Behind the Scenes</h2><h3 id="3-1-The-Microsoft-Interview"><a href="#3-1-The-Microsoft-Interview" class="headerlink" title="3.1 The Microsoft Interview"></a>3.1 The Microsoft Interview</h3><span id="more"></span> 
+
+
+<ul>
+<li>  Microsoft wants smart people Geeks. People who are passionate about technology.</li>
+<li>  You’ll have a short interview with a recruiter where he or she will give you a sample question. Your recruiter is usually there to prep you, and not to grill you on techni- cal questions. Be nice to your recruiter. Your recruiter can be your biggest advocate, even pushing to re-interview you if you stumbled on your first interview. They can fight for you to be hired - or not!</li>
+<li>  During the day, you’ll do four or five interviews, often with two different teams Unlike many companies.</li>
+<li>  Depending on the team, interviewers may or may not share their feedback on you with the rest of the interview loop.</li>
+<li>  When you complete your interviews with a team, you might speak with a hiring manager. If so, that’s a great sign! It likely means that you passed the interviews with a particular team. It’s now down to the hiring manager’s decision.</li>
+<li>  You might get a decision that day, or it might be a week. After one week of no word from HR, send them a friendly email asking for a status update.</li>
+</ul>
+<p>Definitely Prepare: <strong>“Why do you want to work for Microsoft?”</strong></p>
+<p>In this question, Microsoft wants to see that you’re passionate about technology. A great answer might be, “I’ve been using Microsoft software as long as I can re- member, and I’m really impressed at how Microsoft manages to create a product that is universally excellent. For example, I’ve been using Visual Studio recently to learn game programming, and it’s APIs are excellent.” Note how this shows a passion for technology!</p>
+<h3 id="3-2-The-Amazon-Interview"><a href="#3-2-The-Amazon-Interview" class="headerlink" title="3.2 The Amazon Interview"></a>3.2 The Amazon Interview</h3><ul>
+<li>  Amazon’s recruiting process usually begins with one or two phone screens in which you in- terview with a specific team. The engineer who interviews you will usually ask you to write simple code and read it aloud on the phone They will ask a broad set of questions to explore what areas of technology you’re familiar with.</li>
+<li>  Next, you fly to Seattle for four or five interviews with one or two teams which have selected you based on your resume and phone interviews. You will have to code on a whiteboard, and some interviewers will stress other skills. Interviewers are each assigned a specific area to probe and may seem very different from each other.</li>
+<li>  They can not see other feedback until they have submitted their own and they are discouraged from discussing it until the hiring meeting.</li>
+<li>  Amazon’s “bar raiser” interviewer is charged with keeping the interview bar high. If one interview seems significantly harder and different, that’s most like- ly the bar raiser This person has both significant experience with interviews and veto power in the hiring decision.</li>
+<li>  While Amazon’s recruiters are excellent at following up with candidates, occa- sionally there are delays. If you haven’t heard from Amazon within a week, we recommend a friendly email.</li>
+</ul>
+<p>Definitely Prepare:</p>
+<ul>
+<li>  Amazon is a web-based company, and that means they care about scale. Make sure you prepare for questions in “Large Scale.” You don’t need a background in distributed systems to answer these questions. See our recommendations in the System Design and Memory Limits Chapter.</li>
+<li>  Additionally, Amazon tends to ask a lot of questions about object oriented design. Check out the Object Oriented Design chapter for sample questions and suggestions.</li>
+</ul>
+<h3 id="3-3-The-Google-Interview"><a href="#3-3-The-Google-Interview" class="headerlink" title="3.3 The Google Interview"></a>3.3 The Google Interview</h3><ul>
+<li>  However, because Google HR can be a little disorganized, we recommend being proactive in com- munication.</li>
+<li>  A Google engineer performs the first phone screen, so expect tough technical questions.</li>
+<li>  On your on-site interview, you’ll interview with four to six people, one of whom will be a lunch interviewer. Interviewer feedback is kept confidential from the other interviewers, so you can be assured that you enter each interview with blank slate. Your lunch interviewer doesn’t submit feedback, so this is a great opportunity to ask honest questions.</li>
+<li>  Written feedback is submitted to a hiring committee of engineers to make a hire/no-hire recommendation. Feedback is typically broken down into four categories (Analytical Ability, Coding, Experience and Communication) and you are given a score from 1.0 to 4.0 overall.</li>
+<li>  The hiring committee understands that you can’t be expected to excel in every interview, but if multiple people raise the same red flag (arrogance, poor coding skills, etc), that can disqualify you. A hiring committee typically wants to see one interviewer who is an “enthusiastic en- dorser”. In other words, a packet with scores of 3.6, 3.1, 3.1 and 2.6 is better than all 3.1s. Your phone screen is usu- ally not a strong factor in the final deci- sion.</li>
+<li>  The Google hiring process can be slow. If you don’t hear back within one week, politely ask your recruiter for an up- date. A lack of response says nothing about your performance.</li>
+</ul>
+<p>Definitely Prepare:</p>
+<ul>
+<li>  As a web-based company, Google cares about how to design a scalable system. So, make sure you prepare for questions from “System Design and Memory Limits” Additionally, many Google interviewers will ask questions involving Bit Manipulation, so please brush up on these questions.</li>
+</ul>
+<h3 id="3-4-The-Apple-Interview"><a href="#3-4-The-Apple-Interview" class="headerlink" title="3.4 The Apple Interview"></a>3.4 The Apple Interview</h3><ul>
+<li>  Much like the company itself, Apple’s interview process has minimal beaucracy.</li>
+<li>  The interviewers will be looking for excellent technical skills, but a passion for the position and company is also very important. While it’s not a prerequisite to be a Mac user, you should at least be familiar with the system.</li>
+<li>  The interview process typically begins with a recruiter phone screen to get a basic sense of your skills, <strong>followed up by a series of technical phone screens with team members.</strong></li>
+<li>  Once you’re invited on campus, you’ll typically be greeted by the recruiter who provides an overview of the process. You will then have 6-8 interviews with members of the team for which you’re interviewing, as well as key people with whom your team works.</li>
+<li>  You can expect a mix of 1-on-1 and 2-on-1 interviews. Be ready to code on a whiteboard and make sure all of your thoughts are clearly communicated. Lunch is with your potential future manager and appears more casual, but is still an interview. Each interviewer is usually focused on a different area and is discouraged from sharing feedback unless there’s something they want subsequent interviewers to drill into.</li>
+<li>  Towards the end of the day, your interviewers will compare notes and if everyone still feels you’re a viable candidate, you’ll interview with the director and then VP of the organization you’re applying to. While this decision is rather informal, it’s a very good sign if you make it. This decision also happens behind the scenes and if you don’t pass, you’ll simply be escorted out of the building without ever having been the wiser (until now)</li>
+<li>  If you made it to the director and VP interviews, all of your interviewers will gather in a conference room to give an official thumbs up or thumbs down The VP typically won’t be present, but can still veto the hire if they weren’t im- pressed.</li>
+<li>  Your recruiter will usually follow up a few days later, but feel free to ping your recruiter for updates.</li>
+</ul>
+<p>Definitely Prepare:</p>
+<ul>
+<li>  If you know what team you’re interviewing with, make sure you read up on that product. What do you like about it? What would you improve? Offering specific recommendations can show your passion for the job.</li>
+<li>  Also, Apple employees are huge Apple fans. You should show this same passion in your interview.</li>
+</ul>
+<h3 id="3-5-The-Yahoo-Interview"><a href="#3-5-The-Yahoo-Interview" class="headerlink" title="3.5 The Yahoo Interview"></a>3.5 The Yahoo Interview</h3><ul>
+<li><p>  While Yahoo tends to only recruit at the top 10 – 20 schools, other candidates can still get interviewed through Yahoo’s job board (or – better yet – if they can get an internal referral). If you’re one of the lucky ones selected, your interview process will start off with a phone screen. Your phone screen will be with a senior employee (tech lead, manager, etc)</p>
+</li>
+<li><p>You will typically interview with 6 – 7 people on the same team for 45 minutes each Each interviewer will have an area of focus. Interviews will often be composed as follows:</p>
+<ul>
+<li>  5 minutes: General conversation Tell me about yourself, your projects, etc</li>
+<li>  20 minutes: Coding question For example, implement merge sort</li>
+<li>  20 minutes: System design For example, design a large distributed cache These ques- tions will often focus on an area from your past experience or on something your interviewer is currently working on</li>
+</ul>
+</li>
+<li><p>  At the end of the day, you will likely meet with a Program Manag- er or someone else for a general con- versation (product demos, concerns about the company, your competing offers, etc). Meanwhile, your interview- ers will discuss your performance and attempt to come to a decision The hiring manager has the ultimate say and will weigh the positive feedback against the negative.</p>
+</li>
+<li><p>  If you have done well, you will often get a decision that day, but this is not always the case. There can be many reasons that you might not be told for several days – for example, the team may feel it needs to interview several other people.</p>
+</li>
+</ul>
+<p>Definitely Prepare:</p>
+<ul>
+<li>  Yahoo, almost as a rule, asks questions about system design, so make sure you prepare for that. They want to know that you can not only write code, but that you can design software. Don’t worry if you don’t have a background in this - you can still reason your way through it!</li>
+</ul>
+<h2 id="4-Before-the-Interview"><a href="#4-Before-the-Interview" class="headerlink" title="4. Before the Interview"></a>4. Before the Interview</h2><h3 id="4-1-Resume-Advice"><a href="#4-1-Resume-Advice" class="headerlink" title="4.1 Resume Advice"></a>4.1 Resume Advice</h3><p>Resume screeners look for the same things that interviewers do:</p>
+<ul>
+<li>  <strong>Are you smart?</strong></li>
+<li>  <strong>Can you code?</strong></li>
+</ul>
+<p>That means that you should present your resume to show those two things. Your love of tennis, traveling, or magic cards won’t do much to show that, so it’s likely just wasting space.Keep in mind that recruiters only spend a fixed amount of time (about 20 seconds) looking at your resume. If you limit the content to the best, most impressive, most relevant items, they’ll jump out at the recruiter Weak items only dilute your resume and distract the recruiter from what you’d like them to see.</p>
+<hr>
+<p><strong>Writing Strong Bullets:</strong></p>
+<ul>
+<li>  For each role, try to discuss your accomplishments with the following approach: “Accom- plished X by implementing Y which led to Z” Here’s an example:</li>
+<li>  “Reduced object rendering time by 75% by applying Floyd’s algorithm, leading to a 10% reduction in system boot time”</li>
+<li>  “Increased average match accuracy from 1.2 to 1.5 by implementing a new comparison algorithm based on windiff”</li>
+</ul>
+<p>Not everything you did will fit into this approach, but the principle is the same: show what you did, how you did it, and what the results were Ideally, you should try to make the results “measurable” somehow.</p>
+<hr>
+<p><strong>Advice for Non-Native English Speakers and Internationals:</strong></p>
+<ul>
+<li>  Proofreading: Some companies will throw out your resume just because of a typo. Please get at least one native English speaker to proofread your resume.</li>
+<li>  Personal Information: For US positions, do not include age, marital status, or nationality. This sort of personal information is not appreciated by companies, as it creates a legal liability for them However, you may want to include your current work authorization / visa status, particularly when applying to smaller companies who may be unable to sponsor candidates.</li>
+</ul>
+<h3 id="4-2-Behavioral-Preparation"><a href="#4-2-Behavioral-Preparation" class="headerlink" title="4.2 Behavioral Preparation"></a>4.2 Behavioral Preparation</h3><p>Behavioral questions are asked for a variety of reasons </p>
+<ul>
+<li>  They can be asked either to get to know your personality,</li>
+<li>  to more deeply understand your resume,</li>
+<li>  or just to ease you into an interview Either way,</li>
+</ul>
+<p>these questions are important and can be prepared for.</p>
+<p>Behavioral questions are usually of the form “tell me about a time when you ”, and may ask for an example from a specific project or position. I recommend filling in the following “preparation grid” as shown below:</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">Project1</th>
+<th scope="col" class="org-left">Project2</th>
+<th scope="col" class="org-left">Project3</th>
+<th scope="col" class="org-left">Project4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Most Challenging</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">What You Learned</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Most Interesting</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Hardest Bug</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Enjoyed Most</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Conflicts with Teammates</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table> 
+ 
+ 
+ 
+ 
+ 
+
+<p>In each cell, put the corresponding story. We recommend reducing each story to just a couple keywords that you can write in each cell This will make the grid easier to study  </p>
+<hr>
+<p><strong>What questions should you ask the interviewer?</strong></p>
+<ul>
+<li><p>Genuine Questions: These are the questions you actually want to know ideas of questions that are valuable to many candidates:</p>
+<ul>
+<li>  “How much of your day do you spend coding?”</li>
+<li>  “How many meetings do you have every week?”</li>
+<li>  “What is the ratio of testers to developers to product managers? What is the interac- tion like? How does project planning happen on the team?”</li>
+</ul>
+</li>
+<li><p>Insightful Questions: These questions are designed to demonstrate your deep knowledge of programming or technologies.</p>
+<ul>
+<li>  “I noticed that you use technology X How do you handle problem Y?”</li>
+<li>  “Why did the product choose to use the X protocol over the Y protocol? I know it has benefits like A, B, C, but many companies choose not to use it because of issue D”</li>
+</ul>
+</li>
+<li><p>Passion Questions: These questions are designed to demonstrate your passion for technol- ogy.</p>
+<ul>
+<li>  “I’m very interested in scalability Did you come in with a background in this, or what opportunities are there to learn about it?”</li>
+<li>  “I’m not familiar with technology X, but it sounds like a very interesting solution Could you tell me a bit more about how it works?”</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-Technical-Preparation"><a href="#4-3-Technical-Preparation" class="headerlink" title="4.3 Technical Preparation"></a>4.3 Technical Preparation</h3><ul>
+<li>  Memorizing or trying to learn specific questions won’t help you!</li>
+<li>  Try to solve the problem on your own.</li>
+<li>  Write the code for the algorithm on paper.</li>
+<li>  Type your paper code as-is into a computer.</li>
+<li>  Do a mock interview. CareerCup offers a mock interview (这里也可以是找一些小公司面试，边面试边学习边改进)</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Data Structures</th>
+<th scope="col" class="org-left">Algorithms</th>
+<th scope="col" class="org-left">Concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Linked Lists</td>
+<td class="org-left">Breadth First Search</td>
+<td class="org-left">Bit Manipulation</td>
+</tr>
+
+<tr>
+<td class="org-left">Binary Trees</td>
+<td class="org-left">Depth First Search</td>
+<td class="org-left">Singleton Design Pattern</td>
+</tr>
+
+<tr>
+<td class="org-left">Tries</td>
+<td class="org-left">Binary Search</td>
+<td class="org-left">Factory Design Pattern</td>
+</tr>
+
+<tr>
+<td class="org-left">Stacks</td>
+<td class="org-left">Merge Sort</td>
+<td class="org-left">Memory (Stack vs Heap)</td>
+</tr>
+
+<tr>
+<td class="org-left">Queues</td>
+<td class="org-left">Quick Sort</td>
+<td class="org-left">Recursion</td>
+</tr>
+
+<tr>
+<td class="org-left">Vectors / ArrayLists</td>
+<td class="org-left">Tree Insert / Find / etc</td>
+<td class="org-left">Big-O Time</td>
+</tr>
+
+<tr>
+<td class="org-left">Hash Tables</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="5-The-Interview-and-Beyond"><a href="#5-The-Interview-and-Beyond" class="headerlink" title="5. The Interview and Beyond"></a>5. The Interview and Beyond</h2><h3 id="5-1-Handling-Behavioral-Questions"><a href="#5-1-Handling-Behavioral-Questions" class="headerlink" title="5.1 Handling Behavioral Questions"></a>5.1 Handling Behavioral Questions</h3><ul>
+<li>  Be Specific, Not Arrogant</li>
+<li>  Limit Details（这个应该怎么理解呢？详略得到的描述行为问题，其实任何事物的描述都应该这样吧）</li>
+<li>  Ask Good Questions</li>
+<li>  Structure Answers Using S.A.R(Situation, Action, Response)</li>
+</ul>
+<h3 id="5-2-Handling-Technical-Questions"><a href="#5-2-Handling-Technical-Questions" class="headerlink" title="5.2 Handling Technical Questions"></a>5.2 Handling Technical Questions</h3><p>A technical interview question can be solved utilizing a five step approach:</p>
+<ol>
+<li> Ask your interviewer questions to resolve ambiguity</li>
+<li> Design an Algorithm</li>
+<li> Write pseudo-code first, but make sure to tell your interviewer that you’re writing pseudo-code! Otherwise, he/she may think that you’re never planning to write “real” code, and many interviewers will hold that against you</li>
+<li> Write your code, not too slow and not too fast</li>
+<li> Test your code and carefully fix any mistakes<br>（感觉五步可以总结为三个步骤：消除歧义确定具体要解决的问题，设计算法伪代码实现从而确认问题和解决方案的正确可行，规定时间内编写实际代码并做到bug free且有良好的风格。在面试的过程中，注意与面试官保持沟通，就像和同学老师讨论问题那样，给予一定尊重，并体现你思考的过程和思路，注意逻辑一定要清楚，想好了再说，确认好了再写，一边写一边讲解）</li>
+</ol>
+<h3 id="5-3-Five-Algorithm-Approaches"><a href="#5-3-Five-Algorithm-Approaches" class="headerlink" title="5.3 Five Algorithm Approaches"></a>5.3 Five Algorithm Approaches</h3><h3 id="5-4-The-Offer-and-Beyond"><a href="#5-4-The-Offer-and-Beyond" class="headerlink" title="5.4 The Offer and Beyond"></a>5.4 The Offer and Beyond</h3><ul>
+<li><p>  <strong>Negotiating.</strong> It’s Always Negotiable! Ok, maybe not always, but usually an offer is negotiable even if a recruiter tells you otherwise. It helps if you have a competing offer But, <strong>don’t lie – Microsoft knows what Google offers, so it just won’t be realistic if you make up numbers.</strong> Also, technology is a small world, and people talk. Be honest.</p>
+</li>
+<li><p>  <strong>What’s the money like, really?</strong> Think about the full offer package Many companies will have impressive salaries, but small annual bonuses Other companies will have huge annual bonuses, but lower salaries Make sure you look at the <strong>full package (salary, signing bonus, health care benefits, raises, annual bonus, relocation, stock, promotions, etc)</strong> It’s very confusing, and it’s often not clear which company is offering more</p>
+</li>
+<li><p><strong>What about your career options?</strong> I can’t give you some magical formula to compute which offer to accept, but here’s what I’d recommend thinking about (in no particular order):</p>
+<ul>
+<li>  Career Path: Make a plan for your career What do you want to do 5, 10 and 15 years out? What skills will you need to develop? Which company or position will help you get there?</li>
+<li>  Promotion Opportunity: Do you prefer to move into management, or would you prefer to become an increasingly senior developer?</li>
+<li>  Money and Benefits: Of course, the money matters (but if you’re early in your career, it probably doesn’t matter much). As mentioned above, make sure you look at the full package.</li>
+<li>  Happiness: Did you like the people? The products? The location? It’s hard to tell, of course, before you work there. What are the options to change teams if you’re unhappy?</li>
+<li>  Brand Name: The company’s brand name can mean a lot for your future career Some company names will open doors, while others will not as much.</li>
+<li>  <strong>What about company stability? Personally, I think it matters much less than most people think. There are so many software companies out there. If you get laid off and need to find a new job, will it be difficult to find a new one? Only you can answer that.</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="5-5-Top-Ten-Mistakes-Candidates-Make"><a href="#5-5-Top-Ten-Mistakes-Candidates-Make" class="headerlink" title="5.5 Top Ten Mistakes Candidates Make"></a>5.5 Top Ten Mistakes Candidates Make</h3><ul>
+<li>  Practicing on a Computer</li>
+<li>  Not Rehearsing Behavioral Questions</li>
+<li>  Not Doing a Mock Interview</li>
+<li>  Trying to Memorize Solutions</li>
+<li>  Talking Too Much</li>
+<li>  Talking Too Little</li>
+<li>  Rushing</li>
+<li>  Not Debugging</li>
+<li>  Sloppy Coding</li>
+<li>  Giving Up</li>
+</ul>
+<h3 id="5-6-Frequently-Asked-Questions"><a href="#5-6-Frequently-Asked-Questions" class="headerlink" title="5.6 Frequently Asked Questions"></a>5.6 Frequently Asked Questions</h3><p><strong>Should I tell my interviewer if I know a question?</strong></p>
+<p>Yes! You should definitely tell your interviewer if you’ve previously heard the question This seems silly to some people - if you already know the question (and answer), you could ace the question, right? Not quite</p>
+<p>Here’s why we strongly recommend that you tell your interviewer that you’ve heard the question:</p>
+<ol>
+<li> Big honesty points. This shows a lot of integrity That’s huge. Remember that the interviewer is evaluating you as a potential teammate I don’t know about you, but I personally prefer to work with honest people!</li>
+<li> The question might have changed ever-so-slightly. You don’t want to risk repeating the wrong answer</li>
+<li> If you easily belt out the right answer, it’s obvious to the interviewer. They know how hard a problem is supposed to be. It’s very hard to “pretend” to struggle through a question, because you just can’t approach it the same way other candidates do.</li>
+</ol>
+<h2 id="6-Interview-Questions"><a href="#6-Interview-Questions" class="headerlink" title="6 Interview Questions"></a>6 Interview Questions</h2><ul>
+<li>  Data Structures</li>
+<li>  Concepts and Algorithms</li>
+<li>  Knowledge Based</li>
+<li>  Additional Review Problems</li>
+</ul>
+<h3 id="6-1-Arrays-and-Strings"><a href="#6-1-Arrays-and-Strings" class="headerlink" title="6.1 Arrays and Strings"></a>6.1 Arrays and Strings</h3><ul>
+<li><p>1.1 Implement an algorithm to determine if a string has all unique characters. What if you can not use additional data structures?<br>  使用C＋＋的map，一趟扫描即可。</p>
+<p>  如果字符串里面全部是a-z的字符，用一个大小为26的数组也可以。</p>
+<p>  如果不能用数组，不能用map等数据结构，那就按照ASCII排序，看有没有重复的字符，一趟扫描。</p>
+</li>
+<li><p>1.2 Write code to reverse a C-Style String. (C-String means that “abcd” is represented as five characters, including the null character.)<br>  两个指针一个0开始加，一个strlen（）－1 开始减？</p>
+</li>
+</ul>
+<ul>
+<li><p>1.3 Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer.<br>  先排序。然后两个指针，指针index初始化为－1，i为0，用i往后扫描，index记录unique字符的个数，一趟扫描即可。</p>
+</li>
+<li><p>1.4 Write a method to decide if two strings are anagrams or not.<br>  C＋＋的map，value存储个数，一个string加，一个string减，判断最后value是否为0</p>
+</li>
+<li><p>1.5 Write a method to replace all spaces in a string with ‘%20’.<br>  难点在哪？</p>
+</li>
+<li><p> 1.6 Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees Can you do this in place?</p>
+</li>
+<li><p>1.7 Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.<br>  难点在哪？</p>
+</li>
+<li><p>1.8 Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (i e , “waterbottle” is a rotation of “erbottlewat”).<br>  reverse(s1.begin(),s2.end())然后调用isSubstring进行判断</p>
+</li>
+</ul>
+<hr>
+<p>1.6</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> m[<span class="built_in">N</span>][<span class="built_in">N</span>];</span><br><span class="line">for(<span class="built_in">int</span> k=<span class="number">0</span>;k&lt;<span class="built_in">N</span>/<span class="number">2</span>;k++) &#123;</span><br><span class="line">  <span class="built_in">int</span> r = k;</span><br><span class="line">  <span class="built_in">int</span> last = <span class="built_in">n</span> - <span class="number">1</span> - r;</span><br><span class="line">  for(<span class="built_in">int</span> c = r; c &lt;= last; c++) &#123;</span><br><span class="line">    // [r,c], [<span class="built_in">N</span>-<span class="number">1</span>-c,r], [<span class="built_in">N</span>-<span class="number">1</span>-r,<span class="built_in">N</span>-<span class="number">1</span>-c], [c,<span class="built_in">N</span>-<span class="number">1</span>-r]</span><br><span class="line">    <span class="built_in">int</span> tmp = m[r][c];</span><br><span class="line">    m[r][c] = m[c][<span class="built_in">N</span>-<span class="number">1</span>-r];</span><br><span class="line">    m[c][<span class="built_in">N</span>-<span class="number">1</span>-r] = m[<span class="built_in">N</span>-<span class="number">1</span>-r][<span class="built_in">N</span>-<span class="number">1</span>-c];</span><br><span class="line">    m[<span class="built_in">N</span>-<span class="number">1</span>-r][<span class="built_in">N</span>-<span class="number">1</span>-c] = m[<span class="built_in">N</span>-<span class="number">1</span>-c][r];</span><br><span class="line">    m[<span class="built_in">N</span>-<span class="number">1</span>-c][r] = tmp;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-Linked-Lists"><a href="#6-2-Linked-Lists" class="headerlink" title="6.2 Linked Lists"></a>6.2 Linked Lists</h3><p>Questions:</p>
+<ul>
+<li><p>  2.1 Write code to remove duplicates from an unsorted linked list. How would you solve this problem if a temporary buffer is not allowed?</p>
+</li>
+<li><p>  2.2 Implement an algorithm to find the nth to last element of a singly linked list.</p>
+</li>
+<li><p>  2.3 Implement an algorithm to delete a node in the middle of a single linked list, given only access to that node.</p>
+</li>
+<li><p>  2.4 You have two numbers represented by a linked list, where each node contains a sin- gle digit. The digits are stored in reverse order, such that the 1’s digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.</p>
+</li>
+<li><p>(x) 2.5 Given a circular linked list, implement an algorithm which returns node at the begin- ning of the loop.</p>
+<ul>
+<li><p>Assume P,Q at head. P proceeds 1 step, and Q proceed 2 step. There is k nodes before entry node of the circular list. And they takes u step to meet each other at p in the circular list. So we have following equations.</p>
+<ol>
+<li> k + xn + p= 2u # Q position.</li>
+<li> k + yn + p = u # P position.</li>
+<li> u = zn # using 1 and 2.</li>
+<li> (k + p) = z’n # using 2 and 3.</li>
+<li> k % n = (n-p) # done.</li>
+</ol>
+</li>
+<li><p>  see leetcode <a href="https://oj.leetcode.com/problems/linked-list-cycle/">https://oj.leetcode.com/problems/linked-list-cycle/</a> and <a href="https://oj.leetcode.com/problems/linked-list-cycle-ii/">https://oj.leetcode.com/problems/linked-list-cycle-ii/</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-Stacks-and-Queues"><a href="#6-3-Stacks-and-Queues" class="headerlink" title="6.3 Stacks and Queues"></a>6.3 Stacks and Queues</h3><p>Questions:</p>
+<ul>
+<li>  3.1 Describe how you could use a single array to implement three stacks.</li>
+<li>  3.2 How would you design a stack which, in addition to push and pop, also has a function min which returns the minimum element? Push, pop and min should all operate in O(1) time.</li>
+<li>  3.5 Implement a MyQueue class which implements a queue using two stacks.</li>
+<li>  3.6 Write a program to sort a stack in ascending order. You should not make any assump- tions about how the stack is implemented.</li>
+</ul>
+<h3 id="6-4-Trees-and-Graphs"><a href="#6-4-Trees-and-Graphs" class="headerlink" title="6.4 Trees and Graphs"></a>6.4 Trees and Graphs</h3><ul>
+<li><p>Trees</p>
+<ul>
+<li>  Not all binary trees are binary search trees</li>
+<li>  In-Order: Traverse left node, current node, then right</li>
+<li>  Pre-Order: Traverse current node, then left node, then right node</li>
+<li>  Post-Order: Traverse left node, then right node, then current node</li>
+<li>  <strong>AVL Tree, RB Tree.</strong></li>
+<li>  <strong>Construct Tree by using Orders</strong></li>
+</ul>
+</li>
+<li><p>Graphs</p>
+<ul>
+<li>  Depth First Search</li>
+<li>  Breadth First Search</li>
+<li>  <strong>Dijkstra,Floyd,Prim,Kruskal.</strong></li>
+</ul>
+</li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li>  4.1 Implement a function to check if a tree is balanced.</li>
+<li>  4.2 Given a directed graph, design an algorithm to find out whether there is a route be- tween two nodes.</li>
+<li>  4.3 Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height.</li>
+<li>  4.4 Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth (eg, if you have a tree with depth D, you’ll have D linked lists).</li>
+<li>  4.5 Write an algorithm to find the ‘next’ node (e.g., in-order successor) of a given node in a binary search tree where each node has a link to its parent.</li>
+<li>  4.6 Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure.</li>
+<li>  4.7 You have two very large binary trees: T1, with millions of nodes, and T2, with hun- dreds of nodes. Create an algorithm to decide if T2 is a subtree of T1.</li>
+<li>  4.8 You are given a binary tree in which each node contains a value. Design an algorithm to print all paths which sum up to that value.</li>
+</ul>
+<hr>
+<p>4.6</p>
+<figure class="highlight smali"><table><tr><td class="code"><pre><span class="line">TreeNode* ancestor(TreeNode* root,TreeNode* p,TreeNode* q,int&amp; cond) &#123;</span><br><span class="line">  if(root == NU<span class="class">LL) return NULL;</span></span><br><span class="line">  if(root == p || root == q) &#123;</span><br><span class="line">    cond++; // root is p<span class="built_in"> or </span>q, find one.</span><br><span class="line">  &#125;</span><br><span class="line">  //<span class="built_in"> check </span>left.</span><br><span class="line"> <span class="built_in"> int </span>c = 0;</span><br><span class="line">  TreeNode* t = ancestor(root-&gt;left, p, q, c);</span><br><span class="line">  if(c == 2) &#123;</span><br><span class="line">    cond = 2;</span><br><span class="line">   <span class="built_in"> return </span>t;</span><br><span class="line">  &#125;</span><br><span class="line">  cond += c;  </span><br><span class="line">  if(cond == 2) &#123;</span><br><span class="line">   <span class="built_in"> return </span>root;</span><br><span class="line">  &#125;</span><br><span class="line">  //<span class="built_in"> check </span>right.</span><br><span class="line">  c = 0;</span><br><span class="line">  t = ancestor(root-&gt;right, p, q, c);</span><br><span class="line">  if(c == 2) &#123;</span><br><span class="line">    cond = 2;</span><br><span class="line">       <span class="built_in"> return </span>t;</span><br><span class="line">  &#125;</span><br><span class="line">  cond += c;</span><br><span class="line">  if(cond == 2) &#123;</span><br><span class="line">   <span class="built_in"> return </span>root;</span><br><span class="line">  &#125;</span><br><span class="line">  // maybe cover one.</span><br><span class="line"> <span class="built_in"> return </span>root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TreeNode* ancestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;</span><br><span class="line"> <span class="built_in"> int </span>cond;</span><br><span class="line"> <span class="built_in"> return </span>ancestor(root, p, q, cond);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-5-Bit-Manipulation"><a href="#6-5-Bit-Manipulation" class="headerlink" title="6.5 Bit Manipulation"></a>6.5 Bit Manipulation</h3><p><img data-src="" alt="bitop.png"></p>
+<p>Questions:</p>
+<ul>
+<li>  5.1 You are given two 32-bit numbers, N and M, and two bit positions, i and j Write a method to set all bits between i and j in N equal to M. Input: N = 10000000000, M = 10101, i = 2, j = 6. Output: N = 10001010100</li>
+<li>  5.2 Given a (decimal - e g 3 72) number that is passed in as a string, print the binary rep- resentation If the number can not be represented accurately in binary, print “ERROR”</li>
+<li>  5.3 Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation.</li>
+<li>  5.4 Explain what the following code does: ((n &amp; (n-1)) == 0).</li>
+<li>  5.5 Write a function to determine the number of bits required to convert integer A to integer B.</li>
+<li>  5.6 Write a program to swap odd and even bits in an integer with as few instructions as possible (e g , bit 0 and bit 1 are swapped, bit 2 and bit 3 are swapped, etc).</li>
+</ul>
+<hr>
+<p>5.3</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cassert&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> previous(<span class="built_in">int</span> number) &#123;</span><br><span class="line">  <span class="built_in">int</span> <span class="built_in">n</span> = number;</span><br><span class="line">  <span class="built_in">int</span> <span class="symbol">c1</span> = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">int</span> <span class="symbol">c0</span> = <span class="number">0</span>;</span><br><span class="line">  // <span class="built_in">find</span> <span class="number">0</span>.</span><br><span class="line">  while(<span class="built_in">n</span> &amp; <span class="number">0</span>x1) &#123;</span><br><span class="line">    <span class="built_in">n</span> &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="symbol">c1</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  // <span class="built_in">find</span> <span class="number">1</span>.</span><br><span class="line">  while(!(<span class="built_in">n</span> &amp; <span class="number">0</span>x1)) &#123;</span><br><span class="line">    <span class="built_in">n</span> &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="symbol">c0</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  // rearrange following <span class="number">1</span> <span class="built_in">and</span> <span class="number">0</span>.</span><br><span class="line">  // <span class="number">10</span> with <span class="symbol">c0</span>-<span class="number">1</span>&#123;<span class="number">0</span>&#125; <span class="built_in">and</span> <span class="symbol">c1</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">  // change to <span class="number">01</span> <span class="symbol">c1</span>&#123;<span class="number">1</span>&#125; <span class="symbol">c0</span>-<span class="number">1</span>&#123;<span class="number">0</span>&#125;</span><br><span class="line">  <span class="built_in">n</span> = ((<span class="built_in">n</span> &gt;&gt; <span class="number">1</span>) &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">  for(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;<span class="symbol">c1</span>;i++) &#123;</span><br><span class="line">    <span class="built_in">n</span> = (<span class="built_in">n</span> &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;<span class="symbol">c0</span>;i++) &#123;</span><br><span class="line">    <span class="built_in">n</span> = (<span class="built_in">n</span> &lt;&lt; <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  return <span class="built_in">n</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> next(<span class="built_in">int</span> number) &#123;</span><br><span class="line">  <span class="built_in">int</span> <span class="built_in">n</span> = number;</span><br><span class="line">  <span class="built_in">int</span> <span class="symbol">c1</span> = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">int</span> <span class="symbol">c0</span> = <span class="number">0</span>;</span><br><span class="line">  // <span class="built_in">find</span> <span class="number">1</span>.</span><br><span class="line">  while(!(<span class="built_in">n</span> &amp; <span class="number">0</span>x1)) &#123;</span><br><span class="line">    <span class="built_in">n</span> &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="symbol">c0</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  // <span class="built_in">find</span> <span class="number">0</span>.</span><br><span class="line">  while(<span class="built_in">n</span> &amp; <span class="number">0</span>x1) &#123;</span><br><span class="line">    <span class="built_in">n</span> &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="symbol">c1</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  // rearrrange following <span class="number">1</span> <span class="built_in">and</span> <span class="number">0</span>.</span><br><span class="line">  // change to <span class="number">1</span> <span class="symbol">c0</span>+<span class="number">1</span>&#123;<span class="number">0</span>&#125; <span class="symbol">c1</span>-<span class="number">1</span>&#123;<span class="number">1</span>&#125;.</span><br><span class="line">  <span class="built_in">n</span> += <span class="number">1</span>;</span><br><span class="line">  for(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;=<span class="symbol">c0</span>;i++) &#123;</span><br><span class="line">    <span class="built_in">n</span> = (<span class="built_in">n</span> &lt;&lt; <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;<span class="symbol">c1</span>;i++) &#123;</span><br><span class="line">    <span class="built_in">n</span> = (<span class="built_in">n</span> &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  return <span class="built_in">n</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main() &#123;</span><br><span class="line">  <span class="built_in">int</span> <span class="built_in">n</span> = (<span class="number">1</span> &lt;&lt; <span class="number">5</span>) + (<span class="number">1</span> &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">int</span> m = (<span class="number">1</span> &lt;&lt; <span class="number">4</span>) + (<span class="number">1</span> &lt;&lt; <span class="number">3</span>) + (<span class="number">1</span> &lt;&lt; <span class="number">2</span>);</span><br><span class="line">  assert(previous(<span class="built_in">n</span>) == m);</span><br><span class="line">  assert(next(m) == <span class="built_in">n</span>);</span><br><span class="line">  return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-6-Brain-Teasers"><a href="#6-6-Brain-Teasers" class="headerlink" title="6.6 Brain Teasers"></a>6.6 Brain Teasers</h3><ul>
+<li>  Don’t panic when you get a brain teaser. Interviewers want to see how you tackle a problem; they don’t expect you to immediately know the answer. Start talking, and show the interviewer how you approach a problem</li>
+<li>  In many cases, you will also find that the brain teasers have some connection back to fundamental laws or theories of computer science.</li>
+<li>  If you’re stuck, we recommend simplifying the problem. Solve it for a small number of items or a special case, and then see if you can generalize it.</li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li><p>  6.1 Add arithmetic operators (plus, minus, times, divide) to make the following expres- sion true: 3 1 3 6 = 8. You can use any parentheses you’d like.</p>
+</li>
+<li><p>  (x) 6.2 There is an 8x8 chess board in which two diagonally opposite corners have been cut off. You are given 31 dominos, and a single domino can cover exactly two squares. Can you use the 31 dominos to cover the entire board?</p>
+</li>
+<li><p>  6.3 You have a five quart jug and a three quart jug, and an unlimited supply of water (but no measuring cups). How would you come up with exactly four quarts of water?</p>
+</li>
+<li><p>  (x) 6.4 A bunch of men are on an island. A genie comes down and gathers everyone to- gether and places a magical hat on some people’s heads (i e , at least one person has a hat). The hat is magical: it can be seen by other people, but not by the wearer of the hat himself. To remove the hat, those(and only those who have a hat) must dunk themselves underwater at exactly midnight. If there are n people and c hats, how long does it take the men to remove the hats? The men cannot tell each other (in any way) that they have a hat.</p>
+</li>
+<li><p>(x) 6.5 There is a building of 100 floors If an egg drops from the Nth floor or above it will break. If it’s dropped from any floor below, it will not break. You’re given 2 eggs Find N, while minimizing the number of drops for the worst case.</p>
+<ul>
+<li>  dp[t][s][e] = 1 + min{ i=[s,e], max(dp[t-1][s][i-1], dp[t][i+1][e]) }. if(s&gt;e) 0 else if(t==0) e-s+1</li>
+<li>  note: not easy to deduce actions from dp</li>
+<li>  note: and only one step can be decided. I’ve attached the code below.</li>
+</ul>
+</li>
+<li><p>(x) 6.6 There are one hundred closed lockers in a hallway. A man begins by opening all one hundred lockers Next, he closes every second locker. Then he goes to every third locker and closes it if it is open or opens it if it is closed (e g , he toggles every third locker). After his one hundredth pass in the hallway, in which he toggles only locker number one hundred, how many lockers are open?</p>
+<ul>
+<li>  only n = p * p have been flipped with odd number and final status is open.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>6.5</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> R = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> dp[R][N+<span class="number">1</span>][N+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> t,<span class="keyword">int</span> s,<span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(s&gt;e) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(dp[t][s][e] != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> dp[t][s][e];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> v = <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=s;i&lt;=e;i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> r = <span class="number">1</span> + <span class="built_in">max</span>(<span class="built_in">get</span>(t,i+<span class="number">1</span>,e),dp[t<span class="number">-1</span>][s][i<span class="number">-1</span>]);</span><br><span class="line">    <span class="keyword">if</span>(v == <span class="number">-1</span> || r &lt; v) &#123;</span><br><span class="line">      v = r;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dp[t][s][e] = v;</span><br><span class="line">  <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(dp));</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=N;j++) &#123;</span><br><span class="line">      dp[<span class="number">0</span>][i][j] = (j-i+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> t=<span class="number">1</span>;t&lt;R;t++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> s=<span class="number">1</span>;s&lt;=N;s++) &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> e=<span class="number">1</span>;e&lt;=N;e++) &#123;</span><br><span class="line">        <span class="built_in">get</span>(t,s,e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> t = R<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">int</span> v = dp[t][<span class="number">1</span>][N];</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,v);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">bool</span> changed = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">while</span>(changed) &#123;</span><br><span class="line">    changed = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=s;i&lt;=N;i++) &#123;</span><br><span class="line">      <span class="comment">// search first point that egg breaks.</span></span><br><span class="line">      <span class="comment">// and to my intuition, there will be only one point.</span></span><br><span class="line">      <span class="keyword">if</span>(v == (c + dp[t<span class="number">-1</span>][s][i<span class="number">-1</span>])) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;below %d\n&quot;</span>,i);</span><br><span class="line">        s = i+<span class="number">1</span>;</span><br><span class="line">        c++;</span><br><span class="line">        changed = <span class="literal">true</span>;        </span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">foo</span>();</span><br><span class="line">  <span class="built_in">reverse</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-7-Object-Oriented-Design"><a href="#6-7-Object-Oriented-Design" class="headerlink" title="6.7 Object Oriented Design"></a>6.7 Object Oriented Design</h3><h3 id="6-8-Recursion"><a href="#6-8-Recursion" class="headerlink" title="6.8 Recursion"></a>6.8 Recursion</h3><ul>
+<li>  All problems that can be solved recursively can also be solved iteratively (though the code may be much more complicated). Before diving into a recursive code, ask yourself how hard it would be to implement this algorithm iteratively. Discuss the trade-offs with your interviewer.</li>
+<li>  Recursive algorithms can be very space inefficient. Each recursive call adds a new layer to the stack, which means that if your algorithm has O(n) recursive calls then it uses O(n) memory Ouch! This is one reason why an iterative algorithm may be better.</li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li><p>8.2 Imagine a robot sitting on the upper left hand corner of an NxN grid The robot can only move in two directions: right and down How many possible paths are there for the robot?</p>
+<ul>
+<li>  Imagine certain squares are “off limits”, such that the robot can not step on them Design an algorithm to get all possible paths for the robot</li>
+</ul>
+</li>
+<li><p>  8.3 Write a method that returns all subsets of a set.</p>
+</li>
+<li><p>  8.4 Write a method to compute all permutations of a string.</p>
+</li>
+<li><p>  8.5 Implement an algorithm to print all valid (e g , properly opened and closed) combi- nations of n-pairs of parentheses.</p>
+</li>
+<li><p>  8.7 Given an infinite number of quarters (25 cents), dimes (10 cents), nickels (5 cents) and pennies (1 cent), write code to calculate the number of ways of representing n cents.</p>
+</li>
+<li><p>  8.8 Write an algorithm to print all ways of arranging eight queens on a chess board so that none of them share the same row, column or diagonal.</p>
+</li>
+</ul>
+<h3 id="6-9-Sorting-and-Searching"><a href="#6-9-Sorting-and-Searching" class="headerlink" title="6.9 Sorting and Searching"></a>6.9 Sorting and Searching</h3><ul>
+<li>  Bubble Sort</li>
+<li>  Selection Sort</li>
+<li>  Merge Sort</li>
+<li>  Quick Sort</li>
+<li>  Bucket Sort</li>
+<li>  <strong>Binary Search</strong></li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li><p>  (x) 9.1 You are given two sorted arrays, A and B, and A has a large enough buffer at the end to hold B Write a method to merge B into A in sorted order.</p>
+</li>
+<li><p>  9.3 Given a sorted array of n integers that has been rotated an unknown number of times,give an O(logn) algorithm that finds an element in the array. You may assume that the array was originally sorted in increasing order. EXAMPLE: Input: find 5 in array (15 16 19 20 25 1 3 4 5 7 10 14) Output: 8 (the index of 5 in the array)</p>
+</li>
+<li><p>  9.4 If you have a 2 GB file with one string per line, which sorting algorithm would you use to sort the file and why?</p>
+</li>
+<li><p>9.5 Given a sorted array of strings which is interspersed with empty strings, write a meth- od to find the location of a given string</p>
+<ul>
+<li>  Example: find “ball” in [“at”, “”, “”, “”, “ball”, “”, “”, “car”, “”, “”, “dad”, “”, “”] will return 4</li>
+<li>  Example: find “ballcar” in [“at”, “”, “”, “”, “”, “ball”, “car”, “”, “”, “dad”, “”, “”] will return -1</li>
+</ul>
+</li>
+<li><p>  9.6 Given a matrix in which each row and each column is sorted, write a method to find an element in it.</p>
+</li>
+<li><p>  9.7 A circus is designing a tower routine consisting of people standing atop one anoth- er’s shoulders. For practical and aesthetic reasons, each person must be both shorter and lighter than the person below him or her. Given the heights and weights of each person in the circus, write a method to compute the largest possible number of peo- ple in such a tower. EXAMPLE: Input (ht, wt): (65, 100) (70, 150) (56, 90) (75, 190) (60, 95) (68, 110) Output: The longest tower is length 6 and includes from top to bottom: (56, 90) (60,95) (65,100) (68,110) (70,150) (75,190)</p>
+</li>
+</ul>
+<hr>
+<p>9.3</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BS</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> e = n<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">while</span>(s &lt;= e) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = (s + e) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(A[m] == x) <span class="keyword">return</span> m;</span><br><span class="line">    <span class="keyword">if</span>(A[m] &gt; x) &#123;</span><br><span class="line">      <span class="keyword">if</span>(A[s] &lt;= x) &#123;</span><br><span class="line">        e = m - <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        s = m + <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(A[e] &gt;=x) &#123;</span><br><span class="line">        s = m + <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        e = m - <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// insert position.</span></span><br><span class="line">  <span class="comment">// return s;</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> A[] = &#123;<span class="number">15</span>,<span class="number">16</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">25</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">14</span>&#125;;</span><br><span class="line">  <span class="keyword">int</span> n = <span class="built_in"><span class="keyword">sizeof</span></span>(A) / <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">int</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">BS</span>(A,n,<span class="number">5</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>9.5</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BS</span><span class="params">(<span class="keyword">const</span> vector&lt;string&gt;&amp; A,<span class="keyword">const</span> string&amp; x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> e = n - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(s &lt;= e) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = (s + e) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(A[m] == <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> u = m;</span><br><span class="line">      <span class="keyword">while</span>(u&gt;=<span class="number">0</span> &amp;&amp; A[u] == <span class="string">&quot;&quot;</span>) u--;</span><br><span class="line">      <span class="keyword">if</span>(u &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[u] == x) <span class="keyword">return</span> u;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(A[u] &gt; x) &#123;</span><br><span class="line">          e = u - <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      u = m;</span><br><span class="line">      <span class="keyword">while</span>(u&lt;=e &amp;&amp; A[u] == <span class="string">&quot;&quot;</span>) u++;</span><br><span class="line">      <span class="keyword">if</span>(u &lt;= e) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[u] == x) <span class="keyword">return</span> u;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(A[u] &lt; x) &#123;</span><br><span class="line">          s = u + <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(A[m] == x) &#123;</span><br><span class="line">      <span class="keyword">return</span> m;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(A[m] &gt; x) &#123;</span><br><span class="line">      m = e - <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      s = e + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>* ss[] = &#123;<span class="string">&quot;at&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;ball&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;car&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;dad&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line">  vector&lt;string&gt; A;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;ss[i];i++) &#123;</span><br><span class="line">    A.<span class="built_in">push_back</span>(ss[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">BS</span>(A,<span class="string">&quot;ball&quot;</span>));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">BS</span>(A,<span class="string">&quot;ballcar&quot;</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-10-Mathematical"><a href="#6-10-Mathematical" class="headerlink" title="6.10 Mathematical"></a>6.10 Mathematical</h3><p>Questions:</p>
+<ul>
+<li>10.1 You have a basketball hoop and someone says that you can play 1 of 2 games<ul>
+<li>  Game #1: You get one shot to make the hoop</li>
+<li>  Game #2: You get three shots and you have to make 2 of 3 shots</li>
+<li>  If p is the probability of making a particular shot, for which values of p should you pick one game or the other?</li>
+</ul>
+</li>
+<li>  10.2 There are three ants on different vertices of a triangle What is the probability of colli- sion (between any two or all of them) if they start walking on the sides of the triangle? Similarly find the probability of collision with ‘n’ ants on an ‘n’ vertex polygon</li>
+<li>  10.4 Write a method to implement *, - , / operations You should use only the + operator.</li>
+<li>  (x) 10.5 Given two squares on a two dimensional plane, find a line that would cut these two squares in half.</li>
+<li>  (x) 10.6 Given a two dimensional graph with points on it, find a line which passes the most number of points.</li>
+<li>  (x) 10.7 Design an algorithm to find the kth number such that the only prime factors are 3, 5, and 7.</li>
+</ul>
+<hr>
+<p>10.7</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;queue&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;algorithm&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;vector&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> kth(<span class="built_in">int</span> k) &#123;</span><br><span class="line">  priority_queue&lt;<span class="built_in">int</span>,vector&lt;<span class="built_in">int</span>&gt;,std::greater&lt;<span class="built_in">int</span>&gt; &gt; Q3; <span class="comment">// 3,5,7</span></span><br><span class="line">  priority_queue&lt;<span class="built_in">int</span>,vector&lt;<span class="built_in">int</span>&gt;,std::greater&lt;<span class="built_in">int</span>&gt; &gt; Q5; <span class="comment">// 5,7</span></span><br><span class="line">  priority_queue&lt;<span class="built_in">int</span>,vector&lt;<span class="built_in">int</span>&gt;,std::greater&lt;<span class="built_in">int</span>&gt; &gt; Q7; <span class="comment">// 7</span></span><br><span class="line">  <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>push(<span class="number">3</span>);</span><br><span class="line">  <span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>push(<span class="number">5</span>);</span><br><span class="line">  <span class="module-access"><span class="module"><span class="identifier">Q7</span>.</span></span>push(<span class="number">7</span>);</span><br><span class="line">  <span class="keyword">for</span>(;;) &#123;</span><br><span class="line">    <span class="built_in">int</span> x = min(min(<span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>top<span class="literal">()</span>,<span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>top<span class="literal">()</span>),<span class="module-access"><span class="module"><span class="identifier">Q7</span>.</span></span>top<span class="literal">()</span>);</span><br><span class="line">    k--;</span><br><span class="line">    <span class="keyword">if</span>(k<span class="operator"> == </span><span class="number">0</span>) return x;</span><br><span class="line">    <span class="keyword">if</span>(x<span class="operator"> == </span><span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>top<span class="literal">()</span>) &#123;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>push(x<span class="operator"> * </span><span class="number">3</span>);</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>push(x<span class="operator"> * </span><span class="number">5</span>);</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>push(x<span class="operator"> * </span><span class="number">7</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(x<span class="operator"> == </span><span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>top<span class="literal">()</span>) &#123;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>push(x<span class="operator"> * </span><span class="number">5</span>);</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>push(x<span class="operator"> * </span><span class="number">7</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q7</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q7</span>.</span></span>push(x<span class="operator"> * </span><span class="number">7</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main<span class="literal">()</span> &#123;</span><br><span class="line">  printf(<span class="string">&quot;%d\n&quot;</span>,kth(<span class="number">13</span>));</span><br><span class="line">  return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="6-11-Testing"><a href="#6-11-Testing" class="headerlink" title="6.11 Testing"></a>6.11 Testing</h3><h3 id="6-12-System-Design-and-Memory-Limits"><a href="#6-12-System-Design-and-Memory-Limits" class="headerlink" title="6.12 System Design and Memory Limits"></a>6.12 System Design and Memory Limits</h3><p>Questions:</p>
+<ul>
+<li><p>  11.1 If you were integrating a feed of end of day stock price information (open, high, low, and closing price) for 5,000 companies, how would you do it? You are responsible for the development, rollout and ongoing monitoring and maintenance of the feed. Describe the different methods you considered and why you would recommend your approach. The feed is delivered once per trading day in a comma-separated format via an FTP site. The feed will be used by 1000 daily users in a web application.</p>
+</li>
+<li><p>  11.2 How would you design the data structures for a very large social network (Facebook, LinkedIn, etc)? Describe how you would design an algorithm to show the connec- tion, or path, between two people (e g , Me -&gt; Bob -&gt; Susan -&gt; Jason -&gt; You).</p>
+</li>
+<li><p>(x) 11.3 Given an input file with four billion integers, provide an algorithm to generate an integer which is not contained in the file. Assume you have 1 GB of memory. What if you have only 10 MB of memory?</p>
+<ul>
+<li>  note: The solution provided by the book should be with a restriction that integers are not repeated. But anyway, the solution is inspiring</li>
+</ul>
+</li>
+<li><p>  11.4 You have an array with all the numbers from 1 to N, where N is at most 32,000. The array may have duplicate entries and you do not know what N is. With only 4KB of memory available, how would you print all duplicate elements in the array?</p>
+</li>
+<li><p>  11.5 If you were designing a web crawler, how would you avoid getting into infinite loops?</p>
+</li>
+<li><p>  11.6 You have a billion urls, where each is a huge page How do you detect the duplicate documents?</p>
+</li>
+<li><p>  11.7 You have to design a database that can store terabytes of data It should support ef- ficient range queries How would you do it?.</p>
+</li>
+</ul>
+<h3 id="6-13-C"><a href="#6-13-C" class="headerlink" title="6.13 C++"></a>6.13 C++</h3><h3 id="6-14-Java"><a href="#6-14-Java" class="headerlink" title="6.14 Java"></a>6.14 Java</h3><h3 id="6-15-Databases"><a href="#6-15-Databases" class="headerlink" title="6.15 Databases"></a>6.15 Databases</h3><h3 id="6-16-Low-Level"><a href="#6-16-Low-Level" class="headerlink" title="6.16 Low Level"></a>6.16 Low Level</h3><p>Questions:</p>
+<ul>
+<li>  16.1 Explain the following terms: virtual memory, page fault, thrashing.</li>
+<li>  (x) 16.2 What is a Branch Target buffer? Explain how it can be used in reducing bubble cycles in cases of branch misprediction.</li>
+<li>  (x) 16.3 Describe direct memory access (DMA). Can a user level buffer / pointer be used by kernel or drivers?</li>
+<li>  (x) 16.4 Write a step by step execution of things that happen after a user presses a key on the keyboard Use as much detail as possible.</li>
+<li>  16.5 Write a program to find whether a machine is big endian or little endian.</li>
+<li>  16.6 Discuss how would you make sure that a process doesn’t access an unauthorized part of the stack.</li>
+<li>  16.7 What are the best practices to prevent reverse engineering of DLLs?.</li>
+<li>  (x) 16.8 A device boots with an empty FIFO queue In the first 400 ns period after startup, and in each subsequent 400 ns period, a maximum of 80 words will be written to the queue Each write takes 4 ns A worker thread requires 3 ns to read a word, and 2 ns to process it before reading the next word What is the shortest depth of the FIFO such that no data is lost?</li>
+<li>  16.9 Write an aligned malloc &amp; free function that takes number of bytes and aligned byte (which is always power of 2).</li>
+<li>  16.10 Write a function called my2DAlloc which allocates a two dimensional array. Minimize the number of calls to malloc and make sure that the memory is accessible by the notation arr[i][j].</li>
+</ul>
+<h3 id="6-17-Networking"><a href="#6-17-Networking" class="headerlink" title="6.17 Networking"></a>6.17 Networking</h3><p>Questions:</p>
+<ul>
+<li>  17.1 Explain what happens, step by step, after you type a URL into a browser. Use as much detail as possible.</li>
+<li>  17.2 Explain any common routing protocol in detail For example: BGP, OSPF, RIP</li>
+<li>  17.3 Compare and contrast the IPv4 and IPv6 protocols.</li>
+<li>  (x) 17.4 What is a network / subnet mask? Explain how host A sends a message / packet to host B when: (a) both are on same network and (b) both are on different networks Explain which layer makes the routing decision and how.</li>
+<li>  (x) 17.5 What are the differences between TCP and UDP? Explain how TCP handles reliable delivery (explain ACK mechanism), flow control (explain TCP sender’s / receiver’s win- dow) and congestion control.</li>
+</ul>
+<h3 id="6-18-Threads-and-Locks"><a href="#6-18-Threads-and-Locks" class="headerlink" title="6.18 Threads and Locks"></a>6.18 Threads and Locks</h3><p>Questions:</p>
+<ul>
+<li>  18.1 What’s the difference between a thread and a process?</li>
+<li>  18.2 How can you measure the time spent in a context switch?</li>
+<li>  18.3 Implement a singleton design pattern as a template such that, for any given class Foo, you can call Singleton::instance() and get a pointer to an instance of a singleton of type Foo. Assume the existence of a class Lock which has acquire() and release() methods. How could you make your implementation thread safe and exception safe?.</li>
+<li>  18.4 Design a class which provides a lock only if there are no possible deadlocks.</li>
+<li>  18.5 You are given a class with synchronized method A, and a normal method C If you have two threads in one instance of a program, can they call A at the same time? Can they call A and C at the same time?</li>
+</ul>
+<h3 id="6-19-Moderate-Additional-Review-Problems"><a href="#6-19-Moderate-Additional-Review-Problems" class="headerlink" title="6.19 Moderate Additional Review Problems"></a>6.19 Moderate Additional Review Problems</h3><p>Questions: </p>
+<ul>
+<li>  19.1 Write a function to swap a number in place without temporary variables.</li>
+<li>  (x) 19.3 Write an algorithm which computes the number of trailing zeros in n factorial.</li>
+<li>  19.4 Write a method which finds the maximum of two numbers. You should not use if- else or any other comparison operator.</li>
+<li>  19.6 Given an integer between 0 and 999,999, print an English phrase that describes the integer (eg, “One Thousand, Two Hundred and Thirty Four”).</li>
+<li>  19.7 You are given an array of integers (both positive and negative). Find the continuous sequence with the largest sum. Return the sum.</li>
+<li>  19.8 Design a method to find the frequency of occurrences of any given word in a book.</li>
+<li>  (x) 19.10 Write a method to generate a random number between 1 and 7, given a method that generates a random number between 1 and 5 (i e , implement rand7() using rand5()).</li>
+<li>  19.11 Design an algorithm to find all pairs of integers within an array which sum to a speci- fied value.</li>
+</ul>
+<hr>
+<p>19.3</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> zeros(<span class="built_in">int</span> <span class="built_in">n</span>) &#123;</span><br><span class="line">  <span class="built_in">int</span> c = <span class="number">0</span>;</span><br><span class="line">  for(<span class="built_in">int</span> k = <span class="number">5</span>; <span class="built_in">n</span> &gt;= k; k *= <span class="number">5</span>) &#123;</span><br><span class="line">    c += <span class="built_in">n</span> / k;</span><br><span class="line">  &#125;</span><br><span class="line">  return c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>19.6</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span>* s1[] = &#123;<span class="string">&quot;Zero&quot;</span>,<span class="string">&quot;One&quot;</span>,<span class="string">&quot;Two&quot;</span>,<span class="string">&quot;Three&quot;</span>,<span class="string">&quot;Four&quot;</span>,<span class="string">&quot;Five&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Six&quot;</span>,<span class="string">&quot;Seven&quot;</span>,<span class="string">&quot;Eight&quot;</span>,<span class="string">&quot;Nine&quot;</span>,<span class="string">&quot;Ten&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Eleven&quot;</span>,<span class="string">&quot;Twelve&quot;</span>,<span class="string">&quot;Thirteen&quot;</span>,<span class="string">&quot;Fourteen&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Fifteen&quot;</span>,<span class="string">&quot;Sixteen&quot;</span>,<span class="string">&quot;Seventeen&quot;</span>,<span class="string">&quot;Eighteen&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Nineteen&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span>* s2[] = &#123;<span class="string">&quot;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="string">&quot;Twenty&quot;</span>,<span class="string">&quot;Thirty&quot;</span>,<span class="string">&quot;Fourty&quot;</span>,<span class="string">&quot;Fifty&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Sixty&quot;</span>,<span class="string">&quot;Seventy&quot;</span>,<span class="string">&quot;Eighty&quot;</span>,<span class="string">&quot;Ninety&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">speak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(n &lt;= <span class="number">19</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> s1[n];</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(n &lt; <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = n % <span class="number">10</span>;    </span><br><span class="line">    string s = s2[n / <span class="number">10</span>];</span><br><span class="line">    <span class="keyword">if</span>(m != <span class="number">0</span>) &#123;</span><br><span class="line">      s += <span class="string">&quot; &quot;</span>;</span><br><span class="line">      s += s1[m];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(n &lt; <span class="number">1000</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = n % <span class="number">100</span>;</span><br><span class="line">    string s = s1[n / <span class="number">100</span>];</span><br><span class="line">    s += <span class="string">&quot; Hundred&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(m != <span class="number">0</span>) &#123;</span><br><span class="line">      s += <span class="string">&quot; and &quot;</span>;</span><br><span class="line">      s += <span class="built_in">speak</span>(m);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> m = n % <span class="number">1000</span>;</span><br><span class="line">    string s = <span class="built_in">speak</span>(n / <span class="number">1000</span>);</span><br><span class="line">    s += <span class="string">&quot; Thousand&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(m != <span class="number">0</span>) &#123;</span><br><span class="line">      s += <span class="string">&quot;, &quot;</span>;</span><br><span class="line">      s += <span class="built_in">speak</span>(m);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,<span class="built_in">speak</span>(n).<span class="built_in">c_str</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="number">101</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="number">1001</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="number">1010</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="number">999100</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-20-Hard-Additional-Review-Problems"><a href="#6-20-Hard-Additional-Review-Problems" class="headerlink" title="6.20 Hard Additional Review Problems"></a>6.20 Hard Additional Review Problems</h3><p>Questions:</p>
+<ul>
+<li>  (x) 20.1 Write a function that adds two numbers You should not use + or any arithmetic op- erators.</li>
+<li>  (x) 20.2 Write a method to shuffle a deck of cards. It must be a perfect shuffle - in other words, each 52! permutations of the deck has to be equally likely. Assume that you are given a random number generator which is perfect.</li>
+<li>  (x) 20.3 Write a method to randomly generate a set of m integers from an array of size n. Each element must have equal probability of being chosen.</li>
+<li>  (x) 20.4 Write a method to count the number of 2s between 0 and n.</li>
+<li>  20.5 You have a large text file containing words. Given any two words, find the shortest distance (in terms of number of words) between them in the file. Can you make the searching operation in O(1) time? What about the space complexity for your solu- tion?</li>
+<li>  (x) 20.6 Describe an algorithm to find the largest 1 million numbers in 1 billion numbers. As- sume that the computer memory can hold all one billion numbers.</li>
+<li>  (x) 20.7 Write a program to find the longest word made of other words.</li>
+<li>  (x) 20.8 Given a string s and an array of smaller strings T, design a method to search s for each small string in T.</li>
+<li>  (x) 20.9 Numbers are randomly generated and passed to a method. Write a program to find and maintain the median value as new values are generated.</li>
+<li>  (x) 20.10 Given two words of equal length that are in a dictionary, write a method to transform one word into another word by changing only one letter at a time. The new word you get in each step must be in the dictionary.</li>
+<li>  (x) 20.11 Imagine you have a square matrix, where each cell is filled with either black or white. Design an algorithm to find the maximum subsquare such that all four borders are filled with black pixels.</li>
+<li>  (x) 20.12 Given an NxN matrix of positive and negative integers, write code to find the sub- matrix with the largest possible sum.</li>
+<li>  (x) 20.13 Given a dictionary of millions of words, give an algorithm to find the largest possible rectangle of letters such that every row forms a word (reading left to right) and every column forms a word (reading top to bottom).</li>
+</ul>
+<hr>
+<p>20.1</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = a ^ b;</span><br><span class="line">  <span class="keyword">int</span> carry = (a &amp; b) &lt;&lt; <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span>(carry == <span class="number">0</span>) <span class="keyword">return</span> sum;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">add2</span>(sum,carry);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">add2</span>(<span class="number">190</span>,<span class="number">70</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>20.4</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c2</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c2r</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> pow)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> x = n / pow;</span><br><span class="line">  <span class="keyword">int</span> y = n % pow;</span><br><span class="line">  <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(x == <span class="number">2</span>) &#123;</span><br><span class="line">    res += (y + <span class="number">1</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(x &gt; <span class="number">2</span>) &#123;</span><br><span class="line">    res += pow;</span><br><span class="line">  &#125;</span><br><span class="line">  res += x * <span class="built_in">c2r</span>(pow<span class="number">-1</span>,pow / <span class="number">10</span>) + <span class="built_in">c2</span>(y);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c2</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> pow = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>((pow * <span class="number">10</span>) &lt;= n) pow *= <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">c2r</span>(n,pow);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">c2</span>(<span class="number">279</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>20.9</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;queue&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;algorithm&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Median &#123;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  priority_queue&lt; <span class="built_in">int</span>, vector&lt;<span class="built_in">int</span>&gt;, less&lt;<span class="built_in">int</span>&gt; &gt; Q0;</span><br><span class="line">  priority_queue&lt; <span class="built_in">int</span>, vector&lt;<span class="built_in">int</span>&gt;, greater&lt;<span class="built_in">int</span>&gt; &gt; Q1;</span><br><span class="line"></span><br><span class="line"> public:</span><br><span class="line">  void insert(<span class="built_in">int</span> x) &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>empty<span class="literal">()</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>empty<span class="literal">()</span>) &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">int</span> y = <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>top<span class="literal">()</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; y) &#123;</span><br><span class="line">          <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(x);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">          <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(y);</span><br><span class="line">          <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> x0 = <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>top<span class="literal">()</span>;</span><br><span class="line">    <span class="built_in">int</span> x1 = <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>top<span class="literal">()</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>size<span class="literal">()</span><span class="operator"> == </span><span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>size<span class="literal">()</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span>(x &lt;= x0) &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(x);</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x0);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(x &gt;= x1) &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x);</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(x1);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(x);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  double median<span class="literal">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>size<span class="literal">()</span><span class="operator"> == </span><span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>size<span class="literal">()</span>) &#123;</span><br><span class="line">      return (<span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>top<span class="literal">()</span> + <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>top<span class="literal">()</span>)<span class="operator"> * </span><span class="number">0.5</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      return <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>top<span class="literal">()</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main<span class="literal">()</span> &#123;</span><br><span class="line">  Median m;</span><br><span class="line">  m.insert(<span class="number">1</span>);</span><br><span class="line">  m.insert(<span class="number">2</span>);</span><br><span class="line">  printf(<span class="string">&quot;%g\n&quot;</span>,m.median<span class="literal">()</span>);</span><br><span class="line">  m.insert(<span class="number">3</span>);</span><br><span class="line">  printf(<span class="string">&quot;%g\n&quot;</span>,m.median<span class="literal">()</span>);</span><br><span class="line">  m.insert<span class="number">(-3)</span>;</span><br><span class="line">  printf(<span class="string">&quot;%g\n&quot;</span>,m.median<span class="literal">()</span>);</span><br><span class="line">  return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>20.11</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> m[<span class="built_in">N</span>][<span class="built_in">N</span>];</span><br><span class="line">for(<span class="built_in">int</span> <span class="built_in">n</span>=<span class="built_in">N</span>;<span class="built_in">n</span>&gt;=<span class="number">1</span>;<span class="built_in">n</span>--) &#123;</span><br><span class="line">  for(<span class="built_in">int</span> r=<span class="number">0</span>;(<span class="built_in">N</span>-r)&gt;=<span class="built_in">n</span>;r++) &#123;</span><br><span class="line">    for(<span class="built_in">int</span> c=<span class="number">0</span>;(<span class="built_in">N</span>-c)&gt;=<span class="built_in">n</span>;r++) &#123;</span><br><span class="line">      <span class="built_in">if</span>(bound(r,c,<span class="built_in">n</span>)) &#123;</span><br><span class="line">        return <span class="built_in">n</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>20.12</p>
+<figure class="highlight excel"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> m[<span class="built_in">N</span>][<span class="built_in">N</span>];</span><br><span class="line"><span class="built_in">int</span> dp[<span class="built_in">N</span>][<span class="built_in">N</span>]; // dp[s][e] = <span class="built_in">sum</span> from (<span class="number">0</span>,<span class="number">0</span>) to (s,e).</span><br><span class="line">for(<span class="built_in">int</span> r=<span class="number">0</span>;r&lt;<span class="built_in">N</span>;r++) &#123;</span><br><span class="line">  for(<span class="built_in">int</span> c=<span class="number">0</span>;c&lt;<span class="built_in">N</span>;c++) &#123;</span><br><span class="line">    <span class="built_in">int</span> s = <span class="number">0</span>;</span><br><span class="line">    for(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;c;i++) &#123;</span><br><span class="line">      s += m[r][i];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[r][c] = s;</span><br><span class="line">    <span class="built_in">if</span>(r != <span class="number">0</span>) &#123;</span><br><span class="line">      dp[r][c] += dp[r-<span class="number">1</span>][c];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> v = INT_MIN;</span><br><span class="line">for(<span class="built_in">int</span> rs=<span class="number">0</span>;rs&lt;<span class="built_in">N</span>;rs++) &#123;</span><br><span class="line">  for(<span class="built_in">int</span> re=rs;re&lt;<span class="built_in">N</span>;re++) &#123;</span><br><span class="line">    for(<span class="built_in">int</span> cs=<span class="number">0</span>;cs&lt;<span class="built_in">N</span>;cs++) &#123;</span><br><span class="line">      for(<span class="built_in">int</span> ce=<span class="number">0</span>;ce&lt;<span class="built_in">N</span>;ce++) &#123;</span><br><span class="line">        <span class="built_in">int</span> u = <span class="built_in">sum</span>(rs,cs,re,ce);</span><br><span class="line">        <span class="built_in">if</span>(u &gt; v) v = u;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> X(<span class="built_in">int</span> a,<span class="built_in">int</span> b) &#123;</span><br><span class="line">  <span class="built_in">if</span>(a &lt; <span class="number">0</span> || b &lt; <span class="number">0</span>) return <span class="number">0</span>;</span><br><span class="line">  return dp[a][b];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> <span class="built_in">sum</span>(<span class="built_in">int</span> rs,<span class="built_in">int</span> cs,<span class="built_in">int</span> re,<span class="built_in">int</span> ce) &#123;</span><br><span class="line">  <span class="built_in">int</span> a = X(rs-<span class="number">1</span>,cs-<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">int</span> b = X(rs-<span class="number">1</span>,ce) - X(rs-<span class="number">1</span>,cs-<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">int</span> c = X(re,cs-<span class="number">1</span>) - X(rs-<span class="number">1</span>,cs-<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">int</span> d = X(re,ce);</span><br><span class="line">  return d - a - b - c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h1><p>关于Behavior Question：<br><a href="http://www.1point3acres.com/bbs/thread-105717-1-1.html">Crack the Behavior Questions——关于Behavior Question的碎碎念</a></p>
+]]></content>
+      <categories>
+        <category>job</category>
+      </categories>
+  </entry>
+</search>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>汇芳书院</title>
+  <icon>https://www.gravatar.com/avatar/cf70e0ba3a16055a1a17e5a6ffea823e</icon>
+  <subtitle>专注计算机视觉、机器学习、分布式计算等领域, 兼聊投资、写作、生活</subtitle>
+  <link href="http://kingsleynuaa.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://kingsleynuaa.github.io/"/>
+  <updated>2021-07-11T01:36:55.111Z</updated>
+  <id>http://kingsleynuaa.github.io/</id>
+  
+  <author>
+    <name>Jacob Jin</name>
+    <email>kingsleynuaa AT gmail DOT com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo博客教程</title>
+    <link href="http://kingsleynuaa.github.io/2021/07/10/hexo-tutorial/"/>
+    <id>http://kingsleynuaa.github.io/2021/07/10/hexo-tutorial/</id>
+    <published>2021-07-10T11:19:30.000Z</published>
+    <updated>2021-07-11T01:36:55.111Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;hexo-next-为文章添加分类&quot;&gt;&lt;a href=&quot;#hexo-next-为文章添加分类&quot; class=&quot;headerlink&quot; title=&quot;hexo next 为文章添加分类&quot;&gt;&lt;/a&gt;hexo next 为文章添加分类&lt;/h1&gt;&lt;h2 id=&quot;新建一个页面，命名为-categories-。命令如下：&quot;&gt;&lt;a href=&quot;#新建一个页面，命名为-categories-。命令如下：&quot; class=&quot;headerlink&quot; title=&quot;新建一个页面，命名为 categories 。命令如下：&quot;&gt;&lt;/a&gt;新建一个页面，命名为 categories 。命令如下：&lt;/h2&gt;&lt;figure class=&quot;highlight haxe&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;hexo &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;page&lt;/span&gt; categories&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;编辑刚新建的页面，将页面的类型设置为-categories-，主题将自动为这个页面显示所有分类&quot;&gt;&lt;a href=&quot;#编辑刚新建的页面，将页面的类型设置为-categories-，主题将自动为这个页面显示所有分类&quot; class=&quot;headerlink&quot; title=&quot;编辑刚新建的页面，将页面的类型设置为 categories ，主题将自动为这个页面显示所有分类&quot;&gt;&lt;/a&gt;编辑刚新建的页面，将页面的类型设置为 categories ，主题将自动为这个页面显示所有分类&lt;/h2&gt;&lt;p&gt;可选是否关闭评论&lt;/p&gt;
+&lt;figure class=&quot;highlight apache&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;title&lt;/span&gt;: 分类&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;date&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;2014&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;39&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;04&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&amp;quot;categories&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;comments&lt;/span&gt;: false&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="tool" scheme="http://kingsleynuaa.github.io/categories/tool/"/>
+    
+    
+    <category term="hexo" scheme="http://kingsleynuaa.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python2编码问题分析</title>
+    <link href="http://kingsleynuaa.github.io/2017/11/24/python2-encode-and-decode-problem/"/>
+    <id>http://kingsleynuaa.github.io/2017/11/24/python2-encode-and-decode-problem/</id>
+    <published>2017-11-24T11:55:22.000Z</published>
+    <updated>2021-07-10T11:29:44.181Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Python2编码问题&lt;/p&gt;
+&lt;p&gt;python2的字符串有两种：str和unicode&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="tech" scheme="http://kingsleynuaa.github.io/categories/tech/"/>
+    
+    
+    <category term="python" scheme="http://kingsleynuaa.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cracking-the-Coding-Interview</title>
+    <link href="http://kingsleynuaa.github.io/2016/08/24/Cracking-the-coding-interview/"/>
+    <id>http://kingsleynuaa.github.io/2016/08/24/Cracking-the-coding-interview/</id>
+    <published>2016-08-24T03:21:00.000Z</published>
+    <updated>2021-07-10T11:29:44.197Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Cracking-The-Coding-Interview&quot;&gt;&lt;a href=&quot;#Cracking-The-Coding-Interview&quot; class=&quot;headerlink&quot; title=&quot;Cracking The Coding Interview&quot;&gt;&lt;/a&gt;Cracking The Coding Interview&lt;/h1&gt;&lt;h2 id=&quot;1-Foreword&quot;&gt;&lt;a href=&quot;#1-Foreword&quot; class=&quot;headerlink&quot; title=&quot;1.Foreword&quot;&gt;&lt;/a&gt;1.Foreword&lt;/h2&gt;&lt;p&gt;As you get ready for your interviews, consider these suggestions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;  Write Code on Paper&lt;/li&gt;
+&lt;li&gt;  Know Your Resume&lt;/li&gt;
+&lt;li&gt;  Don’t Memorize Solutions&lt;/li&gt;
+&lt;li&gt;  Talk Out Loud&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Receiving an offer is not about solving questions flawlessly (very few candidates do!), but rather, &lt;strong&gt;it is about answering questions better than other candidates.&lt;/strong&gt; So don’t stress out when you get a tricky question - everyone else probably thought it was hard too!&lt;/p&gt;
+&lt;h2 id=&quot;2-Introduction&quot;&gt;&lt;a href=&quot;#2-Introduction&quot; class=&quot;headerlink&quot; title=&quot;2.Introduction&quot;&gt;&lt;/a&gt;2.Introduction&lt;/h2&gt;&lt;h2 id=&quot;3-Behind-the-Scenes&quot;&gt;&lt;a href=&quot;#3-Behind-the-Scenes&quot; class=&quot;headerlink&quot; title=&quot;3.Behind the Scenes&quot;&gt;&lt;/a&gt;3.Behind the Scenes&lt;/h2&gt;&lt;h3 id=&quot;3-1-The-Microsoft-Interview&quot;&gt;&lt;a href=&quot;#3-1-The-Microsoft-Interview&quot; class=&quot;headerlink&quot; title=&quot;3.1 The Microsoft Interview&quot;&gt;&lt;/a&gt;3.1 The Microsoft Interview&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="job" scheme="http://kingsleynuaa.github.io/categories/job/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C++知识归纳整理（不断更新中）</title>
+    <link href="http://kingsleynuaa.github.io/2016/07/30/CPP-knowledge/"/>
+    <id>http://kingsleynuaa.github.io/2016/07/30/CPP-knowledge/</id>
+    <published>2016-07-30T14:03:15.000Z</published>
+    <updated>2021-07-10T11:29:44.192Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这篇文章写了好久，感觉还是没写完。接下来准备慢慢看书，实习，不断更新吧。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;分割线&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;********************&lt;/p&gt;
+&lt;p&gt;按照侯捷先生在《Effective C++》的观点，以及自己的一些理解，可以将互联网技术岗位关于C＋＋的知识点归纳为以下五个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C＋＋基础知识&lt;/li&gt;
+&lt;li&gt;面向过程的特性&lt;/li&gt;
+&lt;li&gt;面向对象的特性&lt;/li&gt;
+&lt;li&gt;泛型编程的特性&lt;/li&gt;
+&lt;li&gt;标准模板库和算法&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="job" scheme="http://kingsleynuaa.github.io/categories/job/"/>
+    
+    
+    <category term="cpp" scheme="http://kingsleynuaa.github.io/tags/cpp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>三维重建综述</title>
+    <link href="http://kingsleynuaa.github.io/2016/07/12/overview-of-3D-reconstruction/"/>
+    <id>http://kingsleynuaa.github.io/2016/07/12/overview-of-3D-reconstruction/</id>
+    <published>2016-07-12T02:01:32.000Z</published>
+    <updated>2021-07-10T05:33:54.661Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对几何3D模型不断增长的需求：电影 游戏  虚拟环境等行业&lt;/li&gt;
+&lt;li&gt;VR&amp;amp;AR的火爆&lt;/li&gt;
+&lt;li&gt;房地产 三维地图等领域的需求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;应用&quot;&gt;&lt;a href=&quot;#应用&quot; class=&quot;headerlink&quot; title=&quot;应用&quot;&gt;&lt;/a&gt;应用&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;中国古代建筑三维数字化保护&lt;/li&gt;
+&lt;li&gt;三维数字化城市&lt;/li&gt;
+&lt;li&gt;三维地图&lt;/li&gt;
+&lt;li&gt;VR&amp;amp;&amp;amp;AR游戏，电影等&lt;/li&gt;
+&lt;li&gt;医疗行业：三维心脏&lt;/li&gt;
+&lt;li&gt;教育行业等</summary>
+    
+    
+    
+    <category term="tech" scheme="http://kingsleynuaa.github.io/categories/tech/"/>
+    
+    
+    <category term="3d-reconstruction" scheme="http://kingsleynuaa.github.io/tags/3d-reconstruction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何使用Hexo和Github搭建静态博客</title>
+    <link href="http://kingsleynuaa.github.io/2016/06/25/how-to-build-a-blog-with-Hexo-and-Github/"/>
+    <id>http://kingsleynuaa.github.io/2016/06/25/how-to-build-a-blog-with-Hexo-and-Github/</id>
+    <published>2016-06-25T09:44:29.000Z</published>
+    <updated>2021-07-10T11:29:44.188Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;   最近两天加周三的一个晚上，参照网上的博客搭建了属于自己的&lt;a href=&quot;www.ac4fun.com&quot;&gt;博客&lt;/a&gt;，其实之前也对比过Jekyll，Octopress，Python实现的&lt;a href=&quot;https://github.com/evilbinary/myblog&quot;&gt;myblog&lt;/a&gt;, 以及第三方博客，如Blogger，cnblogs，csdn等等，只能说各有千秋吧，还是希望能够有一个属于自己的空间。为避免忘记，也为了表示对社区的感谢，现在对部署过程进行一下纪录。主要包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt; 基本Hexo的搭建&lt;/li&gt;
+&lt;li&gt; 主题的选择&lt;/li&gt;
+&lt;li&gt; 扩展功能的介绍&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="tools" scheme="http://kingsleynuaa.github.io/categories/tools/"/>
+    
+    
+    <category term="hexo" scheme="http://kingsleynuaa.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>为什么要写博客</title>
+    <link href="http://kingsleynuaa.github.io/2016/06/22/why-write-blog/"/>
+    <id>http://kingsleynuaa.github.io/2016/06/22/why-write-blog/</id>
+    <published>2016-06-22T07:22:29.000Z</published>
+    <updated>2021-07-10T11:29:44.200Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这个问题我思考了很久，却仍然没有一个能够让自己很满意的答案。不得不承认，建立技术博客的初衷是因为找工作，哈哈，说起来还是有点功利的性质的。但是凡事总是一半一半吧，想了想，坚持写博客的好处可能会有下面几点吧。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="life" scheme="http://kingsleynuaa.github.io/categories/life/"/>
+    
+    
+    <category term="blog" scheme="http://kingsleynuaa.github.io/tags/blog/"/>
+    
+  </entry>
+  
+</feed>

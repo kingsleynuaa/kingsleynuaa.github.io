@@ -1,0 +1,16 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: https://kingsleynuaa.github.io/sitemap.xml
+Sitemap: https://kingsleynuaa.github.io/baidusitemap.xml
+Sitemap: https://huifangshuyuan.com/sitemap.xml
+Sitemap: https://huifangshuyuan.com/baidusitemap.xml

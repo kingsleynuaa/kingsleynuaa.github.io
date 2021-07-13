@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon32_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon16_16.png">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png" color="#222">
+  <meta name="baidu-site-verification" content="de7394d3a9d02511c7555414af9b2c02">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kingsleynuaa.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":{"valine":null,"text":"Load Valine","order":-1,"gitalk":{"order":-2}},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Cracking The Coding Interview1.ForewordAs you get ready for your interviews, consider these suggestions:    Write Code on Paper   Know Your Resume   Don’t Memorize Solutions   Talk Out Loud  Receiving">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cracking-the-Coding-Interview">
+<meta property="og:url" content="http://kingsleynuaa.github.io/2016/08/24/Cracking-the-coding-interview/index.html">
+<meta property="og:site_name" content="汇芳书院">
+<meta property="og:description" content="Cracking The Coding Interview1.ForewordAs you get ready for your interviews, consider these suggestions:    Write Code on Paper   Know Your Resume   Don’t Memorize Solutions   Talk Out Loud  Receiving">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-08-24T03:21:00.000Z">
+<meta property="article:modified_time" content="2021-07-10T11:29:44.197Z">
+<meta property="article:author" content="Jacob Jin">
+<meta property="article:tag" content="财富自由">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://kingsleynuaa.github.io/2016/08/24/Cracking-the-coding-interview/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Cracking-the-Coding-Interview | 汇芳书院</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C70KE9W36G"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C70KE9W36G');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?de7394d3a9d02511c7555414af9b2c02";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="汇芳书院" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">汇芳书院</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注计算机视觉、机器学习、分布式计算等领域, 兼聊投资、写作、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-fab fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-fab fa-archive"></i>归档<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-fab fa-tags"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-fab fa-th"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/aboutMe/" rel="section"><i class="fa fa-fw fa-fab fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-留言灌水区">
+
+    <a href="/message/" rel="section"><i class="fa fa-fw fa-fab fa-telegram"></i>留言灌水区</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kingsleynuaa.github.io/2016/08/24/Cracking-the-coding-interview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mpp.jpg">
+      <meta itemprop="name" content="Jacob Jin">
+      <meta itemprop="description" content="终身成长，持续提升认知，走向财富和精神自由，迈向美好生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汇芳书院">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Cracking-the-Coding-Interview
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-08-24 11:21:00" itemprop="dateCreated datePublished" datetime="2016-08-24T11:21:00+08:00">2016-08-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 19:29:44" itemprop="dateModified" datetime="2021-07-10T19:29:44+08:00">2021-07-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/job/" itemprop="url" rel="index"><span itemprop="name">job</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2016/08/24/Cracking-the-coding-interview/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2016/08/24/Cracking-the-coding-interview/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>42k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>38 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Cracking-The-Coding-Interview"><a href="#Cracking-The-Coding-Interview" class="headerlink" title="Cracking The Coding Interview"></a>Cracking The Coding Interview</h1><h2 id="1-Foreword"><a href="#1-Foreword" class="headerlink" title="1.Foreword"></a>1.Foreword</h2><p>As you get ready for your interviews, consider these suggestions:</p>
+<ul>
+<li>  Write Code on Paper</li>
+<li>  Know Your Resume</li>
+<li>  Don’t Memorize Solutions</li>
+<li>  Talk Out Loud</li>
+</ul>
+<p>Receiving an offer is not about solving questions flawlessly (very few candidates do!), but rather, <strong>it is about answering questions better than other candidates.</strong> So don’t stress out when you get a tricky question - everyone else probably thought it was hard too!</p>
+<h2 id="2-Introduction"><a href="#2-Introduction" class="headerlink" title="2.Introduction"></a>2.Introduction</h2><h2 id="3-Behind-the-Scenes"><a href="#3-Behind-the-Scenes" class="headerlink" title="3.Behind the Scenes"></a>3.Behind the Scenes</h2><h3 id="3-1-The-Microsoft-Interview"><a href="#3-1-The-Microsoft-Interview" class="headerlink" title="3.1 The Microsoft Interview"></a>3.1 The Microsoft Interview</h3><span id="more"></span> 
+
+
+<ul>
+<li>  Microsoft wants smart people Geeks. People who are passionate about technology.</li>
+<li>  You’ll have a short interview with a recruiter where he or she will give you a sample question. Your recruiter is usually there to prep you, and not to grill you on techni- cal questions. Be nice to your recruiter. Your recruiter can be your biggest advocate, even pushing to re-interview you if you stumbled on your first interview. They can fight for you to be hired - or not!</li>
+<li>  During the day, you’ll do four or five interviews, often with two different teams Unlike many companies.</li>
+<li>  Depending on the team, interviewers may or may not share their feedback on you with the rest of the interview loop.</li>
+<li>  When you complete your interviews with a team, you might speak with a hiring manager. If so, that’s a great sign! It likely means that you passed the interviews with a particular team. It’s now down to the hiring manager’s decision.</li>
+<li>  You might get a decision that day, or it might be a week. After one week of no word from HR, send them a friendly email asking for a status update.</li>
+</ul>
+<p>Definitely Prepare: <strong>“Why do you want to work for Microsoft?”</strong></p>
+<p>In this question, Microsoft wants to see that you’re passionate about technology. A great answer might be, “I’ve been using Microsoft software as long as I can re- member, and I’m really impressed at how Microsoft manages to create a product that is universally excellent. For example, I’ve been using Visual Studio recently to learn game programming, and it’s APIs are excellent.” Note how this shows a passion for technology!</p>
+<h3 id="3-2-The-Amazon-Interview"><a href="#3-2-The-Amazon-Interview" class="headerlink" title="3.2 The Amazon Interview"></a>3.2 The Amazon Interview</h3><ul>
+<li>  Amazon’s recruiting process usually begins with one or two phone screens in which you in- terview with a specific team. The engineer who interviews you will usually ask you to write simple code and read it aloud on the phone They will ask a broad set of questions to explore what areas of technology you’re familiar with.</li>
+<li>  Next, you fly to Seattle for four or five interviews with one or two teams which have selected you based on your resume and phone interviews. You will have to code on a whiteboard, and some interviewers will stress other skills. Interviewers are each assigned a specific area to probe and may seem very different from each other.</li>
+<li>  They can not see other feedback until they have submitted their own and they are discouraged from discussing it until the hiring meeting.</li>
+<li>  Amazon’s “bar raiser” interviewer is charged with keeping the interview bar high. If one interview seems significantly harder and different, that’s most like- ly the bar raiser This person has both significant experience with interviews and veto power in the hiring decision.</li>
+<li>  While Amazon’s recruiters are excellent at following up with candidates, occa- sionally there are delays. If you haven’t heard from Amazon within a week, we recommend a friendly email.</li>
+</ul>
+<p>Definitely Prepare:</p>
+<ul>
+<li>  Amazon is a web-based company, and that means they care about scale. Make sure you prepare for questions in “Large Scale.” You don’t need a background in distributed systems to answer these questions. See our recommendations in the System Design and Memory Limits Chapter.</li>
+<li>  Additionally, Amazon tends to ask a lot of questions about object oriented design. Check out the Object Oriented Design chapter for sample questions and suggestions.</li>
+</ul>
+<h3 id="3-3-The-Google-Interview"><a href="#3-3-The-Google-Interview" class="headerlink" title="3.3 The Google Interview"></a>3.3 The Google Interview</h3><ul>
+<li>  However, because Google HR can be a little disorganized, we recommend being proactive in com- munication.</li>
+<li>  A Google engineer performs the first phone screen, so expect tough technical questions.</li>
+<li>  On your on-site interview, you’ll interview with four to six people, one of whom will be a lunch interviewer. Interviewer feedback is kept confidential from the other interviewers, so you can be assured that you enter each interview with blank slate. Your lunch interviewer doesn’t submit feedback, so this is a great opportunity to ask honest questions.</li>
+<li>  Written feedback is submitted to a hiring committee of engineers to make a hire/no-hire recommendation. Feedback is typically broken down into four categories (Analytical Ability, Coding, Experience and Communication) and you are given a score from 1.0 to 4.0 overall.</li>
+<li>  The hiring committee understands that you can’t be expected to excel in every interview, but if multiple people raise the same red flag (arrogance, poor coding skills, etc), that can disqualify you. A hiring committee typically wants to see one interviewer who is an “enthusiastic en- dorser”. In other words, a packet with scores of 3.6, 3.1, 3.1 and 2.6 is better than all 3.1s. Your phone screen is usu- ally not a strong factor in the final deci- sion.</li>
+<li>  The Google hiring process can be slow. If you don’t hear back within one week, politely ask your recruiter for an up- date. A lack of response says nothing about your performance.</li>
+</ul>
+<p>Definitely Prepare:</p>
+<ul>
+<li>  As a web-based company, Google cares about how to design a scalable system. So, make sure you prepare for questions from “System Design and Memory Limits” Additionally, many Google interviewers will ask questions involving Bit Manipulation, so please brush up on these questions.</li>
+</ul>
+<h3 id="3-4-The-Apple-Interview"><a href="#3-4-The-Apple-Interview" class="headerlink" title="3.4 The Apple Interview"></a>3.4 The Apple Interview</h3><ul>
+<li>  Much like the company itself, Apple’s interview process has minimal beaucracy.</li>
+<li>  The interviewers will be looking for excellent technical skills, but a passion for the position and company is also very important. While it’s not a prerequisite to be a Mac user, you should at least be familiar with the system.</li>
+<li>  The interview process typically begins with a recruiter phone screen to get a basic sense of your skills, <strong>followed up by a series of technical phone screens with team members.</strong></li>
+<li>  Once you’re invited on campus, you’ll typically be greeted by the recruiter who provides an overview of the process. You will then have 6-8 interviews with members of the team for which you’re interviewing, as well as key people with whom your team works.</li>
+<li>  You can expect a mix of 1-on-1 and 2-on-1 interviews. Be ready to code on a whiteboard and make sure all of your thoughts are clearly communicated. Lunch is with your potential future manager and appears more casual, but is still an interview. Each interviewer is usually focused on a different area and is discouraged from sharing feedback unless there’s something they want subsequent interviewers to drill into.</li>
+<li>  Towards the end of the day, your interviewers will compare notes and if everyone still feels you’re a viable candidate, you’ll interview with the director and then VP of the organization you’re applying to. While this decision is rather informal, it’s a very good sign if you make it. This decision also happens behind the scenes and if you don’t pass, you’ll simply be escorted out of the building without ever having been the wiser (until now)</li>
+<li>  If you made it to the director and VP interviews, all of your interviewers will gather in a conference room to give an official thumbs up or thumbs down The VP typically won’t be present, but can still veto the hire if they weren’t im- pressed.</li>
+<li>  Your recruiter will usually follow up a few days later, but feel free to ping your recruiter for updates.</li>
+</ul>
+<p>Definitely Prepare:</p>
+<ul>
+<li>  If you know what team you’re interviewing with, make sure you read up on that product. What do you like about it? What would you improve? Offering specific recommendations can show your passion for the job.</li>
+<li>  Also, Apple employees are huge Apple fans. You should show this same passion in your interview.</li>
+</ul>
+<h3 id="3-5-The-Yahoo-Interview"><a href="#3-5-The-Yahoo-Interview" class="headerlink" title="3.5 The Yahoo Interview"></a>3.5 The Yahoo Interview</h3><ul>
+<li><p>  While Yahoo tends to only recruit at the top 10 – 20 schools, other candidates can still get interviewed through Yahoo’s job board (or – better yet – if they can get an internal referral). If you’re one of the lucky ones selected, your interview process will start off with a phone screen. Your phone screen will be with a senior employee (tech lead, manager, etc)</p>
+</li>
+<li><p>You will typically interview with 6 – 7 people on the same team for 45 minutes each Each interviewer will have an area of focus. Interviews will often be composed as follows:</p>
+<ul>
+<li>  5 minutes: General conversation Tell me about yourself, your projects, etc</li>
+<li>  20 minutes: Coding question For example, implement merge sort</li>
+<li>  20 minutes: System design For example, design a large distributed cache These ques- tions will often focus on an area from your past experience or on something your interviewer is currently working on</li>
+</ul>
+</li>
+<li><p>  At the end of the day, you will likely meet with a Program Manag- er or someone else for a general con- versation (product demos, concerns about the company, your competing offers, etc). Meanwhile, your interview- ers will discuss your performance and attempt to come to a decision The hiring manager has the ultimate say and will weigh the positive feedback against the negative.</p>
+</li>
+<li><p>  If you have done well, you will often get a decision that day, but this is not always the case. There can be many reasons that you might not be told for several days – for example, the team may feel it needs to interview several other people.</p>
+</li>
+</ul>
+<p>Definitely Prepare:</p>
+<ul>
+<li>  Yahoo, almost as a rule, asks questions about system design, so make sure you prepare for that. They want to know that you can not only write code, but that you can design software. Don’t worry if you don’t have a background in this - you can still reason your way through it!</li>
+</ul>
+<h2 id="4-Before-the-Interview"><a href="#4-Before-the-Interview" class="headerlink" title="4. Before the Interview"></a>4. Before the Interview</h2><h3 id="4-1-Resume-Advice"><a href="#4-1-Resume-Advice" class="headerlink" title="4.1 Resume Advice"></a>4.1 Resume Advice</h3><p>Resume screeners look for the same things that interviewers do:</p>
+<ul>
+<li>  <strong>Are you smart?</strong></li>
+<li>  <strong>Can you code?</strong></li>
+</ul>
+<p>That means that you should present your resume to show those two things. Your love of tennis, traveling, or magic cards won’t do much to show that, so it’s likely just wasting space.Keep in mind that recruiters only spend a fixed amount of time (about 20 seconds) looking at your resume. If you limit the content to the best, most impressive, most relevant items, they’ll jump out at the recruiter Weak items only dilute your resume and distract the recruiter from what you’d like them to see.</p>
+<hr>
+<p><strong>Writing Strong Bullets:</strong></p>
+<ul>
+<li>  For each role, try to discuss your accomplishments with the following approach: “Accom- plished X by implementing Y which led to Z” Here’s an example:</li>
+<li>  “Reduced object rendering time by 75% by applying Floyd’s algorithm, leading to a 10% reduction in system boot time”</li>
+<li>  “Increased average match accuracy from 1.2 to 1.5 by implementing a new comparison algorithm based on windiff”</li>
+</ul>
+<p>Not everything you did will fit into this approach, but the principle is the same: show what you did, how you did it, and what the results were Ideally, you should try to make the results “measurable” somehow.</p>
+<hr>
+<p><strong>Advice for Non-Native English Speakers and Internationals:</strong></p>
+<ul>
+<li>  Proofreading: Some companies will throw out your resume just because of a typo. Please get at least one native English speaker to proofread your resume.</li>
+<li>  Personal Information: For US positions, do not include age, marital status, or nationality. This sort of personal information is not appreciated by companies, as it creates a legal liability for them However, you may want to include your current work authorization / visa status, particularly when applying to smaller companies who may be unable to sponsor candidates.</li>
+</ul>
+<h3 id="4-2-Behavioral-Preparation"><a href="#4-2-Behavioral-Preparation" class="headerlink" title="4.2 Behavioral Preparation"></a>4.2 Behavioral Preparation</h3><p>Behavioral questions are asked for a variety of reasons </p>
+<ul>
+<li>  They can be asked either to get to know your personality,</li>
+<li>  to more deeply understand your resume,</li>
+<li>  or just to ease you into an interview Either way,</li>
+</ul>
+<p>these questions are important and can be prepared for.</p>
+<p>Behavioral questions are usually of the form “tell me about a time when you ”, and may ask for an example from a specific project or position. I recommend filling in the following “preparation grid” as shown below:</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">Project1</th>
+<th scope="col" class="org-left">Project2</th>
+<th scope="col" class="org-left">Project3</th>
+<th scope="col" class="org-left">Project4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Most Challenging</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">What You Learned</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Most Interesting</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Hardest Bug</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Enjoyed Most</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">Conflicts with Teammates</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table> 
+ 
+ 
+ 
+ 
+ 
+
+<p>In each cell, put the corresponding story. We recommend reducing each story to just a couple keywords that you can write in each cell This will make the grid easier to study  </p>
+<hr>
+<p><strong>What questions should you ask the interviewer?</strong></p>
+<ul>
+<li><p>Genuine Questions: These are the questions you actually want to know ideas of questions that are valuable to many candidates:</p>
+<ul>
+<li>  “How much of your day do you spend coding?”</li>
+<li>  “How many meetings do you have every week?”</li>
+<li>  “What is the ratio of testers to developers to product managers? What is the interac- tion like? How does project planning happen on the team?”</li>
+</ul>
+</li>
+<li><p>Insightful Questions: These questions are designed to demonstrate your deep knowledge of programming or technologies.</p>
+<ul>
+<li>  “I noticed that you use technology X How do you handle problem Y?”</li>
+<li>  “Why did the product choose to use the X protocol over the Y protocol? I know it has benefits like A, B, C, but many companies choose not to use it because of issue D”</li>
+</ul>
+</li>
+<li><p>Passion Questions: These questions are designed to demonstrate your passion for technol- ogy.</p>
+<ul>
+<li>  “I’m very interested in scalability Did you come in with a background in this, or what opportunities are there to learn about it?”</li>
+<li>  “I’m not familiar with technology X, but it sounds like a very interesting solution Could you tell me a bit more about how it works?”</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-Technical-Preparation"><a href="#4-3-Technical-Preparation" class="headerlink" title="4.3 Technical Preparation"></a>4.3 Technical Preparation</h3><ul>
+<li>  Memorizing or trying to learn specific questions won’t help you!</li>
+<li>  Try to solve the problem on your own.</li>
+<li>  Write the code for the algorithm on paper.</li>
+<li>  Type your paper code as-is into a computer.</li>
+<li>  Do a mock interview. CareerCup offers a mock interview (这里也可以是找一些小公司面试，边面试边学习边改进)</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Data Structures</th>
+<th scope="col" class="org-left">Algorithms</th>
+<th scope="col" class="org-left">Concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Linked Lists</td>
+<td class="org-left">Breadth First Search</td>
+<td class="org-left">Bit Manipulation</td>
+</tr>
+
+<tr>
+<td class="org-left">Binary Trees</td>
+<td class="org-left">Depth First Search</td>
+<td class="org-left">Singleton Design Pattern</td>
+</tr>
+
+<tr>
+<td class="org-left">Tries</td>
+<td class="org-left">Binary Search</td>
+<td class="org-left">Factory Design Pattern</td>
+</tr>
+
+<tr>
+<td class="org-left">Stacks</td>
+<td class="org-left">Merge Sort</td>
+<td class="org-left">Memory (Stack vs Heap)</td>
+</tr>
+
+<tr>
+<td class="org-left">Queues</td>
+<td class="org-left">Quick Sort</td>
+<td class="org-left">Recursion</td>
+</tr>
+
+<tr>
+<td class="org-left">Vectors / ArrayLists</td>
+<td class="org-left">Tree Insert / Find / etc</td>
+<td class="org-left">Big-O Time</td>
+</tr>
+
+<tr>
+<td class="org-left">Hash Tables</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="5-The-Interview-and-Beyond"><a href="#5-The-Interview-and-Beyond" class="headerlink" title="5. The Interview and Beyond"></a>5. The Interview and Beyond</h2><h3 id="5-1-Handling-Behavioral-Questions"><a href="#5-1-Handling-Behavioral-Questions" class="headerlink" title="5.1 Handling Behavioral Questions"></a>5.1 Handling Behavioral Questions</h3><ul>
+<li>  Be Specific, Not Arrogant</li>
+<li>  Limit Details（这个应该怎么理解呢？详略得到的描述行为问题，其实任何事物的描述都应该这样吧）</li>
+<li>  Ask Good Questions</li>
+<li>  Structure Answers Using S.A.R(Situation, Action, Response)</li>
+</ul>
+<h3 id="5-2-Handling-Technical-Questions"><a href="#5-2-Handling-Technical-Questions" class="headerlink" title="5.2 Handling Technical Questions"></a>5.2 Handling Technical Questions</h3><p>A technical interview question can be solved utilizing a five step approach:</p>
+<ol>
+<li> Ask your interviewer questions to resolve ambiguity</li>
+<li> Design an Algorithm</li>
+<li> Write pseudo-code first, but make sure to tell your interviewer that you’re writing pseudo-code! Otherwise, he/she may think that you’re never planning to write “real” code, and many interviewers will hold that against you</li>
+<li> Write your code, not too slow and not too fast</li>
+<li> Test your code and carefully fix any mistakes<br>（感觉五步可以总结为三个步骤：消除歧义确定具体要解决的问题，设计算法伪代码实现从而确认问题和解决方案的正确可行，规定时间内编写实际代码并做到bug free且有良好的风格。在面试的过程中，注意与面试官保持沟通，就像和同学老师讨论问题那样，给予一定尊重，并体现你思考的过程和思路，注意逻辑一定要清楚，想好了再说，确认好了再写，一边写一边讲解）</li>
+</ol>
+<h3 id="5-3-Five-Algorithm-Approaches"><a href="#5-3-Five-Algorithm-Approaches" class="headerlink" title="5.3 Five Algorithm Approaches"></a>5.3 Five Algorithm Approaches</h3><h3 id="5-4-The-Offer-and-Beyond"><a href="#5-4-The-Offer-and-Beyond" class="headerlink" title="5.4 The Offer and Beyond"></a>5.4 The Offer and Beyond</h3><ul>
+<li><p>  <strong>Negotiating.</strong> It’s Always Negotiable! Ok, maybe not always, but usually an offer is negotiable even if a recruiter tells you otherwise. It helps if you have a competing offer But, <strong>don’t lie – Microsoft knows what Google offers, so it just won’t be realistic if you make up numbers.</strong> Also, technology is a small world, and people talk. Be honest.</p>
+</li>
+<li><p>  <strong>What’s the money like, really?</strong> Think about the full offer package Many companies will have impressive salaries, but small annual bonuses Other companies will have huge annual bonuses, but lower salaries Make sure you look at the <strong>full package (salary, signing bonus, health care benefits, raises, annual bonus, relocation, stock, promotions, etc)</strong> It’s very confusing, and it’s often not clear which company is offering more</p>
+</li>
+<li><p><strong>What about your career options?</strong> I can’t give you some magical formula to compute which offer to accept, but here’s what I’d recommend thinking about (in no particular order):</p>
+<ul>
+<li>  Career Path: Make a plan for your career What do you want to do 5, 10 and 15 years out? What skills will you need to develop? Which company or position will help you get there?</li>
+<li>  Promotion Opportunity: Do you prefer to move into management, or would you prefer to become an increasingly senior developer?</li>
+<li>  Money and Benefits: Of course, the money matters (but if you’re early in your career, it probably doesn’t matter much). As mentioned above, make sure you look at the full package.</li>
+<li>  Happiness: Did you like the people? The products? The location? It’s hard to tell, of course, before you work there. What are the options to change teams if you’re unhappy?</li>
+<li>  Brand Name: The company’s brand name can mean a lot for your future career Some company names will open doors, while others will not as much.</li>
+<li>  <strong>What about company stability? Personally, I think it matters much less than most people think. There are so many software companies out there. If you get laid off and need to find a new job, will it be difficult to find a new one? Only you can answer that.</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="5-5-Top-Ten-Mistakes-Candidates-Make"><a href="#5-5-Top-Ten-Mistakes-Candidates-Make" class="headerlink" title="5.5 Top Ten Mistakes Candidates Make"></a>5.5 Top Ten Mistakes Candidates Make</h3><ul>
+<li>  Practicing on a Computer</li>
+<li>  Not Rehearsing Behavioral Questions</li>
+<li>  Not Doing a Mock Interview</li>
+<li>  Trying to Memorize Solutions</li>
+<li>  Talking Too Much</li>
+<li>  Talking Too Little</li>
+<li>  Rushing</li>
+<li>  Not Debugging</li>
+<li>  Sloppy Coding</li>
+<li>  Giving Up</li>
+</ul>
+<h3 id="5-6-Frequently-Asked-Questions"><a href="#5-6-Frequently-Asked-Questions" class="headerlink" title="5.6 Frequently Asked Questions"></a>5.6 Frequently Asked Questions</h3><p><strong>Should I tell my interviewer if I know a question?</strong></p>
+<p>Yes! You should definitely tell your interviewer if you’ve previously heard the question This seems silly to some people - if you already know the question (and answer), you could ace the question, right? Not quite</p>
+<p>Here’s why we strongly recommend that you tell your interviewer that you’ve heard the question:</p>
+<ol>
+<li> Big honesty points. This shows a lot of integrity That’s huge. Remember that the interviewer is evaluating you as a potential teammate I don’t know about you, but I personally prefer to work with honest people!</li>
+<li> The question might have changed ever-so-slightly. You don’t want to risk repeating the wrong answer</li>
+<li> If you easily belt out the right answer, it’s obvious to the interviewer. They know how hard a problem is supposed to be. It’s very hard to “pretend” to struggle through a question, because you just can’t approach it the same way other candidates do.</li>
+</ol>
+<h2 id="6-Interview-Questions"><a href="#6-Interview-Questions" class="headerlink" title="6 Interview Questions"></a>6 Interview Questions</h2><ul>
+<li>  Data Structures</li>
+<li>  Concepts and Algorithms</li>
+<li>  Knowledge Based</li>
+<li>  Additional Review Problems</li>
+</ul>
+<h3 id="6-1-Arrays-and-Strings"><a href="#6-1-Arrays-and-Strings" class="headerlink" title="6.1 Arrays and Strings"></a>6.1 Arrays and Strings</h3><ul>
+<li><p>1.1 Implement an algorithm to determine if a string has all unique characters. What if you can not use additional data structures?<br>  使用C＋＋的map，一趟扫描即可。</p>
+<p>  如果字符串里面全部是a-z的字符，用一个大小为26的数组也可以。</p>
+<p>  如果不能用数组，不能用map等数据结构，那就按照ASCII排序，看有没有重复的字符，一趟扫描。</p>
+</li>
+<li><p>1.2 Write code to reverse a C-Style String. (C-String means that “abcd” is represented as five characters, including the null character.)<br>  两个指针一个0开始加，一个strlen（）－1 开始减？</p>
+</li>
+</ul>
+<ul>
+<li><p>1.3 Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer.<br>  先排序。然后两个指针，指针index初始化为－1，i为0，用i往后扫描，index记录unique字符的个数，一趟扫描即可。</p>
+</li>
+<li><p>1.4 Write a method to decide if two strings are anagrams or not.<br>  C＋＋的map，value存储个数，一个string加，一个string减，判断最后value是否为0</p>
+</li>
+<li><p>1.5 Write a method to replace all spaces in a string with ‘%20’.<br>  难点在哪？</p>
+</li>
+<li><p> 1.6 Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees Can you do this in place?</p>
+</li>
+<li><p>1.7 Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.<br>  难点在哪？</p>
+</li>
+<li><p>1.8 Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (i e , “waterbottle” is a rotation of “erbottlewat”).<br>  reverse(s1.begin(),s2.end())然后调用isSubstring进行判断</p>
+</li>
+</ul>
+<hr>
+<p>1.6</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> m[<span class="built_in">N</span>][<span class="built_in">N</span>];</span><br><span class="line">for(<span class="built_in">int</span> k=<span class="number">0</span>;k&lt;<span class="built_in">N</span>/<span class="number">2</span>;k++) &#123;</span><br><span class="line">  <span class="built_in">int</span> r = k;</span><br><span class="line">  <span class="built_in">int</span> last = <span class="built_in">n</span> - <span class="number">1</span> - r;</span><br><span class="line">  for(<span class="built_in">int</span> c = r; c &lt;= last; c++) &#123;</span><br><span class="line">    // [r,c], [<span class="built_in">N</span>-<span class="number">1</span>-c,r], [<span class="built_in">N</span>-<span class="number">1</span>-r,<span class="built_in">N</span>-<span class="number">1</span>-c], [c,<span class="built_in">N</span>-<span class="number">1</span>-r]</span><br><span class="line">    <span class="built_in">int</span> tmp = m[r][c];</span><br><span class="line">    m[r][c] = m[c][<span class="built_in">N</span>-<span class="number">1</span>-r];</span><br><span class="line">    m[c][<span class="built_in">N</span>-<span class="number">1</span>-r] = m[<span class="built_in">N</span>-<span class="number">1</span>-r][<span class="built_in">N</span>-<span class="number">1</span>-c];</span><br><span class="line">    m[<span class="built_in">N</span>-<span class="number">1</span>-r][<span class="built_in">N</span>-<span class="number">1</span>-c] = m[<span class="built_in">N</span>-<span class="number">1</span>-c][r];</span><br><span class="line">    m[<span class="built_in">N</span>-<span class="number">1</span>-c][r] = tmp;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-Linked-Lists"><a href="#6-2-Linked-Lists" class="headerlink" title="6.2 Linked Lists"></a>6.2 Linked Lists</h3><p>Questions:</p>
+<ul>
+<li><p>  2.1 Write code to remove duplicates from an unsorted linked list. How would you solve this problem if a temporary buffer is not allowed?</p>
+</li>
+<li><p>  2.2 Implement an algorithm to find the nth to last element of a singly linked list.</p>
+</li>
+<li><p>  2.3 Implement an algorithm to delete a node in the middle of a single linked list, given only access to that node.</p>
+</li>
+<li><p>  2.4 You have two numbers represented by a linked list, where each node contains a sin- gle digit. The digits are stored in reverse order, such that the 1’s digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.</p>
+</li>
+<li><p>(x) 2.5 Given a circular linked list, implement an algorithm which returns node at the begin- ning of the loop.</p>
+<ul>
+<li><p>Assume P,Q at head. P proceeds 1 step, and Q proceed 2 step. There is k nodes before entry node of the circular list. And they takes u step to meet each other at p in the circular list. So we have following equations.</p>
+<ol>
+<li> k + xn + p= 2u # Q position.</li>
+<li> k + yn + p = u # P position.</li>
+<li> u = zn # using 1 and 2.</li>
+<li> (k + p) = z’n # using 2 and 3.</li>
+<li> k % n = (n-p) # done.</li>
+</ol>
+</li>
+<li><p>  see leetcode <a target="_blank" rel="noopener" href="https://oj.leetcode.com/problems/linked-list-cycle/">https://oj.leetcode.com/problems/linked-list-cycle/</a> and <a target="_blank" rel="noopener" href="https://oj.leetcode.com/problems/linked-list-cycle-ii/">https://oj.leetcode.com/problems/linked-list-cycle-ii/</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-Stacks-and-Queues"><a href="#6-3-Stacks-and-Queues" class="headerlink" title="6.3 Stacks and Queues"></a>6.3 Stacks and Queues</h3><p>Questions:</p>
+<ul>
+<li>  3.1 Describe how you could use a single array to implement three stacks.</li>
+<li>  3.2 How would you design a stack which, in addition to push and pop, also has a function min which returns the minimum element? Push, pop and min should all operate in O(1) time.</li>
+<li>  3.5 Implement a MyQueue class which implements a queue using two stacks.</li>
+<li>  3.6 Write a program to sort a stack in ascending order. You should not make any assump- tions about how the stack is implemented.</li>
+</ul>
+<h3 id="6-4-Trees-and-Graphs"><a href="#6-4-Trees-and-Graphs" class="headerlink" title="6.4 Trees and Graphs"></a>6.4 Trees and Graphs</h3><ul>
+<li><p>Trees</p>
+<ul>
+<li>  Not all binary trees are binary search trees</li>
+<li>  In-Order: Traverse left node, current node, then right</li>
+<li>  Pre-Order: Traverse current node, then left node, then right node</li>
+<li>  Post-Order: Traverse left node, then right node, then current node</li>
+<li>  <strong>AVL Tree, RB Tree.</strong></li>
+<li>  <strong>Construct Tree by using Orders</strong></li>
+</ul>
+</li>
+<li><p>Graphs</p>
+<ul>
+<li>  Depth First Search</li>
+<li>  Breadth First Search</li>
+<li>  <strong>Dijkstra,Floyd,Prim,Kruskal.</strong></li>
+</ul>
+</li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li>  4.1 Implement a function to check if a tree is balanced.</li>
+<li>  4.2 Given a directed graph, design an algorithm to find out whether there is a route be- tween two nodes.</li>
+<li>  4.3 Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height.</li>
+<li>  4.4 Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth (eg, if you have a tree with depth D, you’ll have D linked lists).</li>
+<li>  4.5 Write an algorithm to find the ‘next’ node (e.g., in-order successor) of a given node in a binary search tree where each node has a link to its parent.</li>
+<li>  4.6 Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure.</li>
+<li>  4.7 You have two very large binary trees: T1, with millions of nodes, and T2, with hun- dreds of nodes. Create an algorithm to decide if T2 is a subtree of T1.</li>
+<li>  4.8 You are given a binary tree in which each node contains a value. Design an algorithm to print all paths which sum up to that value.</li>
+</ul>
+<hr>
+<p>4.6</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">TreeNode* ancestor(TreeNode* root,TreeNode* p,TreeNode* q,int&amp; cond) &#123;</span><br><span class="line">  if(root == NU<span class="class">LL) return NULL;</span></span><br><span class="line">  if(root == p || root == q) &#123;</span><br><span class="line">    cond++; // root is p<span class="built_in"> or </span>q, find one.</span><br><span class="line">  &#125;</span><br><span class="line">  //<span class="built_in"> check </span>left.</span><br><span class="line"> <span class="built_in"> int </span>c = 0;</span><br><span class="line">  TreeNode* t = ancestor(root-&gt;left, p, q, c);</span><br><span class="line">  if(c == 2) &#123;</span><br><span class="line">    cond = 2;</span><br><span class="line">   <span class="built_in"> return </span>t;</span><br><span class="line">  &#125;</span><br><span class="line">  cond += c;  </span><br><span class="line">  if(cond == 2) &#123;</span><br><span class="line">   <span class="built_in"> return </span>root;</span><br><span class="line">  &#125;</span><br><span class="line">  //<span class="built_in"> check </span>right.</span><br><span class="line">  c = 0;</span><br><span class="line">  t = ancestor(root-&gt;right, p, q, c);</span><br><span class="line">  if(c == 2) &#123;</span><br><span class="line">    cond = 2;</span><br><span class="line">       <span class="built_in"> return </span>t;</span><br><span class="line">  &#125;</span><br><span class="line">  cond += c;</span><br><span class="line">  if(cond == 2) &#123;</span><br><span class="line">   <span class="built_in"> return </span>root;</span><br><span class="line">  &#125;</span><br><span class="line">  // maybe cover one.</span><br><span class="line"> <span class="built_in"> return </span>root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TreeNode* ancestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;</span><br><span class="line"> <span class="built_in"> int </span>cond;</span><br><span class="line"> <span class="built_in"> return </span>ancestor(root, p, q, cond);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-5-Bit-Manipulation"><a href="#6-5-Bit-Manipulation" class="headerlink" title="6.5 Bit Manipulation"></a>6.5 Bit Manipulation</h3><p><img data-src="" alt="bitop.png"></p>
+<p>Questions:</p>
+<ul>
+<li>  5.1 You are given two 32-bit numbers, N and M, and two bit positions, i and j Write a method to set all bits between i and j in N equal to M. Input: N = 10000000000, M = 10101, i = 2, j = 6. Output: N = 10001010100</li>
+<li>  5.2 Given a (decimal - e g 3 72) number that is passed in as a string, print the binary rep- resentation If the number can not be represented accurately in binary, print “ERROR”</li>
+<li>  5.3 Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation.</li>
+<li>  5.4 Explain what the following code does: ((n &amp; (n-1)) == 0).</li>
+<li>  5.5 Write a function to determine the number of bits required to convert integer A to integer B.</li>
+<li>  5.6 Write a program to swap odd and even bits in an integer with as few instructions as possible (e g , bit 0 and bit 1 are swapped, bit 2 and bit 3 are swapped, etc).</li>
+</ul>
+<hr>
+<p>5.3</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cassert&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> previous(<span class="built_in">int</span> number) &#123;</span><br><span class="line">  <span class="built_in">int</span> <span class="built_in">n</span> = number;</span><br><span class="line">  <span class="built_in">int</span> <span class="symbol">c1</span> = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">int</span> <span class="symbol">c0</span> = <span class="number">0</span>;</span><br><span class="line">  // <span class="built_in">find</span> <span class="number">0</span>.</span><br><span class="line">  while(<span class="built_in">n</span> &amp; <span class="number">0</span>x1) &#123;</span><br><span class="line">    <span class="built_in">n</span> &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="symbol">c1</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  // <span class="built_in">find</span> <span class="number">1</span>.</span><br><span class="line">  while(!(<span class="built_in">n</span> &amp; <span class="number">0</span>x1)) &#123;</span><br><span class="line">    <span class="built_in">n</span> &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="symbol">c0</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  // rearrange following <span class="number">1</span> <span class="built_in">and</span> <span class="number">0</span>.</span><br><span class="line">  // <span class="number">10</span> with <span class="symbol">c0</span>-<span class="number">1</span>&#123;<span class="number">0</span>&#125; <span class="built_in">and</span> <span class="symbol">c1</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">  // change to <span class="number">01</span> <span class="symbol">c1</span>&#123;<span class="number">1</span>&#125; <span class="symbol">c0</span>-<span class="number">1</span>&#123;<span class="number">0</span>&#125;</span><br><span class="line">  <span class="built_in">n</span> = ((<span class="built_in">n</span> &gt;&gt; <span class="number">1</span>) &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">  for(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;<span class="symbol">c1</span>;i++) &#123;</span><br><span class="line">    <span class="built_in">n</span> = (<span class="built_in">n</span> &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;<span class="symbol">c0</span>;i++) &#123;</span><br><span class="line">    <span class="built_in">n</span> = (<span class="built_in">n</span> &lt;&lt; <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  return <span class="built_in">n</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> next(<span class="built_in">int</span> number) &#123;</span><br><span class="line">  <span class="built_in">int</span> <span class="built_in">n</span> = number;</span><br><span class="line">  <span class="built_in">int</span> <span class="symbol">c1</span> = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">int</span> <span class="symbol">c0</span> = <span class="number">0</span>;</span><br><span class="line">  // <span class="built_in">find</span> <span class="number">1</span>.</span><br><span class="line">  while(!(<span class="built_in">n</span> &amp; <span class="number">0</span>x1)) &#123;</span><br><span class="line">    <span class="built_in">n</span> &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="symbol">c0</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  // <span class="built_in">find</span> <span class="number">0</span>.</span><br><span class="line">  while(<span class="built_in">n</span> &amp; <span class="number">0</span>x1) &#123;</span><br><span class="line">    <span class="built_in">n</span> &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="symbol">c1</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">  // rearrrange following <span class="number">1</span> <span class="built_in">and</span> <span class="number">0</span>.</span><br><span class="line">  // change to <span class="number">1</span> <span class="symbol">c0</span>+<span class="number">1</span>&#123;<span class="number">0</span>&#125; <span class="symbol">c1</span>-<span class="number">1</span>&#123;<span class="number">1</span>&#125;.</span><br><span class="line">  <span class="built_in">n</span> += <span class="number">1</span>;</span><br><span class="line">  for(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;=<span class="symbol">c0</span>;i++) &#123;</span><br><span class="line">    <span class="built_in">n</span> = (<span class="built_in">n</span> &lt;&lt; <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  for(<span class="built_in">int</span> i=<span class="number">1</span>;i&lt;<span class="symbol">c1</span>;i++) &#123;</span><br><span class="line">    <span class="built_in">n</span> = (<span class="built_in">n</span> &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  return <span class="built_in">n</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main() &#123;</span><br><span class="line">  <span class="built_in">int</span> <span class="built_in">n</span> = (<span class="number">1</span> &lt;&lt; <span class="number">5</span>) + (<span class="number">1</span> &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">int</span> m = (<span class="number">1</span> &lt;&lt; <span class="number">4</span>) + (<span class="number">1</span> &lt;&lt; <span class="number">3</span>) + (<span class="number">1</span> &lt;&lt; <span class="number">2</span>);</span><br><span class="line">  assert(previous(<span class="built_in">n</span>) == m);</span><br><span class="line">  assert(next(m) == <span class="built_in">n</span>);</span><br><span class="line">  return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-6-Brain-Teasers"><a href="#6-6-Brain-Teasers" class="headerlink" title="6.6 Brain Teasers"></a>6.6 Brain Teasers</h3><ul>
+<li>  Don’t panic when you get a brain teaser. Interviewers want to see how you tackle a problem; they don’t expect you to immediately know the answer. Start talking, and show the interviewer how you approach a problem</li>
+<li>  In many cases, you will also find that the brain teasers have some connection back to fundamental laws or theories of computer science.</li>
+<li>  If you’re stuck, we recommend simplifying the problem. Solve it for a small number of items or a special case, and then see if you can generalize it.</li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li><p>  6.1 Add arithmetic operators (plus, minus, times, divide) to make the following expres- sion true: 3 1 3 6 = 8. You can use any parentheses you’d like.</p>
+</li>
+<li><p>  (x) 6.2 There is an 8x8 chess board in which two diagonally opposite corners have been cut off. You are given 31 dominos, and a single domino can cover exactly two squares. Can you use the 31 dominos to cover the entire board?</p>
+</li>
+<li><p>  6.3 You have a five quart jug and a three quart jug, and an unlimited supply of water (but no measuring cups). How would you come up with exactly four quarts of water?</p>
+</li>
+<li><p>  (x) 6.4 A bunch of men are on an island. A genie comes down and gathers everyone to- gether and places a magical hat on some people’s heads (i e , at least one person has a hat). The hat is magical: it can be seen by other people, but not by the wearer of the hat himself. To remove the hat, those(and only those who have a hat) must dunk themselves underwater at exactly midnight. If there are n people and c hats, how long does it take the men to remove the hats? The men cannot tell each other (in any way) that they have a hat.</p>
+</li>
+<li><p>(x) 6.5 There is a building of 100 floors If an egg drops from the Nth floor or above it will break. If it’s dropped from any floor below, it will not break. You’re given 2 eggs Find N, while minimizing the number of drops for the worst case.</p>
+<ul>
+<li>  dp[t][s][e] = 1 + min{ i=[s,e], max(dp[t-1][s][i-1], dp[t][i+1][e]) }. if(s&gt;e) 0 else if(t==0) e-s+1</li>
+<li>  note: not easy to deduce actions from dp</li>
+<li>  note: and only one step can be decided. I’ve attached the code below.</li>
+</ul>
+</li>
+<li><p>(x) 6.6 There are one hundred closed lockers in a hallway. A man begins by opening all one hundred lockers Next, he closes every second locker. Then he goes to every third locker and closes it if it is open or opens it if it is closed (e g , he toggles every third locker). After his one hundredth pass in the hallway, in which he toggles only locker number one hundred, how many lockers are open?</p>
+<ul>
+<li>  only n = p * p have been flipped with odd number and final status is open.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>6.5</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> R = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> dp[R][N+<span class="number">1</span>][N+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> t,<span class="keyword">int</span> s,<span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(s&gt;e) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(dp[t][s][e] != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> dp[t][s][e];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> v = <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=s;i&lt;=e;i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> r = <span class="number">1</span> + <span class="built_in">max</span>(<span class="built_in">get</span>(t,i+<span class="number">1</span>,e),dp[t<span class="number">-1</span>][s][i<span class="number">-1</span>]);</span><br><span class="line">    <span class="keyword">if</span>(v == <span class="number">-1</span> || r &lt; v) &#123;</span><br><span class="line">      v = r;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dp[t][s][e] = v;</span><br><span class="line">  <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(dp));</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=N;j++) &#123;</span><br><span class="line">      dp[<span class="number">0</span>][i][j] = (j-i+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> t=<span class="number">1</span>;t&lt;R;t++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> s=<span class="number">1</span>;s&lt;=N;s++) &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> e=<span class="number">1</span>;e&lt;=N;e++) &#123;</span><br><span class="line">        <span class="built_in">get</span>(t,s,e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> t = R<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">int</span> v = dp[t][<span class="number">1</span>][N];</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,v);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">bool</span> changed = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">while</span>(changed) &#123;</span><br><span class="line">    changed = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=s;i&lt;=N;i++) &#123;</span><br><span class="line">      <span class="comment">// search first point that egg breaks.</span></span><br><span class="line">      <span class="comment">// and to my intuition, there will be only one point.</span></span><br><span class="line">      <span class="keyword">if</span>(v == (c + dp[t<span class="number">-1</span>][s][i<span class="number">-1</span>])) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;below %d\n&quot;</span>,i);</span><br><span class="line">        s = i+<span class="number">1</span>;</span><br><span class="line">        c++;</span><br><span class="line">        changed = <span class="literal">true</span>;        </span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">foo</span>();</span><br><span class="line">  <span class="built_in">reverse</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-7-Object-Oriented-Design"><a href="#6-7-Object-Oriented-Design" class="headerlink" title="6.7 Object Oriented Design"></a>6.7 Object Oriented Design</h3><h3 id="6-8-Recursion"><a href="#6-8-Recursion" class="headerlink" title="6.8 Recursion"></a>6.8 Recursion</h3><ul>
+<li>  All problems that can be solved recursively can also be solved iteratively (though the code may be much more complicated). Before diving into a recursive code, ask yourself how hard it would be to implement this algorithm iteratively. Discuss the trade-offs with your interviewer.</li>
+<li>  Recursive algorithms can be very space inefficient. Each recursive call adds a new layer to the stack, which means that if your algorithm has O(n) recursive calls then it uses O(n) memory Ouch! This is one reason why an iterative algorithm may be better.</li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li><p>8.2 Imagine a robot sitting on the upper left hand corner of an NxN grid The robot can only move in two directions: right and down How many possible paths are there for the robot?</p>
+<ul>
+<li>  Imagine certain squares are “off limits”, such that the robot can not step on them Design an algorithm to get all possible paths for the robot</li>
+</ul>
+</li>
+<li><p>  8.3 Write a method that returns all subsets of a set.</p>
+</li>
+<li><p>  8.4 Write a method to compute all permutations of a string.</p>
+</li>
+<li><p>  8.5 Implement an algorithm to print all valid (e g , properly opened and closed) combi- nations of n-pairs of parentheses.</p>
+</li>
+<li><p>  8.7 Given an infinite number of quarters (25 cents), dimes (10 cents), nickels (5 cents) and pennies (1 cent), write code to calculate the number of ways of representing n cents.</p>
+</li>
+<li><p>  8.8 Write an algorithm to print all ways of arranging eight queens on a chess board so that none of them share the same row, column or diagonal.</p>
+</li>
+</ul>
+<h3 id="6-9-Sorting-and-Searching"><a href="#6-9-Sorting-and-Searching" class="headerlink" title="6.9 Sorting and Searching"></a>6.9 Sorting and Searching</h3><ul>
+<li>  Bubble Sort</li>
+<li>  Selection Sort</li>
+<li>  Merge Sort</li>
+<li>  Quick Sort</li>
+<li>  Bucket Sort</li>
+<li>  <strong>Binary Search</strong></li>
+</ul>
+<p>Questions:</p>
+<ul>
+<li><p>  (x) 9.1 You are given two sorted arrays, A and B, and A has a large enough buffer at the end to hold B Write a method to merge B into A in sorted order.</p>
+</li>
+<li><p>  9.3 Given a sorted array of n integers that has been rotated an unknown number of times,give an O(logn) algorithm that finds an element in the array. You may assume that the array was originally sorted in increasing order. EXAMPLE: Input: find 5 in array (15 16 19 20 25 1 3 4 5 7 10 14) Output: 8 (the index of 5 in the array)</p>
+</li>
+<li><p>  9.4 If you have a 2 GB file with one string per line, which sorting algorithm would you use to sort the file and why?</p>
+</li>
+<li><p>9.5 Given a sorted array of strings which is interspersed with empty strings, write a meth- od to find the location of a given string</p>
+<ul>
+<li>  Example: find “ball” in [“at”, “”, “”, “”, “ball”, “”, “”, “car”, “”, “”, “dad”, “”, “”] will return 4</li>
+<li>  Example: find “ballcar” in [“at”, “”, “”, “”, “”, “ball”, “car”, “”, “”, “dad”, “”, “”] will return -1</li>
+</ul>
+</li>
+<li><p>  9.6 Given a matrix in which each row and each column is sorted, write a method to find an element in it.</p>
+</li>
+<li><p>  9.7 A circus is designing a tower routine consisting of people standing atop one anoth- er’s shoulders. For practical and aesthetic reasons, each person must be both shorter and lighter than the person below him or her. Given the heights and weights of each person in the circus, write a method to compute the largest possible number of peo- ple in such a tower. EXAMPLE: Input (ht, wt): (65, 100) (70, 150) (56, 90) (75, 190) (60, 95) (68, 110) Output: The longest tower is length 6 and includes from top to bottom: (56, 90) (60,95) (65,100) (68,110) (70,150) (75,190)</p>
+</li>
+</ul>
+<hr>
+<p>9.3</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BS</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> e = n<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">while</span>(s &lt;= e) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = (s + e) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(A[m] == x) <span class="keyword">return</span> m;</span><br><span class="line">    <span class="keyword">if</span>(A[m] &gt; x) &#123;</span><br><span class="line">      <span class="keyword">if</span>(A[s] &lt;= x) &#123;</span><br><span class="line">        e = m - <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        s = m + <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(A[e] &gt;=x) &#123;</span><br><span class="line">        s = m + <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        e = m - <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// insert position.</span></span><br><span class="line">  <span class="comment">// return s;</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> A[] = &#123;<span class="number">15</span>,<span class="number">16</span>,<span class="number">19</span>,<span class="number">20</span>,<span class="number">25</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">14</span>&#125;;</span><br><span class="line">  <span class="keyword">int</span> n = <span class="built_in"><span class="keyword">sizeof</span></span>(A) / <span class="built_in"><span class="keyword">sizeof</span></span>(<span class="keyword">int</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">BS</span>(A,n,<span class="number">5</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>9.5</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BS</span><span class="params">(<span class="keyword">const</span> vector&lt;string&gt;&amp; A,<span class="keyword">const</span> string&amp; x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n = A.<span class="built_in">size</span>();</span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> e = n - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(s &lt;= e) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = (s + e) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(A[m] == <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> u = m;</span><br><span class="line">      <span class="keyword">while</span>(u&gt;=<span class="number">0</span> &amp;&amp; A[u] == <span class="string">&quot;&quot;</span>) u--;</span><br><span class="line">      <span class="keyword">if</span>(u &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[u] == x) <span class="keyword">return</span> u;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(A[u] &gt; x) &#123;</span><br><span class="line">          e = u - <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      u = m;</span><br><span class="line">      <span class="keyword">while</span>(u&lt;=e &amp;&amp; A[u] == <span class="string">&quot;&quot;</span>) u++;</span><br><span class="line">      <span class="keyword">if</span>(u &lt;= e) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[u] == x) <span class="keyword">return</span> u;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(A[u] &lt; x) &#123;</span><br><span class="line">          s = u + <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(A[m] == x) &#123;</span><br><span class="line">      <span class="keyword">return</span> m;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(A[m] &gt; x) &#123;</span><br><span class="line">      m = e - <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      s = e + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>* ss[] = &#123;<span class="string">&quot;at&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;ball&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;car&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;dad&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="literal">NULL</span>&#125;;</span><br><span class="line">  vector&lt;string&gt; A;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;ss[i];i++) &#123;</span><br><span class="line">    A.<span class="built_in">push_back</span>(ss[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">BS</span>(A,<span class="string">&quot;ball&quot;</span>));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">BS</span>(A,<span class="string">&quot;ballcar&quot;</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-10-Mathematical"><a href="#6-10-Mathematical" class="headerlink" title="6.10 Mathematical"></a>6.10 Mathematical</h3><p>Questions:</p>
+<ul>
+<li>10.1 You have a basketball hoop and someone says that you can play 1 of 2 games<ul>
+<li>  Game #1: You get one shot to make the hoop</li>
+<li>  Game #2: You get three shots and you have to make 2 of 3 shots</li>
+<li>  If p is the probability of making a particular shot, for which values of p should you pick one game or the other?</li>
+</ul>
+</li>
+<li>  10.2 There are three ants on different vertices of a triangle What is the probability of colli- sion (between any two or all of them) if they start walking on the sides of the triangle? Similarly find the probability of collision with ‘n’ ants on an ‘n’ vertex polygon</li>
+<li>  10.4 Write a method to implement *, - , / operations You should use only the + operator.</li>
+<li>  (x) 10.5 Given two squares on a two dimensional plane, find a line that would cut these two squares in half.</li>
+<li>  (x) 10.6 Given a two dimensional graph with points on it, find a line which passes the most number of points.</li>
+<li>  (x) 10.7 Design an algorithm to find the kth number such that the only prime factors are 3, 5, and 7.</li>
+</ul>
+<hr>
+<p>10.7</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;queue&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;algorithm&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;vector&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> kth(<span class="built_in">int</span> k) &#123;</span><br><span class="line">  priority_queue&lt;<span class="built_in">int</span>,vector&lt;<span class="built_in">int</span>&gt;,std::greater&lt;<span class="built_in">int</span>&gt; &gt; Q3; <span class="comment">// 3,5,7</span></span><br><span class="line">  priority_queue&lt;<span class="built_in">int</span>,vector&lt;<span class="built_in">int</span>&gt;,std::greater&lt;<span class="built_in">int</span>&gt; &gt; Q5; <span class="comment">// 5,7</span></span><br><span class="line">  priority_queue&lt;<span class="built_in">int</span>,vector&lt;<span class="built_in">int</span>&gt;,std::greater&lt;<span class="built_in">int</span>&gt; &gt; Q7; <span class="comment">// 7</span></span><br><span class="line">  <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>push(<span class="number">3</span>);</span><br><span class="line">  <span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>push(<span class="number">5</span>);</span><br><span class="line">  <span class="module-access"><span class="module"><span class="identifier">Q7</span>.</span></span>push(<span class="number">7</span>);</span><br><span class="line">  <span class="keyword">for</span>(;;) &#123;</span><br><span class="line">    <span class="built_in">int</span> x = min(min(<span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>top<span class="literal">()</span>,<span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>top<span class="literal">()</span>),<span class="module-access"><span class="module"><span class="identifier">Q7</span>.</span></span>top<span class="literal">()</span>);</span><br><span class="line">    k--;</span><br><span class="line">    <span class="keyword">if</span>(k<span class="operator"> == </span><span class="number">0</span>) return x;</span><br><span class="line">    <span class="keyword">if</span>(x<span class="operator"> == </span><span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>top<span class="literal">()</span>) &#123;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>push(x<span class="operator"> * </span><span class="number">3</span>);</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>push(x<span class="operator"> * </span><span class="number">5</span>);</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q3</span>.</span></span>push(x<span class="operator"> * </span><span class="number">7</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(x<span class="operator"> == </span><span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>top<span class="literal">()</span>) &#123;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>push(x<span class="operator"> * </span><span class="number">5</span>);</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q5</span>.</span></span>push(x<span class="operator"> * </span><span class="number">7</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q7</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">      <span class="module-access"><span class="module"><span class="identifier">Q7</span>.</span></span>push(x<span class="operator"> * </span><span class="number">7</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main<span class="literal">()</span> &#123;</span><br><span class="line">  printf(<span class="string">&quot;%d\n&quot;</span>,kth(<span class="number">13</span>));</span><br><span class="line">  return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="6-11-Testing"><a href="#6-11-Testing" class="headerlink" title="6.11 Testing"></a>6.11 Testing</h3><h3 id="6-12-System-Design-and-Memory-Limits"><a href="#6-12-System-Design-and-Memory-Limits" class="headerlink" title="6.12 System Design and Memory Limits"></a>6.12 System Design and Memory Limits</h3><p>Questions:</p>
+<ul>
+<li><p>  11.1 If you were integrating a feed of end of day stock price information (open, high, low, and closing price) for 5,000 companies, how would you do it? You are responsible for the development, rollout and ongoing monitoring and maintenance of the feed. Describe the different methods you considered and why you would recommend your approach. The feed is delivered once per trading day in a comma-separated format via an FTP site. The feed will be used by 1000 daily users in a web application.</p>
+</li>
+<li><p>  11.2 How would you design the data structures for a very large social network (Facebook, LinkedIn, etc)? Describe how you would design an algorithm to show the connec- tion, or path, between two people (e g , Me -&gt; Bob -&gt; Susan -&gt; Jason -&gt; You).</p>
+</li>
+<li><p>(x) 11.3 Given an input file with four billion integers, provide an algorithm to generate an integer which is not contained in the file. Assume you have 1 GB of memory. What if you have only 10 MB of memory?</p>
+<ul>
+<li>  note: The solution provided by the book should be with a restriction that integers are not repeated. But anyway, the solution is inspiring</li>
+</ul>
+</li>
+<li><p>  11.4 You have an array with all the numbers from 1 to N, where N is at most 32,000. The array may have duplicate entries and you do not know what N is. With only 4KB of memory available, how would you print all duplicate elements in the array?</p>
+</li>
+<li><p>  11.5 If you were designing a web crawler, how would you avoid getting into infinite loops?</p>
+</li>
+<li><p>  11.6 You have a billion urls, where each is a huge page How do you detect the duplicate documents?</p>
+</li>
+<li><p>  11.7 You have to design a database that can store terabytes of data It should support ef- ficient range queries How would you do it?.</p>
+</li>
+</ul>
+<h3 id="6-13-C"><a href="#6-13-C" class="headerlink" title="6.13 C++"></a>6.13 C++</h3><h3 id="6-14-Java"><a href="#6-14-Java" class="headerlink" title="6.14 Java"></a>6.14 Java</h3><h3 id="6-15-Databases"><a href="#6-15-Databases" class="headerlink" title="6.15 Databases"></a>6.15 Databases</h3><h3 id="6-16-Low-Level"><a href="#6-16-Low-Level" class="headerlink" title="6.16 Low Level"></a>6.16 Low Level</h3><p>Questions:</p>
+<ul>
+<li>  16.1 Explain the following terms: virtual memory, page fault, thrashing.</li>
+<li>  (x) 16.2 What is a Branch Target buffer? Explain how it can be used in reducing bubble cycles in cases of branch misprediction.</li>
+<li>  (x) 16.3 Describe direct memory access (DMA). Can a user level buffer / pointer be used by kernel or drivers?</li>
+<li>  (x) 16.4 Write a step by step execution of things that happen after a user presses a key on the keyboard Use as much detail as possible.</li>
+<li>  16.5 Write a program to find whether a machine is big endian or little endian.</li>
+<li>  16.6 Discuss how would you make sure that a process doesn’t access an unauthorized part of the stack.</li>
+<li>  16.7 What are the best practices to prevent reverse engineering of DLLs?.</li>
+<li>  (x) 16.8 A device boots with an empty FIFO queue In the first 400 ns period after startup, and in each subsequent 400 ns period, a maximum of 80 words will be written to the queue Each write takes 4 ns A worker thread requires 3 ns to read a word, and 2 ns to process it before reading the next word What is the shortest depth of the FIFO such that no data is lost?</li>
+<li>  16.9 Write an aligned malloc &amp; free function that takes number of bytes and aligned byte (which is always power of 2).</li>
+<li>  16.10 Write a function called my2DAlloc which allocates a two dimensional array. Minimize the number of calls to malloc and make sure that the memory is accessible by the notation arr[i][j].</li>
+</ul>
+<h3 id="6-17-Networking"><a href="#6-17-Networking" class="headerlink" title="6.17 Networking"></a>6.17 Networking</h3><p>Questions:</p>
+<ul>
+<li>  17.1 Explain what happens, step by step, after you type a URL into a browser. Use as much detail as possible.</li>
+<li>  17.2 Explain any common routing protocol in detail For example: BGP, OSPF, RIP</li>
+<li>  17.3 Compare and contrast the IPv4 and IPv6 protocols.</li>
+<li>  (x) 17.4 What is a network / subnet mask? Explain how host A sends a message / packet to host B when: (a) both are on same network and (b) both are on different networks Explain which layer makes the routing decision and how.</li>
+<li>  (x) 17.5 What are the differences between TCP and UDP? Explain how TCP handles reliable delivery (explain ACK mechanism), flow control (explain TCP sender’s / receiver’s win- dow) and congestion control.</li>
+</ul>
+<h3 id="6-18-Threads-and-Locks"><a href="#6-18-Threads-and-Locks" class="headerlink" title="6.18 Threads and Locks"></a>6.18 Threads and Locks</h3><p>Questions:</p>
+<ul>
+<li>  18.1 What’s the difference between a thread and a process?</li>
+<li>  18.2 How can you measure the time spent in a context switch?</li>
+<li>  18.3 Implement a singleton design pattern as a template such that, for any given class Foo, you can call Singleton::instance() and get a pointer to an instance of a singleton of type Foo. Assume the existence of a class Lock which has acquire() and release() methods. How could you make your implementation thread safe and exception safe?.</li>
+<li>  18.4 Design a class which provides a lock only if there are no possible deadlocks.</li>
+<li>  18.5 You are given a class with synchronized method A, and a normal method C If you have two threads in one instance of a program, can they call A at the same time? Can they call A and C at the same time?</li>
+</ul>
+<h3 id="6-19-Moderate-Additional-Review-Problems"><a href="#6-19-Moderate-Additional-Review-Problems" class="headerlink" title="6.19 Moderate Additional Review Problems"></a>6.19 Moderate Additional Review Problems</h3><p>Questions: </p>
+<ul>
+<li>  19.1 Write a function to swap a number in place without temporary variables.</li>
+<li>  (x) 19.3 Write an algorithm which computes the number of trailing zeros in n factorial.</li>
+<li>  19.4 Write a method which finds the maximum of two numbers. You should not use if- else or any other comparison operator.</li>
+<li>  19.6 Given an integer between 0 and 999,999, print an English phrase that describes the integer (eg, “One Thousand, Two Hundred and Thirty Four”).</li>
+<li>  19.7 You are given an array of integers (both positive and negative). Find the continuous sequence with the largest sum. Return the sum.</li>
+<li>  19.8 Design a method to find the frequency of occurrences of any given word in a book.</li>
+<li>  (x) 19.10 Write a method to generate a random number between 1 and 7, given a method that generates a random number between 1 and 5 (i e , implement rand7() using rand5()).</li>
+<li>  19.11 Design an algorithm to find all pairs of integers within an array which sum to a speci- fied value.</li>
+</ul>
+<hr>
+<p>19.3</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> zeros(<span class="built_in">int</span> <span class="built_in">n</span>) &#123;</span><br><span class="line">  <span class="built_in">int</span> c = <span class="number">0</span>;</span><br><span class="line">  for(<span class="built_in">int</span> k = <span class="number">5</span>; <span class="built_in">n</span> &gt;= k; k *= <span class="number">5</span>) &#123;</span><br><span class="line">    c += <span class="built_in">n</span> / k;</span><br><span class="line">  &#125;</span><br><span class="line">  return c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>19.6</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span>* s1[] = &#123;<span class="string">&quot;Zero&quot;</span>,<span class="string">&quot;One&quot;</span>,<span class="string">&quot;Two&quot;</span>,<span class="string">&quot;Three&quot;</span>,<span class="string">&quot;Four&quot;</span>,<span class="string">&quot;Five&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Six&quot;</span>,<span class="string">&quot;Seven&quot;</span>,<span class="string">&quot;Eight&quot;</span>,<span class="string">&quot;Nine&quot;</span>,<span class="string">&quot;Ten&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Eleven&quot;</span>,<span class="string">&quot;Twelve&quot;</span>,<span class="string">&quot;Thirteen&quot;</span>,<span class="string">&quot;Fourteen&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Fifteen&quot;</span>,<span class="string">&quot;Sixteen&quot;</span>,<span class="string">&quot;Seventeen&quot;</span>,<span class="string">&quot;Eighteen&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Nineteen&quot;</span>&#125;;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span>* s2[] = &#123;<span class="string">&quot;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="string">&quot;Twenty&quot;</span>,<span class="string">&quot;Thirty&quot;</span>,<span class="string">&quot;Fourty&quot;</span>,<span class="string">&quot;Fifty&quot;</span>,</span><br><span class="line">                           <span class="string">&quot;Sixty&quot;</span>,<span class="string">&quot;Seventy&quot;</span>,<span class="string">&quot;Eighty&quot;</span>,<span class="string">&quot;Ninety&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">speak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(n &lt;= <span class="number">19</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> s1[n];</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(n &lt; <span class="number">100</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = n % <span class="number">10</span>;    </span><br><span class="line">    string s = s2[n / <span class="number">10</span>];</span><br><span class="line">    <span class="keyword">if</span>(m != <span class="number">0</span>) &#123;</span><br><span class="line">      s += <span class="string">&quot; &quot;</span>;</span><br><span class="line">      s += s1[m];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(n &lt; <span class="number">1000</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = n % <span class="number">100</span>;</span><br><span class="line">    string s = s1[n / <span class="number">100</span>];</span><br><span class="line">    s += <span class="string">&quot; Hundred&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(m != <span class="number">0</span>) &#123;</span><br><span class="line">      s += <span class="string">&quot; and &quot;</span>;</span><br><span class="line">      s += <span class="built_in">speak</span>(m);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> m = n % <span class="number">1000</span>;</span><br><span class="line">    string s = <span class="built_in">speak</span>(n / <span class="number">1000</span>);</span><br><span class="line">    s += <span class="string">&quot; Thousand&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(m != <span class="number">0</span>) &#123;</span><br><span class="line">      s += <span class="string">&quot;, &quot;</span>;</span><br><span class="line">      s += <span class="built_in">speak</span>(m);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,<span class="built_in">speak</span>(n).<span class="built_in">c_str</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="number">101</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="number">1001</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="number">1010</span>);</span><br><span class="line">  <span class="built_in">print</span>(<span class="number">999100</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-20-Hard-Additional-Review-Problems"><a href="#6-20-Hard-Additional-Review-Problems" class="headerlink" title="6.20 Hard Additional Review Problems"></a>6.20 Hard Additional Review Problems</h3><p>Questions:</p>
+<ul>
+<li>  (x) 20.1 Write a function that adds two numbers You should not use + or any arithmetic op- erators.</li>
+<li>  (x) 20.2 Write a method to shuffle a deck of cards. It must be a perfect shuffle - in other words, each 52! permutations of the deck has to be equally likely. Assume that you are given a random number generator which is perfect.</li>
+<li>  (x) 20.3 Write a method to randomly generate a set of m integers from an array of size n. Each element must have equal probability of being chosen.</li>
+<li>  (x) 20.4 Write a method to count the number of 2s between 0 and n.</li>
+<li>  20.5 You have a large text file containing words. Given any two words, find the shortest distance (in terms of number of words) between them in the file. Can you make the searching operation in O(1) time? What about the space complexity for your solu- tion?</li>
+<li>  (x) 20.6 Describe an algorithm to find the largest 1 million numbers in 1 billion numbers. As- sume that the computer memory can hold all one billion numbers.</li>
+<li>  (x) 20.7 Write a program to find the longest word made of other words.</li>
+<li>  (x) 20.8 Given a string s and an array of smaller strings T, design a method to search s for each small string in T.</li>
+<li>  (x) 20.9 Numbers are randomly generated and passed to a method. Write a program to find and maintain the median value as new values are generated.</li>
+<li>  (x) 20.10 Given two words of equal length that are in a dictionary, write a method to transform one word into another word by changing only one letter at a time. The new word you get in each step must be in the dictionary.</li>
+<li>  (x) 20.11 Imagine you have a square matrix, where each cell is filled with either black or white. Design an algorithm to find the maximum subsquare such that all four borders are filled with black pixels.</li>
+<li>  (x) 20.12 Given an NxN matrix of positive and negative integers, write code to find the sub- matrix with the largest possible sum.</li>
+<li>  (x) 20.13 Given a dictionary of millions of words, give an algorithm to find the largest possible rectangle of letters such that every row forms a word (reading left to right) and every column forms a word (reading top to bottom).</li>
+</ul>
+<hr>
+<p>20.1</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = a ^ b;</span><br><span class="line">  <span class="keyword">int</span> carry = (a &amp; b) &lt;&lt; <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span>(carry == <span class="number">0</span>) <span class="keyword">return</span> sum;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">add2</span>(sum,carry);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">add2</span>(<span class="number">190</span>,<span class="number">70</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>20.4</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c2</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c2r</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> pow)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> x = n / pow;</span><br><span class="line">  <span class="keyword">int</span> y = n % pow;</span><br><span class="line">  <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(x == <span class="number">2</span>) &#123;</span><br><span class="line">    res += (y + <span class="number">1</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(x &gt; <span class="number">2</span>) &#123;</span><br><span class="line">    res += pow;</span><br><span class="line">  &#125;</span><br><span class="line">  res += x * <span class="built_in">c2r</span>(pow<span class="number">-1</span>,pow / <span class="number">10</span>) + <span class="built_in">c2</span>(y);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">c2</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> pow = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>((pow * <span class="number">10</span>) &lt;= n) pow *= <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">c2r</span>(n,pow);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">c2</span>(<span class="number">279</span>));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>20.9</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;queue&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;algorithm&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Median &#123;</span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  priority_queue&lt; <span class="built_in">int</span>, vector&lt;<span class="built_in">int</span>&gt;, less&lt;<span class="built_in">int</span>&gt; &gt; Q0;</span><br><span class="line">  priority_queue&lt; <span class="built_in">int</span>, vector&lt;<span class="built_in">int</span>&gt;, greater&lt;<span class="built_in">int</span>&gt; &gt; Q1;</span><br><span class="line"></span><br><span class="line"> public:</span><br><span class="line">  void insert(<span class="built_in">int</span> x) &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>empty<span class="literal">()</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>empty<span class="literal">()</span>) &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">int</span> y = <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>top<span class="literal">()</span>;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; y) &#123;</span><br><span class="line">          <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(x);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">          <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(y);</span><br><span class="line">          <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> x0 = <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>top<span class="literal">()</span>;</span><br><span class="line">    <span class="built_in">int</span> x1 = <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>top<span class="literal">()</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>size<span class="literal">()</span><span class="operator"> == </span><span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>size<span class="literal">()</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span>(x &lt;= x0) &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(x);</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x0);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(x &gt;= x1) &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>pop<span class="literal">()</span>;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>push(x);</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(x1);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>push(x);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  double median<span class="literal">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>size<span class="literal">()</span><span class="operator"> == </span><span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>size<span class="literal">()</span>) &#123;</span><br><span class="line">      return (<span class="module-access"><span class="module"><span class="identifier">Q0</span>.</span></span>top<span class="literal">()</span> + <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>top<span class="literal">()</span>)<span class="operator"> * </span><span class="number">0.5</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      return <span class="module-access"><span class="module"><span class="identifier">Q1</span>.</span></span>top<span class="literal">()</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main<span class="literal">()</span> &#123;</span><br><span class="line">  Median m;</span><br><span class="line">  m.insert(<span class="number">1</span>);</span><br><span class="line">  m.insert(<span class="number">2</span>);</span><br><span class="line">  printf(<span class="string">&quot;%g\n&quot;</span>,m.median<span class="literal">()</span>);</span><br><span class="line">  m.insert(<span class="number">3</span>);</span><br><span class="line">  printf(<span class="string">&quot;%g\n&quot;</span>,m.median<span class="literal">()</span>);</span><br><span class="line">  m.insert<span class="number">(-3)</span>;</span><br><span class="line">  printf(<span class="string">&quot;%g\n&quot;</span>,m.median<span class="literal">()</span>);</span><br><span class="line">  return <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>20.11</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> m[<span class="built_in">N</span>][<span class="built_in">N</span>];</span><br><span class="line">for(<span class="built_in">int</span> <span class="built_in">n</span>=<span class="built_in">N</span>;<span class="built_in">n</span>&gt;=<span class="number">1</span>;<span class="built_in">n</span>--) &#123;</span><br><span class="line">  for(<span class="built_in">int</span> r=<span class="number">0</span>;(<span class="built_in">N</span>-r)&gt;=<span class="built_in">n</span>;r++) &#123;</span><br><span class="line">    for(<span class="built_in">int</span> c=<span class="number">0</span>;(<span class="built_in">N</span>-c)&gt;=<span class="built_in">n</span>;r++) &#123;</span><br><span class="line">      <span class="built_in">if</span>(bound(r,c,<span class="built_in">n</span>)) &#123;</span><br><span class="line">        return <span class="built_in">n</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>20.12</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> m[<span class="built_in">N</span>][<span class="built_in">N</span>];</span><br><span class="line"><span class="built_in">int</span> dp[<span class="built_in">N</span>][<span class="built_in">N</span>]; // dp[s][e] = <span class="built_in">sum</span> from (<span class="number">0</span>,<span class="number">0</span>) to (s,e).</span><br><span class="line">for(<span class="built_in">int</span> r=<span class="number">0</span>;r&lt;<span class="built_in">N</span>;r++) &#123;</span><br><span class="line">  for(<span class="built_in">int</span> c=<span class="number">0</span>;c&lt;<span class="built_in">N</span>;c++) &#123;</span><br><span class="line">    <span class="built_in">int</span> s = <span class="number">0</span>;</span><br><span class="line">    for(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;c;i++) &#123;</span><br><span class="line">      s += m[r][i];</span><br><span class="line">    &#125;</span><br><span class="line">    dp[r][c] = s;</span><br><span class="line">    <span class="built_in">if</span>(r != <span class="number">0</span>) &#123;</span><br><span class="line">      dp[r][c] += dp[r-<span class="number">1</span>][c];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> v = INT_MIN;</span><br><span class="line">for(<span class="built_in">int</span> rs=<span class="number">0</span>;rs&lt;<span class="built_in">N</span>;rs++) &#123;</span><br><span class="line">  for(<span class="built_in">int</span> re=rs;re&lt;<span class="built_in">N</span>;re++) &#123;</span><br><span class="line">    for(<span class="built_in">int</span> cs=<span class="number">0</span>;cs&lt;<span class="built_in">N</span>;cs++) &#123;</span><br><span class="line">      for(<span class="built_in">int</span> ce=<span class="number">0</span>;ce&lt;<span class="built_in">N</span>;ce++) &#123;</span><br><span class="line">        <span class="built_in">int</span> u = <span class="built_in">sum</span>(rs,cs,re,ce);</span><br><span class="line">        <span class="built_in">if</span>(u &gt; v) v = u;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> X(<span class="built_in">int</span> a,<span class="built_in">int</span> b) &#123;</span><br><span class="line">  <span class="built_in">if</span>(a &lt; <span class="number">0</span> || b &lt; <span class="number">0</span>) return <span class="number">0</span>;</span><br><span class="line">  return dp[a][b];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> <span class="built_in">sum</span>(<span class="built_in">int</span> rs,<span class="built_in">int</span> cs,<span class="built_in">int</span> re,<span class="built_in">int</span> ce) &#123;</span><br><span class="line">  <span class="built_in">int</span> a = X(rs-<span class="number">1</span>,cs-<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">int</span> b = X(rs-<span class="number">1</span>,ce) - X(rs-<span class="number">1</span>,cs-<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">int</span> c = X(re,cs-<span class="number">1</span>) - X(rs-<span class="number">1</span>,cs-<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">int</span> d = X(re,ce);</span><br><span class="line">  return d - a - b - c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h1><p>关于Behavior Question：<br><a target="_blank" rel="noopener" href="http://www.1point3acres.com/bbs/thread-105717-1-1.html">Crack the Behavior Questions——关于Behavior Question的碎碎念</a></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Jacob Jin 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Jacob Jin 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Jacob Jin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kingsleynuaa.github.io/2016/08/24/Cracking-the-coding-interview/" title="Cracking-the-Coding-Interview">http://kingsleynuaa.github.io/2016/08/24/Cracking-the-coding-interview/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/kingsleynuaa">
+            <span class="icon">
+              <i class="fa fa-fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/mp_weixin.jpg">
+            <span class="icon">
+              <i class="fa fa-fab fa-weixin"></i>
+            </span>
+
+            <span class="label">微信公众号</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <div>
+        
+          <div>
+    
+      <div style="text-align:center;color: #ccc;font-size:20px;">------------- 本文结束,感谢阅读 <i class="fa fa-paw"></i> 如有问题可留言交流 -------------</div>
+    
+</div>
+
+        
+      </div>
+
+      <footer class="post-footer">
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/07/30/CPP-knowledge/" rel="prev" title="C++知识归纳整理（不断更新中）">
+      <i class="fa fa-chevron-left"></i> C++知识归纳整理（不断更新中）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/11/24/python2-encode-and-decode-problem/" rel="next" title="Python2编码问题分析">
+      Python2编码问题分析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments" id="gitalk-container"></div>
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cracking-The-Coding-Interview"><span class="nav-number">1.</span> <span class="nav-text">Cracking The Coding Interview</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Foreword"><span class="nav-number">1.1.</span> <span class="nav-text">1.Foreword</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">2.Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Behind-the-Scenes"><span class="nav-number">1.3.</span> <span class="nav-text">3.Behind the Scenes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-The-Microsoft-Interview"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 The Microsoft Interview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-The-Amazon-Interview"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 The Amazon Interview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-The-Google-Interview"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 The Google Interview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-The-Apple-Interview"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 The Apple Interview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-The-Yahoo-Interview"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 The Yahoo Interview</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Before-the-Interview"><span class="nav-number">1.4.</span> <span class="nav-text">4. Before the Interview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Resume-Advice"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 Resume Advice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Behavioral-Preparation"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 Behavioral Preparation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Technical-Preparation"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 Technical Preparation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-The-Interview-and-Beyond"><span class="nav-number">1.5.</span> <span class="nav-text">5. The Interview and Beyond</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Handling-Behavioral-Questions"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 Handling Behavioral Questions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Handling-Technical-Questions"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 Handling Technical Questions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-Five-Algorithm-Approaches"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 Five Algorithm Approaches</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-The-Offer-and-Beyond"><span class="nav-number">1.5.4.</span> <span class="nav-text">5.4 The Offer and Beyond</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-Top-Ten-Mistakes-Candidates-Make"><span class="nav-number">1.5.5.</span> <span class="nav-text">5.5 Top Ten Mistakes Candidates Make</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-Frequently-Asked-Questions"><span class="nav-number">1.5.6.</span> <span class="nav-text">5.6 Frequently Asked Questions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Interview-Questions"><span class="nav-number">1.6.</span> <span class="nav-text">6 Interview Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-Arrays-and-Strings"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 Arrays and Strings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-Linked-Lists"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 Linked Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-Stacks-and-Queues"><span class="nav-number">1.6.3.</span> <span class="nav-text">6.3 Stacks and Queues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-Trees-and-Graphs"><span class="nav-number">1.6.4.</span> <span class="nav-text">6.4 Trees and Graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-Bit-Manipulation"><span class="nav-number">1.6.5.</span> <span class="nav-text">6.5 Bit Manipulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-6-Brain-Teasers"><span class="nav-number">1.6.6.</span> <span class="nav-text">6.6 Brain Teasers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-7-Object-Oriented-Design"><span class="nav-number">1.6.7.</span> <span class="nav-text">6.7 Object Oriented Design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-8-Recursion"><span class="nav-number">1.6.8.</span> <span class="nav-text">6.8 Recursion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-9-Sorting-and-Searching"><span class="nav-number">1.6.9.</span> <span class="nav-text">6.9 Sorting and Searching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-10-Mathematical"><span class="nav-number">1.6.10.</span> <span class="nav-text">6.10 Mathematical</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-11-Testing"><span class="nav-number">1.6.11.</span> <span class="nav-text">6.11 Testing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-12-System-Design-and-Memory-Limits"><span class="nav-number">1.6.12.</span> <span class="nav-text">6.12 System Design and Memory Limits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-13-C"><span class="nav-number">1.6.13.</span> <span class="nav-text">6.13 C++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-14-Java"><span class="nav-number">1.6.14.</span> <span class="nav-text">6.14 Java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-15-Databases"><span class="nav-number">1.6.15.</span> <span class="nav-text">6.15 Databases</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-16-Low-Level"><span class="nav-number">1.6.16.</span> <span class="nav-text">6.16 Low Level</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-17-Networking"><span class="nav-number">1.6.17.</span> <span class="nav-text">6.17 Networking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-18-Threads-and-Locks"><span class="nav-number">1.6.18.</span> <span class="nav-text">6.18 Threads and Locks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-19-Moderate-Additional-Review-Problems"><span class="nav-number">1.6.19.</span> <span class="nav-text">6.19 Moderate Additional Review Problems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-20-Hard-Additional-Review-Problems"><span class="nav-number">1.6.20.</span> <span class="nav-text">6.20 Hard Additional Review Problems</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E9%98%85%E8%AF%BB"><span class="nav-number">2.</span> <span class="nav-text">扩展阅读</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jacob Jin"
+      src="/images/mpp.jpg">
+  <p class="site-author-name" itemprop="name">Jacob Jin</p>
+  <div class="site-description" itemprop="description">终身成长，持续提升认知，走向财富和精神自由，迈向美好生活</div>
+</div>
+
+
+   <div class="feed-link motion-element">
+     <a href="/atom.xml" rel="alternate">
+       <i class="fa fa-rss"></i>
+       RSS
+     </a>
+   </div>
+
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    <a onclick="Chatra('openChat', true);"><i class="fa fa-fa fa-comment"></i>
+    留言信箱
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:kingsleynuaa@gmail.com" title="E-Mail → mailto:kingsleynuaa@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-fab fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/AC4Fun" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;AC4Fun" rel="noopener" target="_blank"><i class="fa fa-fw fa-fab fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/mp_weixin.jpg" title="微信公众号 → &#x2F;images&#x2F;mp_weixin.jpg"><i class="fa fa-fw fa-fab fa-weixin"></i>微信公众号</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/kingsleynuaa" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;kingsleynuaa" rel="noopener" target="_blank"><i class="fa fa-fw fa-fab fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-fa fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="/images/mp_weixin.jpg" title="&#x2F;images&#x2F;mp_weixin.jpg">汇芳书院微信公众号</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-fab fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacob Jin</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">64k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">58 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60e55c23a7a37a32" async="async"></script>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      总阅读次数<span class="post-meta-item-icon">
+        <i class="fa fa-fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>次
+    </span>
+</div>
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1280101085&web_id=1280101085"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 31237,
+      el    : 'wpac-rating',
+      color : 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'Sr9MBs8d6jaznbuEq';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 300,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://kingsleynuaa.github.io/2016/08/24/Cracking-the-coding-interview/',]
+      });
+      });
+  </script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '2be373aa63799541ae8b',
+      clientSecret: 'e5cbbfdc659cbc7514c9cf06069828f91e592695',
+      repo        : 'kingsleynuaa.github.io',
+      owner       : 'kingsleynuaa',
+      admin       : ['kingsleynuaa'],
+      id          : 'e31777b7c0efa08c06d55fb41db6b46d',
+        language: 'zh-cn',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'hVSpjGv2o2uBeKOW2HujJ8Qy-gzGzoHsz',
+      appKey     : 'b393luVLTTbPfeOP83kOdyNi',
+      placeholder: "在这里输入评论...",
+      avatar     : 'mp',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

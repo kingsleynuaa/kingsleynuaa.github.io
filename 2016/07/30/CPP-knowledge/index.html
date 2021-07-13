@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon32_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon16_16.png">
+  <link rel="mask-icon" href="/images/apple-touch-icon-next.png" color="#222">
+  <meta name="baidu-site-verification" content="de7394d3a9d02511c7555414af9b2c02">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kingsleynuaa.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":{"valine":null,"text":"Load Valine","order":-1,"gitalk":{"order":-2}},"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这篇文章写了好久，感觉还是没写完。接下来准备慢慢看书，实习，不断更新吧。 分割线******************** 按照侯捷先生在《Effective C++》的观点，以及自己的一些理解，可以将互联网技术岗位关于C＋＋的知识点归纳为以下五个部分：  C＋＋基础知识 面向过程的特性 面向对象的特性 泛型编程的特性 标准模板库和算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++知识归纳整理（不断更新中）">
+<meta property="og:url" content="http://kingsleynuaa.github.io/2016/07/30/CPP-knowledge/index.html">
+<meta property="og:site_name" content="汇芳书院">
+<meta property="og:description" content="这篇文章写了好久，感觉还是没写完。接下来准备慢慢看书，实习，不断更新吧。 分割线******************** 按照侯捷先生在《Effective C++》的观点，以及自己的一些理解，可以将互联网技术岗位关于C＋＋的知识点归纳为以下五个部分：  C＋＋基础知识 面向过程的特性 面向对象的特性 泛型编程的特性 标准模板库和算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-07-30T14:03:15.000Z">
+<meta property="article:modified_time" content="2021-07-10T11:29:44.192Z">
+<meta property="article:author" content="Jacob Jin">
+<meta property="article:tag" content="cpp">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://kingsleynuaa.github.io/2016/07/30/CPP-knowledge/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++知识归纳整理（不断更新中） | 汇芳书院</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C70KE9W36G"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C70KE9W36G');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?de7394d3a9d02511c7555414af9b2c02";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="汇芳书院" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">汇芳书院</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">专注计算机视觉、机器学习、分布式计算等领域, 兼聊投资、写作、生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-fab fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-fab fa-archive"></i>归档<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-fab fa-tags"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-fab fa-th"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/aboutMe/" rel="section"><i class="fa fa-fw fa-fab fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-留言灌水区">
+
+    <a href="/message/" rel="section"><i class="fa fa-fw fa-fab fa-telegram"></i>留言灌水区</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kingsleynuaa.github.io/2016/07/30/CPP-knowledge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mpp.jpg">
+      <meta itemprop="name" content="Jacob Jin">
+      <meta itemprop="description" content="终身成长，持续提升认知，走向财富和精神自由，迈向美好生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="汇芳书院">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++知识归纳整理（不断更新中）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-07-30 22:03:15" itemprop="dateCreated datePublished" datetime="2016-07-30T22:03:15+08:00">2016-07-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 19:29:44" itemprop="dateModified" datetime="2021-07-10T19:29:44+08:00">2021-07-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/job/" itemprop="url" rel="index"><span itemprop="name">job</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2016/07/30/CPP-knowledge/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2016/07/30/CPP-knowledge/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这篇文章写了好久，感觉还是没写完。接下来准备慢慢看书，实习，不断更新吧。</p>
+<p><strong><strong><strong><strong><strong><strong><strong><strong>分割线</strong></strong></strong></strong></strong></strong></strong></strong>********************</p>
+<p>按照侯捷先生在《Effective C++》的观点，以及自己的一些理解，可以将互联网技术岗位关于C＋＋的知识点归纳为以下五个部分：</p>
+<ul>
+<li>C＋＋基础知识</li>
+<li>面向过程的特性</li>
+<li>面向对象的特性</li>
+<li>泛型编程的特性</li>
+<li>标准模板库和算法</li>
+</ul>
+<span id="more"></span> 
+
+<p>这是我第一次在简书写文章，如果大家有什么意见的话，欢迎随时向我提出来。必须要说明的是，C＋＋知识繁杂磅礴，面试题中可被问到的很多，如果想要成功拿到心仪的offer，除了掌握C＋＋这个工具外，需要结合一些其它领域知识，如基础数据结构和基本的算法，网络编程，多线程编程，（Linux）Shell脚本（awk, sed），编译器使用（gcc/clang, makefile, automake/cmake等），数据库（SQL语言，数据库理论如存储引擎，索引实现，范式等）视频处理，设计模式，机器学习等知识，如果后续有时间，也会对相关知识进行一下归纳。<br>本文主要侧重于纪录分析C＋＋面试中的基础知识，主要包括：关键字使用，</p>
+<h1 id="1-关键字"><a href="#1-关键字" class="headerlink" title="1. 关键字"></a>1. 关键字</h1><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>static修饰的变量和函数存储在内存的静态文本区，与全局变量存储的位置一致。而静态文本区的字节默认都是0x00</p>
+<ul>
+<li>修饰局部变量<br>对局部变量添加static修饰符后，变量的存储区由栈改为静态文本区，它的生存周期得到了改变。</li>
+<li>修饰全局变量<br>对全局变量添加static，生存周期不会改变，但是会影响作用域。普通全局变量的作用域是整个源程序， 当一个源程序由多个源文件组成时，非静态的全局变量在各个源文件中都是有效的。 而静态全局变量则限制了其作用域， 即只在定义该变量的源文件内有效， 在同一源程序的其它源文件中不能使用它。由于静态全局变量的作用域局限于一个源文件内，只能为该源文件内的函数公用，因此可以避免在其它源文件中引起错误。这一点，有人称作“隐藏”</li>
+<li>修饰函数<br>static函数与普通函数作用域不同,仅在本文件。只在当前源文件中使用的函数应该说明为内部函数(static修饰的函数)，内部函数应该在当前源文件中说明和定义。对于可在当前源文件以外使用的函数，应该在一个头文件中说明，要使用这些函数的源文件要包含这个头文件.<br>static函数在内存中只有一份，普通函数在每个被调用中维持一份拷贝</li>
+</ul>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>const关键字可以修饰变量，引用，函数，对象等：</p>
+<p><strong>常变量</strong>：  const 类型说明符 变量名</p>
+<p><strong>常引用</strong>：  const 类型说明符 &amp;引用名</p>
+<p><strong>常对象</strong>：  类名 const 对象名</p>
+<p><strong>常成员函数</strong>：  类名::fun(形参) const</p>
+<p><strong>常数组</strong>：  类型说明符 const 数组名[大小]    </p>
+<p><strong>常指针</strong>：  const 类型说明符* 指针名 ，类型说明符* const 指针名</p>
+<p>在常变量（const 类型说明符 变量名）、常引用（const 类型说明符 &amp;引用名）、常对象（类名 const 对象名）、 常数组（类型说明符 const 数组名[大小]）， const” 与 “类型说明符”或“类名”（其实类名是一种自定义的类型说明符） 的位置可以互换。</p>
+<p>需要注意的概念其实是<strong>“常量指针”</strong>和<strong>“指针常量”</strong>，也就是const修饰一个指针变量的时候产生的两种差异。我们知道，一个指针变量，使用的时候需要考虑该指针本身和被它所指的对象，看如下例子：</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">char</span> *<span class="keyword">const</span> pc; //到<span class="built_in">char</span>的<span class="keyword">const</span>指针</span><br><span class="line"><span class="built_in">char</span> <span class="keyword">const</span> *pc1; //到<span class="keyword">const</span> <span class="built_in">char</span>的指针</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">char</span> *pc2; //到<span class="keyword">const</span> <span class="built_in">char</span>的指针（后两个声明是等同的）</span><br></pre></td></tr></table></figure>
+
+<p>从右向左读的记忆方式：</p>
+<p>pc is a const pointer to char. 故pc不能指向别的字符串，但可以修改其指向的字符串的内容。pc是一个指向字符类型的常指针，pc的值不可变，但是pc值（也就是pc指向的地址）所代表的内存空间的内容是可以变的，所以pc是一个指针常量。<br>pc2 is a pointer to const char. 故<em>pc2的内容不可以改变，但pc2可以指向别的字符串。也就是说pc2是指向一个不可变内容空间（常量）的指针，也就是常量指针。pc2＋＋可行，但</em>pc2 = “hello world”不可行。当然，只是说不能通过pc2去修改那段内容，别的方式是可以的。</p>
+<p>其实，const只对它左边的东西起作用，唯一的例外就是const本身就是最左边的修饰符，那么它才会对右边的东西起作用。</p>
+<p><strong>常量函数</strong> 常量函数是C++对常量的一个扩展，它很好的确保了C++中类的封装性。在C++中，为了防止类的数据成员被非法访问，将类的成员函数分成了两类，一类是常量成员函数（也被称为观察着）；另一类是非常量成员函数（也被成为变异者）。在一个函数的签名后面加上关键字const后该函数就成了常量函数。对于常量函数，最关键的不同是编译器不允许其修改类的数据成员。<br>当然，我们可以绕过编译器的错误去修改类的数据成员。但是C++也允许我们在数据成员的定义前面加上mutable，以允许该成员可以在常量函数中被修改。当存在同名同参数和返回值的常量函数和非常量函数时，具体调用哪个函数是根据调用对象是常量对像还是非常量对象来决定的。常量对象调用常量成员；非常量对象调用非常量的成员。</p>
+<p>另外，需要注意C＋＋中用const定义了一个常量后，不会分配一个空间给它，而是将其写入符号表(symbol table),这使得它成为一个编译期间的常量，没有了存储与读内存的操作，使得它的效率也很高。只有当使用extern或者取地址操作的时候，才会分配空间，但是这不会影响到常量本身的值，因为用到a的时候，编译器根本不会去进行内存空间的读取。这就是c++的常量折叠（constant folding）,即将const常量放在符号表中，而并不给其分配内存。编译器直接进行替换优化。其值仍旧从符号表中读取，不管常量对应的存储空间中的值如何变化，都不会对其值产生影响。</p>
+<h3 id="宏定义与const"><a href="#宏定义与const" class="headerlink" title="宏定义与const"></a>宏定义与const</h3><p>C++中定义常量的时候不再采用define,因为define只做简单的宏替换，并不提供类型检查.</p>
+<h2 id="四种类型转换"><a href="#四种类型转换" class="headerlink" title="四种类型转换"></a>四种类型转换</h2><ul>
+<li><p><strong>static_cast</strong><br>static_cast 很像 C 语言中的旧式类型转换。它能进行基础类型之间的转换，也能将带有可被单参调用的构造函数或用户自定义类型转换操作符的类型转换，还能在存有继承关系的类之间进行转换（即可将基类转换为子类，也可将子类转换为基类），还能将 non-const对象转换为 const对象（注意：反之则不行，那是const_cast的职责。）。<br>注意：static_cast 转换时并不进行运行时安全检查，所以是非安全的，很容易出问题。因此 C++ 引入 dynamic_cast 来处理安全转型。</p>
+</li>
+<li><p><strong>dynamic_cast</strong><br>dynamic_cast 主要用来在继承体系中的安全向下转型。它能安全地将指向基类的指针转型为指向子类的指针或引用，并获知转型动作成功是否。如果转型失败会返回null（转型对象为指针时）或抛出异常（转型对象为引用时）。dynamic_cast 会动用运行时信息（RTTI）来进行类型安全检查，因此 dynamic_cast 存在一定的效率损失。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CBase</span> &#123;</span> &#125;;</span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">CDerived</span>:</span> <span class="keyword">public</span> CBase &#123; &#125;;</span><br><span class="line"> CBase b;</span><br><span class="line"> CBase* pb;</span><br><span class="line"> CDerived d;</span><br><span class="line"> CDerived* pd;</span><br><span class="line"> pb = <span class="keyword">dynamic_cast</span>&lt;CBase*&gt;(&amp;d);     <span class="comment">// ok: derived-to-base</span></span><br><span class="line"> pd = <span class="keyword">dynamic_cast</span>&lt;CDerived*&gt;(&amp;b);  <span class="comment">// error: base-to-derived</span></span><br></pre></td></tr></table></figure>
+<p>上面的代码中最后一行 VS2010 会报如下错误：<br>error C2683: ‘dynamic_cast’ : ‘CBase’ is not a polymorphic typeIntelliSense: the operand of a runtime dynamic_cast must have a polymorphic class type<br>这是因为 dynamic_cast 只有在基类带有虚函数的情况下才允许将基类转换为子类。当然，允许转换也不代表可以转换成功。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CBase</span></span></span><br><span class="line"><span class="class"> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">dummy</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">CDerived</span>:</span> <span class="keyword">public</span> CBase</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">int</span> a;</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">    CBase * pba = <span class="keyword">new</span> CDerived;</span><br><span class="line">    CBase * pbb = <span class="keyword">new</span> CBase;</span><br><span class="line">    CDerived * pd1, * pd2;</span><br><span class="line">    pd1 = <span class="keyword">dynamic_cast</span>&lt;CDerived*&gt;(pba);</span><br><span class="line">    pd2 = <span class="keyword">dynamic_cast</span>&lt;CDerived*&gt;(pbb);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>结果是：上面代码中的 pd1 不为 null,而 pd2 为 null。<br>dynamic_cast 也可在 null 指针和指向其他类型的指针之间进行转换，也可以将指向类型的指针转换为 void 指针（基于此，我们可以获取一个对象的内存起始地址 *const void * rawAddress = dynamic_cast&lt;const void *&gt; (this);*）。</p>
+<ul>
+<li><strong>const_cast</strong><br>前面提到 const_cast 可去除对象的常量性（const），它还可以去除对象的易变性（volatile）。const_cast 的唯一职责就在于此，若将 const_cast 用于其他转型将会报错。</li>
+<li><strong>reinterpret_cast</strong><br>reinterpret_cast 用来执行低级转型，如将执行一个 int 的指针强转为 int。其转换结果与编译平台息息相关，不具有可移植性，因此在一般的代码中不常见到它。reinterpret_cast 常用的一个用途是转换函数指针类型，即可以将一种类型的函数指针转换为另一种类型的函数指针，但这种转换可能会导致不正确的结果。总之，reinterpret_cast 只用于底层代码，一般我们都用不到它，如果你的代码中使用到这种转型，务必明白自己在干什么。</li>
+</ul>
+<p>总结来看，需要类型转换的时候，优先使用C＋＋的这种风格进行类型转换，基础类型转换的时候，使用static_cast, 子类与父类之间进行转换的时候，尤其是基类向子类转换的时候，使用dynamic_cast。其它情况，如转换为void指针，使用dynamic_cast, int型指针到int，以及函数指针之间的转换使用reinterpret_cast, const_cast只用于去除对象的常量性（const）和易变性（volatile）<br>抛开C＋＋为了兼容C而允许隐式类型转换（隐蔽，不安全，易引起非预期的函数调用，对象切割等等），我倾向于认为C＋＋是一种强类型（倾向于不允许隐式类型转换），静态类型（编译前已经知道数据类型）的语言。</p>
+<h2 id="重载与重写"><a href="#重载与重写" class="headerlink" title="重载与重写"></a>重载与重写</h2><ul>
+<li><p>重载（Overload）<br>同一可访问区内被声明的几个具有不同参数列（参数的类型，个数，顺序不同）的同名函数，根据参数列表确定调用哪个函数，重载不关心函数返回类型。成员函数被重载的特征：<br>（1）相同的范围（在同一个类中）；<br>（2）函数名字相同；<br>（3）参数不同；<br>（4）virtual关键字可有可无。</p>
+</li>
+<li><p>重写（Override），也叫覆盖（Overwrite）<br>重写是指派生类函数重写基类函数，是C++的多态的表现，特征是：<br>（1）不同的范围（分别位于派生类与基类）；<br>（2）函数名字相同；<br>（3）参数相同；<br>（4）基类函数必须有virtual关键字。</p>
+</li>
+</ul>
+<p>说到底，这两个概念其实并没有太大的关联，重载是编译多态的一种实现，重写与需函数相关，用于实现动态绑定，属于编译时多态的实现。</p>
+<p><strong>重写与隐藏的关系</strong><br>“隐藏”是指派生类的函数屏蔽了与其同名的基类函数，规则如下：<br>（1）如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无virtual关键字，基类的函数将被隐藏。<br>（2）如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有virtual关键字。此时，基类的函数被隐藏。如果有virtual关键字，函数同名，参数相同，就是“重写”了</p>
+<h3 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h3><p>从概念上讲。指针从本质上讲就是存放变量地址的一个变量，在逻辑上是独立的，它可以被改变，包括其所指向的地址的改变和其指向的地址中所存放的数据的改变。<br>而引用是一个别名，它在逻辑上不是独立的，它的存在具有依附性，所以引用必须在一开始就被初始化，而且其引用的对象在其整个生命周期中是不能被改变的（自始至终只能依附于同一个变量）。</p>
+<p><strong>指针传递参数和引用传递参数的区别</strong><br>指针传递参数本质上是值传递的方式，它所传递的是一个地址值。值传递过程中，被调函数的形式参数作为被调函数的局部变量处理，即在栈中开辟了内存空间以存放由主调函数放进来的实参的值，从而成为了实参的一个副本。值传递的特点是被调函数对形式参数的任何操作都是作为局部变量进行，不会影响主调函数的实参变量的值。<br>而在引用传递过程中，被调函数的形式参数虽然也作为局部变量在栈中开辟了内存空间，但是这时存放的是由主调函数放进来的实参变量的地址。被调函数对形参的任何操作都被处理成间接寻址，即通过栈中存放的地址访问主调函数中的实参变量。正因为如此，被调函数对形参做的任何操作都影响了主调函数中的实参变量。<br>引用传递和指针传递是不同的，虽然它们都是在被调函数栈空间上的一个局部变量，但是任何对于引用参数的处理都会通过一个间接寻址的方式操作到主调函数中的相关变量。而对于指针传递的参数，如果改变被调函数中的指针地址，它将影响不到主调函数的相关变量。如果想通过指针参数传递来改变主调函数中的相关变量，那就得使用指向指针的指针，或者指针引用。</p>
+<p>其实上面这两段话，我并没有看出传指针和传引用两个的区别在哪里？<br>“在栈上分配的对象通常就不能传递指针，因为函数返回之后栈上的对象会被析构”<br>另外<a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiaoka/articles/2331456.html">C++中传值，传指针和传引用区别</a>提到，传值与传引用本质上没有区别。以上，留作一个疑问吧</p>
+<p>为了进一步加深大家对指针和引用的区别，下面我从编译的角度来阐述它们之间的区别：<br>程序在编译时分别将指针和引用添加到符号表上，符号表上记录的是变量名及变量所对应地址。指针变量在符号表上对应的地址值为指针变量的地址值，而引用在符号表上对应的地址值为引用对象的地址值。符号表生成后就不会再改，因此指针可以改变其指向的对象（指针变量中的值可以改），而引用对象则不能修改。<br>最后，总结一下指针和引用的相同点和不同点：<br>★相同点：<br>●都是地址的概念；<br>指针指向一块内存，它的内容是所指内存的地址；而引用则是某块内存的别名。<br>★不同点：<br>●指针是一个实体，而引用仅是个别名；<br>●引用只能在定义时被初始化一次，之后不可变；指针可变；引用“从一而终”，指针可以“见异思迁”；<br>●引用没有const<br>  指针有const<br>  const的指针不可变；<br>●引用不能为空，指针可以为空；<br>●sizeof “引用”得到的是所指向的变量(对象)的大小，而“sizeof 指针”得到的是指针本身的大小；<br>●指针和引用的自增(++)<br>运算意义不一样；<br>●引用是类型安全的，而指针不是 (<br>引用比指针多了类型检查</p>
+<h3 id="内存对齐"><a href="#内存对齐" class="headerlink" title="内存对齐"></a>内存对齐</h3><p>每个特定平台上的编译器都有自己的默认“对齐系数”(也叫对齐模数，32位gcc 4.7上默认为8，32位VS2010上默认为8)。程序员可以通过预编译命令#pragma pack(n)，n=1,2,4,8,16来改变这一系数，其中的n就是你要指定的“对齐系数”。<br>规则：</p>
+<p>1、数据成员对齐规则：结构(struct)(或联合(union))的数据成员，第一个数据成员放在offset为0的地方，以后每个数据成员的对齐按照#pragma pack指定的数值和这个数据成员自身长度中，比较小的那个进行。</p>
+<p>2、结构(或联合)的整体对齐规则：在数据成员完成各自对齐之后，结构(或联合)本身也要进行对齐，对齐将按照#pragma pack指定的数值和结构(或联合)最大数据成员长度中，比较小的那个进行。</p>
+<p>3、结合1、2可推断：当#pragma pack的n值等于或超过所有数据成员长度的时候，这个n值的大小将不产生任何效果。</p>
+<p>如果我们不想编译器自动为我们添加补齐位，可以将对齐系数设为1</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(push, 1)</span></span><br><span class="line"><span class="comment">// code...</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(pop)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四种智能指针"><a href="#四种智能指针" class="headerlink" title="四种智能指针"></a>四种智能指针</h2><ul>
+<li>auto_ptr</li>
+<li>unique_ptr</li>
+<li>shared_ptr</li>
+<li>weak_ptr(暂时不讨论，我也不知道为什么很多地方都不讨论，留一个疑问吧？)</li>
+</ul>
+<p>智能指针产生的原因在于解决常规指针可能产生的内存泄漏问题，<br><strong>将基本类型指针封装为类对象指针（这个类肯定是个模板，以适应不同基本类型的需求），并在析构函数里编写delete语句删除指针指向的内存空间</strong></p>
+<p>STL一共给我们提供了四种智能指针：auto_ptr、unique_ptr、shared_ptr和weak_ptr（本文章暂不讨论）。模板auto_ptr是C++98提供的解决方案，C+11已将将其摒弃，并提供了另外两种解决方案。然而，虽然auto_ptr被摒弃，但它已使用了好多年：同时，如果您的编译器不支持其他两种解决力案，auto_ptr将是唯一的选择。<br>使用auto_ptr仍然会存在，程序将试图删除同一个对象两次的问题。要避免这种问题，方法有多种：</p>
+<ul>
+<li>定义赋值运算符，使之执行深复制。这样两个指针将指向不同的对象，其中的一个对象是另一个对象的副本，缺点是浪费空间，所以智能指针都未采用此方案。</li>
+<li>建立所有权（ownership）概念。对于特定的对象，只能有一个智能指针可拥有，这样只有拥有对象的智能指针的构造函数会删除该对象。然后让赋值操作转让所有权。这就是用于auto_ptr和uniqiie_ptr 的策略，但unique_ptr的策略更严格。</li>
+<li>创建智能更高的指针，跟踪引用特定对象的智能指针数。这称为引用计数。例如，赋值时，计数将加1，而指针过期时，计数将减1,。当减为0时才调用delete。这是shared_ptr采用的策略。</li>
+<li><em>当程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做；如果源 unique_ptr 将存在一段时间，编译器将禁止这么做</em>* unique_ptr比auto_ptr优秀的地方。<br>如果你的编译器没有提供shared_ptr，可使用Boost库提供的shared_ptr。<br>如果你的编译器没有unique_ptr，可考虑使用Boost库提供的scoped_ptr，它与unique_ptr类似。</li>
+</ul>
+<h2 id="explicit"><a href="#explicit" class="headerlink" title="explicit"></a>explicit</h2><p>规避可被单参调用的构造函数引起的隐式类型转换<br>所有的智能指针类都有一个explicit构造函数，以指针作为参数.因此不能自动将指针转换为智能指针对象，必须显式调用</p>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><pre><code>* new和delete
+* malloc和free
+</code></pre>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="built_in">CMyString</span></span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	<span class="built_in">CMyString</span>(<span class="keyword">char</span>* pData = <span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">CMyString</span>(<span class="keyword">const</span> <span class="built_in">CMyString</span> &amp;str);</span><br><span class="line">	~<span class="built_in">CMyString</span>(<span class="keyword">void</span>);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	<span class="keyword">char</span> * m_pData;</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象的大小"><a href="#对象的大小" class="headerlink" title="对象的大小"></a>对象的大小</h2><h2 id="继承（为什么要继承？单继承-多继承）"><a href="#继承（为什么要继承？单继承-多继承）" class="headerlink" title="继承（为什么要继承？单继承 多继承）"></a>继承（为什么要继承？单继承 多继承）</h2><h2 id="类成员变量初始化顺序"><a href="#类成员变量初始化顺序" class="headerlink" title="类成员变量初始化顺序"></a>类成员变量初始化顺序</h2><h2 id="析构函数与构造函数的执行顺序"><a href="#析构函数与构造函数的执行顺序" class="headerlink" title="析构函数与构造函数的执行顺序"></a>析构函数与构造函数的执行顺序</h2><p>常见对象－&gt;构造函数（缺省构造函数，有参构造函数，复制构造函数）<br>销毁对象－&gt;析构函数</p>
+<h2 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CMyString::<span class="built_in">CMyString</span>(<span class="keyword">const</span> CMyString &amp;str)</span><br><span class="line">&#123;</span><br><span class="line">	m_pData = <span class="keyword">new</span> <span class="keyword">char</span>[ <span class="built_in">strlen</span>(str.m_pData) + <span class="number">1</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(m_pData, str.m_pData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么拷贝构造函数的参数一定是引用？避免拷贝构造函数不限制的递归复制下去。</p>
+<h2 id="赋值构造函数"><a href="#赋值构造函数" class="headerlink" title="赋值构造函数"></a>赋值构造函数</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CMyString</span>&amp; <span class="built_in">CMyString</span>::operator = (<span class="keyword">const</span> <span class="built_in">CMyString</span> &amp;str)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">this</span> != &amp;str)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">CMyString</span> strTemp(str);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span> * pTemp = strTemp.m_pData;</span><br><span class="line">		strTemp.m_pData = m_pData;</span><br><span class="line">		m_pData = pTemp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实我在想，这里的指针pTemp使用会不会有问题呢？</p>
+<h2 id="虚函数与运行时多态"><a href="#虚函数与运行时多态" class="headerlink" title="虚函数与运行时多态"></a>虚函数与运行时多态</h2><ul>
+<li>纯虚函数</li>
+<li>虚函数列表</li>
+</ul>
+<h2 id="函数重载与编译时多态"><a href="#函数重载与编译时多态" class="headerlink" title="函数重载与编译时多态"></a>函数重载与编译时多态</h2><h2 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h2><p>归纳面向对象三大特征：封装 继承 多态</p>
+<h2 id="面向对象设计之SOLID五大原则？"><a href="#面向对象设计之SOLID五大原则？" class="headerlink" title="面向对象设计之SOLID五大原则？"></a>面向对象设计之SOLID五大原则？</h2><h1 id="泛型编程"><a href="#泛型编程" class="headerlink" title="泛型编程"></a>泛型编程</h1><p>编写能够正确处理各种不同数据类型参数的代码，只要参数的数据类型满足特定的语法和语义需求。对于C＋＋而言，实现泛型编程的方式就是使用模板。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">template&lt;<span class="keyword">class</span> <span class="symbol">T</span>&gt;</span><br><span class="line"><span class="symbol">class</span> <span class="symbol">vector</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="标准模板库（Standard-Template-Library）"><a href="#标准模板库（Standard-Template-Library）" class="headerlink" title="标准模板库（Standard Template Library）"></a>标准模板库（Standard Template Library）</h1><p>一群优秀的人写的一个优秀的函数库<br>##六大组件</p>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><h3 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h3><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><h3 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a>函数对象</h3><h3 id="空间适配器"><a href="#空间适配器" class="headerlink" title="空间适配器"></a>空间适配器</h3><h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/dc10101/archive/2007/08/22/865556.html">static的作用</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/kingln/articles/1129114.html">C++中指针和引用的区别</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/luxiaoxun/archive/2012/08/09/2630751.html">C++的重载（overload）与重写（override）</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/yc_sunniwell/archive/2010/07/14/1777416.html">C/C++中const关键字详解</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/lanxuezaipiao/p/4132096.html">C++智能指针简单剖析</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/tunsanty/article/details/4264738">拷贝构造函数的参数为什么必须使用引用类型</a></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Jacob Jin 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Jacob Jin 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Jacob Jin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://kingsleynuaa.github.io/2016/07/30/CPP-knowledge/" title="C++知识归纳整理（不断更新中）">http://kingsleynuaa.github.io/2016/07/30/CPP-knowledge/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/kingsleynuaa">
+            <span class="icon">
+              <i class="fa fa-fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/mp_weixin.jpg">
+            <span class="icon">
+              <i class="fa fa-fab fa-weixin"></i>
+            </span>
+
+            <span class="label">微信公众号</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <div>
+        
+          <div>
+    
+      <div style="text-align:center;color: #ccc;font-size:20px;">------------- 本文结束,感谢阅读 <i class="fa fa-paw"></i> 如有问题可留言交流 -------------</div>
+    
+</div>
+
+        
+      </div>
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/cpp/" rel="tag"><i class="fa fa-tag"></i> cpp</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/07/12/overview-of-3D-reconstruction/" rel="prev" title="三维重建综述">
+      <i class="fa fa-chevron-left"></i> 三维重建综述
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/08/24/Cracking-the-coding-interview/" rel="next" title="Cracking-the-Coding-Interview">
+      Cracking-the-Coding-Interview <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments" id="gitalk-container"></div>
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">1. 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-number">1.1.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const"><span class="nav-number">1.2.</span> <span class="nav-text">const</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8F%E5%AE%9A%E4%B9%89%E4%B8%8Econst"><span class="nav-number">1.2.1.</span> <span class="nav-text">宏定义与const</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">四种类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99"><span class="nav-number">1.4.</span> <span class="nav-text">重载与重写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.1.</span> <span class="nav-text">指针和引用的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90"><span class="nav-number">1.4.2.</span> <span class="nav-text">内存对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">1.5.</span> <span class="nav-text">四种智能指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#explicit"><span class="nav-number">1.6.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">内存管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">2.1.</span> <span class="nav-text">对象的大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%EF%BC%88%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%BB%A7%E6%89%BF%EF%BC%9F%E5%8D%95%E7%BB%A7%E6%89%BF-%E5%A4%9A%E7%BB%A7%E6%89%BF%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">继承（为什么要继承？单继承 多继承）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%BA%E5%BA%8F"><span class="nav-number">2.3.</span> <span class="nav-text">类成员变量初始化顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-number">2.4.</span> <span class="nav-text">析构函数与构造函数的执行顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.5.</span> <span class="nav-text">拷贝构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.6.</span> <span class="nav-text">赋值构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%97%B6%E5%A4%9A%E6%80%81"><span class="nav-number">2.7.</span> <span class="nav-text">虚函数与运行时多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E4%B8%8E%E7%BC%96%E8%AF%91%E6%97%B6%E5%A4%9A%E6%80%81"><span class="nav-number">2.8.</span> <span class="nav-text">函数重载与编译时多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="nav-number">2.9.</span> <span class="nav-text">友元函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B9%8BSOLID%E4%BA%94%E5%A4%A7%E5%8E%9F%E5%88%99%EF%BC%9F"><span class="nav-number">2.10.</span> <span class="nav-text">面向对象设计之SOLID五大原则？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">泛型编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93%EF%BC%88Standard-Template-Library%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">标准模板库（Standard Template Library）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8"><span class="nav-number">4.0.1.</span> <span class="nav-text">容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">4.0.2.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-number">4.0.3.</span> <span class="nav-text">适配器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">4.0.4.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.0.5.</span> <span class="nav-text">函数对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E9%80%82%E9%85%8D%E5%99%A8"><span class="nav-number">4.0.6.</span> <span class="nav-text">空间适配器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vector"><span class="nav-number">4.1.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">4.2.</span> <span class="nav-text">map</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jacob Jin"
+      src="/images/mpp.jpg">
+  <p class="site-author-name" itemprop="name">Jacob Jin</p>
+  <div class="site-description" itemprop="description">终身成长，持续提升认知，走向财富和精神自由，迈向美好生活</div>
+</div>
+
+
+   <div class="feed-link motion-element">
+     <a href="/atom.xml" rel="alternate">
+       <i class="fa fa-rss"></i>
+       RSS
+     </a>
+   </div>
+
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    <a onclick="Chatra('openChat', true);"><i class="fa fa-fa fa-comment"></i>
+    留言信箱
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:kingsleynuaa@gmail.com" title="E-Mail → mailto:kingsleynuaa@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-fab fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/AC4Fun" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;AC4Fun" rel="noopener" target="_blank"><i class="fa fa-fw fa-fab fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/mp_weixin.jpg" title="微信公众号 → &#x2F;images&#x2F;mp_weixin.jpg"><i class="fa fa-fw fa-fab fa-weixin"></i>微信公众号</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/kingsleynuaa" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;kingsleynuaa" rel="noopener" target="_blank"><i class="fa fa-fw fa-fab fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-fa fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="/images/mp_weixin.jpg" title="&#x2F;images&#x2F;mp_weixin.jpg">汇芳书院微信公众号</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-fab fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacob Jin</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">64k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">58 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60e55c23a7a37a32" async="async"></script>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      总阅读次数<span class="post-meta-item-icon">
+        <i class="fa fa-fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>次
+    </span>
+</div>
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1280101085&web_id=1280101085"></script>
+  </div>
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 31237,
+      el    : 'wpac-rating',
+      color : 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'Sr9MBs8d6jaznbuEq';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 300,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://kingsleynuaa.github.io/2016/07/30/CPP-knowledge/',]
+      });
+      });
+  </script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '2be373aa63799541ae8b',
+      clientSecret: 'e5cbbfdc659cbc7514c9cf06069828f91e592695',
+      repo        : 'kingsleynuaa.github.io',
+      owner       : 'kingsleynuaa',
+      admin       : ['kingsleynuaa'],
+      id          : 'de363fad5c9dd9895ee86b9cdc543883',
+        language: 'zh-cn',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'hVSpjGv2o2uBeKOW2HujJ8Qy-gzGzoHsz',
+      appKey     : 'b393luVLTTbPfeOP83kOdyNi',
+      placeholder: "在这里输入评论...",
+      avatar     : 'mp',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
